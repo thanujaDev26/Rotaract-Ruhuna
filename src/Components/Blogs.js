@@ -1,9 +1,12 @@
-export default function Blogs(props) {
+import BlogsOne from "./blogs1";
+import BlogsTwo from "./blogs2";
 
+export default function Blogs(props) {
 
     return (
         <div className="blogs">
-            <h1 className="text-3xl font-bold text-gray-900">Blogs</h1>
+            <BlogsOne/>
+            <BlogsTwo/>
         </div>
     )
 }
