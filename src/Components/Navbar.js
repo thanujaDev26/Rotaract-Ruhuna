@@ -24,8 +24,10 @@ export default function Navbar(props) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     return (
         <div className="container">
+            <img className="h-12 flex items-start justify-between mx-5 mt-5" src={require('../Images/RACRUH Logo Cranberry.png')} alt=""/>
+
             <div className="bg-white navbar">
-                <header className="absolute inset-x-0 top-0 z-50">
+                <header className="absolute inset-x-0 top-10">
                     <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                         <div className="flex lg:flex-1"/>
                         <div className="flex lg:hidden">
@@ -69,7 +71,7 @@ export default function Navbar(props) {
                         </div>
                     </nav>
                     <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
-                        <div className="fixed inset-0 z-50"/>    {/**/}
+                        <div className="fixed inset-0 z-50 top-0"/>    {/**/}
                         <DialogPanel
                             className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                             <div className="flex items-center justify-between">
