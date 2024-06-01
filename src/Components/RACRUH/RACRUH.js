@@ -107,6 +107,7 @@ export default function About() {
             <div id='partners'>
                 <Partners/>
             </div>
+
         </div>
 
     )
