@@ -54,19 +54,19 @@ export default function Navbar(props) {
                             >
                                 Avenues
                             </NavLink>
-                            <NavLink to='/blogs' className="text-sm font-semibold leading-6 text-gray-900"
+                            <NavLink to='/blog' className="text-sm font-semibold leading-6 text-gray-900"
                             >
-                                Blogs
+                                Blog
                             </NavLink>
                             <NavLink to='/contact-us' className="text-sm font-semibold leading-6 text-gray-900"
                             >
-                                Contact us
+                                Contact Us
                             </NavLink>
                         </div>
                         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                            <NavLink to="/explore" className="text-sm font-semibold leading-6 text-gray-900 border border-blue-900"
-                                     style={{padding:'10px',borderRadius:'20px'}}>
-                                Explore {/*Explore  <span aria-hidden="true">&rarr;</span>*/}
+                            <NavLink to="/explore" className="text-sm font-semibold leading-6 text-gray-900"
+                                     >
+                                Explore  <span aria-hidden="true">&rarr;</span>
                             </NavLink>
                         </div>
                     </nav>
@@ -103,15 +103,15 @@ export default function Navbar(props) {
                                         >
                                             Avenues
                                         </NavLink>
-                                        <NavLink to='/blogs'
+                                        <NavLink to='/blog'
                                                  className="text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50 block px-3 py-2 rounded-lg"
                                         >
-                                            Blogs
+                                            Blog
                                         </NavLink>
                                         <NavLink to='/contact-us'
                                                  className="text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50 block px-3 py-2 rounded-lg"
                                         >
-                                            Contact us
+                                            Contact Us
                                         </NavLink>
                                     </div>
                                     <div className="py-6">
