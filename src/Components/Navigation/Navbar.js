@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { NavLink } from "react-router-dom";
-import './components.css'
+import '../components.css'
 
 
 export default function Navbar(props) {
@@ -24,7 +24,7 @@ export default function Navbar(props) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     return (
         <div className="container">
-            <img className="h-12 flex items-start justify-between mx-5 mt-5" src={require('../Images/RACRUH Logo Cranberry.png')} alt=""/>
+            <img className="h-12 flex items-start justify-between mx-5 mt-5" src={require('../../Images/RACRUH Logo Cranberry.png')} alt=""/>
 
             <div className="bg-white navbar">
                 <header className="absolute inset-x-0 top-10">

@@ -1,14 +1,16 @@
 import './App.css';
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/Navigation/Navbar";
 import {Route, Routes} from "react-router-dom";
-import Home from "./Components/Home";
+import Home from "./Components/Home/Home";
 import About from "./Components/RACRUH/RACRUH";
-import Avenues from "./Components/Avenues";
+import Avenues from "./Components/Avenues/Avenues";
 import Blogs from "./Components/Blogs/Blogs";
-import Contact from "./Components/Contactus";
-import CoverImage from "./Components/CoverImage";
+import Contact from "./Components/Contact/Contactus";
+import CoverImage from "./Components/Navigation/CoverImage";
 import Partners from "./Components/RACRUH/Partners";
-import Footer from "./Components/Footer";
+import Footer from "./Components/Navigation/Footer";
+import DirectorBoard from "./Components/Explore/DirectorBoard";
+import Dashboard from "./Components/Explore/ExploreHome";
 
 function App() {
   return (
@@ -27,7 +29,8 @@ function App() {
               <Route path="/avenues"  element={<Avenues/>}/>
               <Route path="/blog"  element={<Blogs/>}/>
               <Route path="/contact-us"  element={<Contact/>}/>
-              <Route path="/explore" element={<h1 className="text-3xl font-bold text-gray-900">Explore</h1>}/>
+              <Route path="/explore" element={<Dashboard/>}/>
+              <Route path='/explore/director-board' element={<DirectorBoard/>}/>
           </Routes>
       </div>
           <div>
