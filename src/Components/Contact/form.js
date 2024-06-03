@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Switch } from '@headlessui/react';
+import {Link} from "react-router-dom";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -116,11 +117,11 @@ export default function Form() {
                                 />
                             </Switch>
                         </div>
-                        <label className="text-sm leading-6 text-gray-600">
-                            By selecting this, you agree to our{' '}
-                            <a href="#" className="font-semibold text-indigo-600">
+                        <label className="text-sm leading-6 text-white-600">
+                            <strong>By selecting this, you agree to our{' '}</strong>
+                            <Link to="#" className="font-semibold text-indigo-600">
                                 privacy&nbsp;policy
-                            </a>
+                            </Link>
                             .
                         </label>
                     </div>

@@ -6,12 +6,11 @@ import About from "./Components/RACRUH/RACRUH";
 import Avenues from "./Components/Avenues/Avenues";
 import Blogs from "./Components/Blogs/Blogs";
 import Contact from "./Components/Contact/Contactus";
-import CoverImage from "./Components/Navigation/CoverImage";
-import Partners from "./Components/RACRUH/Partners";
 import Footer from "./Components/Navigation/Footer";
 import DirectorBoard from "./Components/Explore/DirectorBoard";
 import Dashboard from "./Components/Explore/ExploreHome";
 import ExecutiveBoard from "./Components/Explore/ExecutiveBoard";
+import Error from "./Components/Navigation/Error";
 
 function App() {
   return (
@@ -33,6 +32,7 @@ function App() {
               <Route path="/explore" element={<Dashboard/>}/>
               <Route path='/explore/director-board' element={<DirectorBoard/>}/>
               <Route path='/explore/executive-board' element={<ExecutiveBoard/>}/>
+              <Route path="*" element={<Error/>} />
           </Routes>
       </div>
           <div>
