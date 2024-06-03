@@ -11,6 +11,7 @@ import Partners from "./Components/RACRUH/Partners";
 import Footer from "./Components/Navigation/Footer";
 import DirectorBoard from "./Components/Explore/DirectorBoard";
 import Dashboard from "./Components/Explore/ExploreHome";
+import ExecutiveBoard from "./Components/Explore/ExecutiveBoard";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path="/contact-us"  element={<Contact/>}/>
               <Route path="/explore" element={<Dashboard/>}/>
               <Route path='/explore/director-board' element={<DirectorBoard/>}/>
+              <Route path='/explore/executive-board' element={<ExecutiveBoard/>}/>
           </Routes>
       </div>
           <div>

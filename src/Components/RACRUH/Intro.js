@@ -119,7 +119,7 @@ export default function Intro() {
                                     </span>
                                 </li>
                             </ul>
-                            <p className="mt-8">
+                            <p className="mt-2">
                                 We are addressing the issues of the Rotaract District 3220 & supporting the communities living in
                                 the Rotaract District of Sri Lanka & <strong>Maldives</strong>
                             </p>
