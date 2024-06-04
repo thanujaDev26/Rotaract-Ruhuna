@@ -1,8 +1,9 @@
 import { PaperClipIcon } from '@heroicons/react/20/solid'
+import {Link} from "react-router-dom";
 
 export default function ExecutiveBoard(props) {
     return (
-        <div style={{border : '1px solid black', padding : '2rem', margin : '1rem', borderRadius : '1rem'}}>
+        <div style={{padding : '2rem', margin : '1rem', borderRadius : '1rem'}} className="shadow-lg">
             <form>
                 <div className="space-y-12">
                     <div className="border-b border-gray-900/10 pb-12">
@@ -154,7 +155,7 @@ export default function ExecutiveBoard(props) {
                     <div className="col-span-full">
                         <label htmlFor="positions" className="block text-sm font-medium leading-6 text-gray-900">
                             <strong>Positions you held ( In the Executive Committee/ Director Board/
-                                Leadership Body/ Back office functions)</strong>
+                                Leadership Body/ Back office functions )</strong>
                             <br/>
                             Ps. In this section clearly mention the positions you have held so far
                             in the club and the back office teams you have been in. <strong>( Clear the example below
@@ -193,13 +194,12 @@ export default function ExecutiveBoard(props) {
                 </div>
 
 
-                <div className="flex">
+                <div className="flex" style={{marginTop: '1rem'}}>
                     <fieldset>
-                        <legend className="text-sm font-semibold leading-6 text-gray-900">Avenue director position you
-                            are
-                            applying to,
+                        <legend className="text-sm font-semibold leading-6 text-gray-900">
+                            Avenue director position you are applying to,
                         </legend>
-                        <div className="mt-6 overflow-x-auto">
+                        <div className="mt-6 overflow-x-auto" style={{margin: '1rem'}}>
                             <div className="grid grid-cols-7 gap-6">
                                 <div></div>
                                 <div className="text-sm font-medium leading-6 text-gray-900">President</div>
@@ -210,14 +210,16 @@ export default function ExecutiveBoard(props) {
                                 <div className="text-sm font-medium leading-6 text-gray-900">Treasurer</div>
                             </div>
                             <div className="grid grid-cols-7 gap-6 mt-4">
-                                <div className="text-sm font-medium leading-6 text-gray-900">1<sup>st</sup> Choice</div>
+                                <div className="text-sm font-medium leading-6 text-gray-900">
+                                    1<sup>st</sup> Choice
+                                </div>
                                 <div className="flex items-center justify-center">
                                     <input
                                         id="president-1st"
                                         name="first-choice"
                                         type="radio"
                                         value="club-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -226,7 +228,7 @@ export default function ExecutiveBoard(props) {
                                         name="first-choice"
                                         type="radio"
                                         value="community-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -235,7 +237,7 @@ export default function ExecutiveBoard(props) {
                                         name="first-choice"
                                         type="radio"
                                         value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -244,7 +246,7 @@ export default function ExecutiveBoard(props) {
                                         name="first-choice"
                                         type="radio"
                                         value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -253,7 +255,7 @@ export default function ExecutiveBoard(props) {
                                         name="first-choice"
                                         type="radio"
                                         value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -262,20 +264,21 @@ export default function ExecutiveBoard(props) {
                                         name="first-choice"
                                         type="radio"
                                         value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                             </div>
                             <div className="grid grid-cols-7 gap-6 mt-4">
-                                <div className="text-sm font-medium leading-6 text-gray-900">2<sup>nd</sup> Choice</div>
-
+                                <div className="text-sm font-medium leading-6 text-gray-900">
+                                    2<sup>nd</sup> Choice
+                                </div>
                                 <div className="flex items-center justify-center">
                                     <input
                                         id="president-2nd"
                                         name="second-choice"
                                         type="radio"
                                         value="club-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -284,7 +287,7 @@ export default function ExecutiveBoard(props) {
                                         name="second-choice"
                                         type="radio"
                                         value="community-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -293,7 +296,7 @@ export default function ExecutiveBoard(props) {
                                         name="second-choice"
                                         type="radio"
                                         value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -302,7 +305,7 @@ export default function ExecutiveBoard(props) {
                                         name="second-choice"
                                         type="radio"
                                         value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -311,7 +314,7 @@ export default function ExecutiveBoard(props) {
                                         name="second-choice"
                                         type="radio"
                                         value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -320,20 +323,21 @@ export default function ExecutiveBoard(props) {
                                         name="second-choice"
                                         type="radio"
                                         value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                             </div>
                             <div className="grid grid-cols-7 gap-6 mt-4">
-                                <div className="text-sm font-medium leading-6 text-gray-900">3<sup>rd</sup> Choice</div>
-
+                                <div className="text-sm font-medium leading-6 text-gray-900">
+                                    3<sup>rd</sup> Choice
+                                </div>
                                 <div className="flex items-center justify-center">
                                     <input
                                         id="president-3rd"
                                         name="third-choice"
                                         type="radio"
                                         value="club-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -342,7 +346,7 @@ export default function ExecutiveBoard(props) {
                                         name="third-choice"
                                         type="radio"
                                         value="community-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -351,7 +355,7 @@ export default function ExecutiveBoard(props) {
                                         name="third-choice"
                                         type="radio"
                                         value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -360,7 +364,7 @@ export default function ExecutiveBoard(props) {
                                         name="third-choice"
                                         type="radio"
                                         value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -369,7 +373,7 @@ export default function ExecutiveBoard(props) {
                                         name="third-choice"
                                         type="radio"
                                         value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                                 <div className="flex items-center justify-center">
@@ -378,7 +382,7 @@ export default function ExecutiveBoard(props) {
                                         name="third-choice"
                                         type="radio"
                                         value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
                                     />
                                 </div>
                             </div>
@@ -386,18 +390,24 @@ export default function ExecutiveBoard(props) {
                     </fieldset>
                 </div>
 
-                <div className="flex w-0 flex-1 items-center">
-                    <PaperClipIcon className="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true"/>
-                    <div className="ml-4 flex min-w-0 flex-1 gap-2">
-                        <span className="truncate font-medium">Application Booklet</span>
-                        <span className="flex-shrink-0 text-gray-400">4.5mb</span>
+
+                <div>
+                    <div className="flex w-0 flex-1 items-center">
+                        <div className="ml-4 flex-shrink-0">
+                            <Link to="#" download="sample-image.jpg"
+                                  className="font-medium text-indigo-600 hover:text-indigo-500 text-sm md:text-base">
+                                Download
+                            </Link>
+                        </div>
+                        <PaperClipIcon className="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true"/>
+                        <div className="ml-4 flex min-w-0 flex-1 gap-2">
+            <span className="flex-shrink-0 text-gray-800 text-sm md:text-base">
+                <strong>Application Booklet</strong>( 4.5mb )
+            </span>
+                        </div>
                     </div>
                 </div>
-                <div className="ml-4 flex-shrink-0">
-                    <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                        Download
-                    </a>
-                </div>
+
 
                 <div className="mt-6 flex items-center justify-center gap-x-6">
                     <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
@@ -405,7 +415,9 @@ export default function ExecutiveBoard(props) {
                     </button>
                     <button
                         type="submit"
-                        className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                        className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm
+                        hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+                        focus-visible:outline-red-600"
                     >
                         Apply
                     </button>
