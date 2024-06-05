@@ -23,7 +23,7 @@ export default function BlogsTwo() {
                             <svg viewBox="0 0 2 2" width={3} height={3} aria-hidden="true" className="fill-gray-900">
                                 <circle cx={1} cy={1} r={1} />
                             </svg>
-                            <div className="text-gray-600">Katha ekaaa</div>
+                            <div className="text-gray-600">Lorem Ipsum</div>
                         </div>
                     </figcaption>
                 </figure>
