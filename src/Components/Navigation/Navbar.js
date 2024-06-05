@@ -13,8 +13,9 @@ export default function Navbar(props) {
 
     return (
         <div className="container">
+            <NavLink to="/">
             <img className="h-12 flex items-start justify-between mx-5 mt-5" src={require('../../Images/RACRUH Logo Cranberry.png')} alt="" />
-
+            </NavLink>
             <div className="bg-white navbar">
                 <header className="absolute inset-x-0 top-10">
                     <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">

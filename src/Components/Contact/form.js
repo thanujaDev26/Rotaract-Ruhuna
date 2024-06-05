@@ -6,7 +6,9 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Form() {
+export default function Form(props) {
+
+
     const [agreed, setAgreed] = useState(false);
     const [scrollY, setScrollY] = useState(0);
 
@@ -15,6 +17,59 @@ export default function Form() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    let [userInput, setUserInput] = useState({
+        name : '', email : '',phone : '', message : ''
+    });
+
+
+    let getUserName = (event) =>{
+        setUserInput((prev)=>{
+            return{
+                ...prev,
+                name: event.target.value,
+            }
+        })
+    }
+    let getUserEmail = (event) =>{
+        setUserInput((prev)=>{
+            return{
+                ...prev,
+                email: event.target.value,
+            }
+        })
+    }
+    let getUserPhone = (event) => {
+        setUserInput((prev) => {
+            return {
+                ...prev,
+                phone: event.target.value,
+            }
+        })
+    }
+    let getUserMessage = (event) =>{
+        setUserInput((prev)=>{
+            return{
+                ...prev,
+                message: event.target.value,
+            }
+        })
+    }
+
+    let onSubmitHandler = (event) => {
+        event.preventDefault();
+        let { name, email, phone, message  } = userInput;
+
+        let user = {
+            name : name, email: email, phone : phone, message : message
+        }
+        console.log(props.user(user))
+        // setUserInput({
+        //     name : '', email : '',phone : '', message : ''
+        // })
+    }
+
+
 
 
 
@@ -39,7 +94,7 @@ export default function Form() {
                     Contact us via e-mail or phone for any inquiries
                 </p>
             </div>
-            <form className="relative mx-auto mt-16 max-w-xl sm:mt-20">
+            <form className="relative mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={onSubmitHandler}>
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                     <div>
                         <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
@@ -47,6 +102,8 @@ export default function Form() {
                         </label>
                         <div className="mt-2.5">
                             <input
+                                value={userInput.name}
+                                onChange={getUserName}
                                 type="text"
                                 name="full-name"
                                 id="first-name"
@@ -61,6 +118,8 @@ export default function Form() {
                         </label>
                         <div className="mt-2.5">
                             <input
+                                value={userInput.email}
+                                onChange={getUserEmail}
                                 type="email"
                                 name="email"
                                 id="email"
@@ -75,6 +134,8 @@ export default function Form() {
                         </label>
                         <div className="relative mt-2.5">
                             <input
+                                value={userInput.phone}
+                                onChange={getUserPhone}
                                 type="tel"
                                 name="phone-number"
                                 id="phone-number"
@@ -89,6 +150,8 @@ export default function Form() {
                         </label>
                         <div className="mt-2.5">
                             <textarea
+                                value={userInput.message}
+                                onChange={getUserMessage}
                                 name="message"
                                 id="message"
                                 rows={4}
@@ -128,7 +191,7 @@ export default function Form() {
                 </div>
                 <div className="mt-10">
                     <button
-                        type="submit" onSubmit={(e)=>{e.preventDefault()}}
+                        type="submit"
                         className="block w-full rounded-md bg-red-600 px-3.5 py-2.5 text-center text-sm
                         font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2
                         focus-visible:outline-offset-2 focus-visible:outline-red-600"

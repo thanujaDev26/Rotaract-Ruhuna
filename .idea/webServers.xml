@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ad9a9d5e-9e80-4cfc-aa43-c642f161a84b" name="RACRUH">
+        <fileTransfer rootFolder="/var/www/thanuja.kavithigroup.com/frontend" accessType="SFTP" host="thanuja.kavithigroup.com" port="22" sshConfigId="ffd0e870-2c0c-4ef1-a524-f5f173a2b9c8" sshConfig="root@thanuja.kavithigroup.com:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
