@@ -55,7 +55,6 @@ export default function Form(props) {
             }
         })
     }
-
     let onSubmitHandler = (event) => {
         event.preventDefault();
         let { name, email, phone, message  } = userInput;
@@ -63,15 +62,12 @@ export default function Form(props) {
         let user = {
             name : name, email: email, phone : phone, message : message
         }
-        console.log(props.user(user))
-        // setUserInput({
-        //     name : '', email : '',phone : '', message : ''
-        // })
+        //console.log(props.user(user))
+        props.user(user)
+        setUserInput({
+            name : '', email : '',phone : '', message : ''
+        })
     }
-
-
-
-
 
     return (
         <div className="relative bg-white px-6 py-24 sm:py-32 lg:px-8">
@@ -83,7 +79,7 @@ export default function Form(props) {
                 aria-hidden="true"
             >
                 <img
-                    src="https://source.unsplash.com/random/1920x1080"
+                    src={require('../../Images/pexels-myersmc16-919278 (1).jpg')}
                     alt="Cover"
                     className="w-full h-full object-cover"
                 />
@@ -156,7 +152,6 @@ export default function Form(props) {
                                 id="message"
                                 rows={4}
                                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                defaultValue={''}
                             />
                         </div>
                     </div>

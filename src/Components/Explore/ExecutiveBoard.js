@@ -1,7 +1,40 @@
 import { PaperClipIcon } from '@heroicons/react/20/solid'
 import {Link} from "react-router-dom";
+import {useState} from "react";
+
 
 export default function ExecutiveBoard(props) {
+
+    const positions = [
+        "President",
+        "Secretary",
+        "Vice President",
+        "Sargent At Arms",
+        "Editor",
+        "Treasurer"
+    ];
+
+    const [selectedChoices, setSelectedChoices] = useState({
+        first: '',
+        second: '',
+        third: ''
+    });
+
+    const handleChoiceChange = (choice, value) => {
+        setSelectedChoices(prevState => ({
+            ...prevState,
+            [choice]: value
+        }));
+    };
+    const isOptionLocked = (choice, position) => {
+        return Object.values(selectedChoices).includes(position) && selectedChoices[choice] !== position;
+    };
+
+
+    const isOptionDisabled = (choice, position) => {
+        return Object.values(selectedChoices).includes(position) && selectedChoices[choice] !== position;
+    };
+
     return (
         <div style={{padding : '2rem', margin : '1rem', borderRadius : '1rem'}} className="shadow-lg">
             <form>
@@ -193,221 +226,58 @@ export default function ExecutiveBoard(props) {
                     </div>
                 </div>
 
-
-                <div className="flex" style={{marginTop: '1rem'}}>
+                <div className="mt-4 px-4">
                     <fieldset>
                         <legend className="text-sm font-semibold leading-6 text-gray-900">
                             Avenue director position you are applying to,
                         </legend>
-                        <div className="mt-6 overflow-x-auto" style={{margin: '1rem'}}>
-                            <div className="grid grid-cols-7 gap-6">
-                                <div></div>
-                                <div className="text-sm font-medium leading-6 text-gray-900">President</div>
-                                <div className="text-sm font-medium leading-6 text-gray-900">Secretary</div>
-                                <div className="text-sm font-medium leading-6 text-gray-900">Vice President</div>
-                                <div className="text-sm font-medium leading-6 text-gray-900">Sargent At Arms</div>
-                                <div className="text-sm font-medium leading-6 text-gray-900">Editor</div>
-                                <div className="text-sm font-medium leading-6 text-gray-900">Treasurer</div>
-                            </div>
-                            <div className="grid grid-cols-7 gap-6 mt-4">
-                                <div className="text-sm font-medium leading-6 text-gray-900">
-                                    1<sup>st</sup> Choice
+                        <div className="mt-6">
+                            {['first', 'second', 'third'].map((choice, idx) => (
+                                <div key={choice} className="mb-6">
+                                    <div className="text-sm font-medium leading-6 text-gray-900 mb-2">
+                                        {idx + 1}<sup>{['st', 'nd', 'rd'][idx]}</sup> Choice
+                                    </div>
+                                    <div
+                                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                                        {positions.map((position, index) => (
+                                            <label key={position} className="flex items-center justify-center">
+                                                <input
+                                                    type="radio"
+                                                    name={`${choice}-choice`}
+                                                    value={position.toLowerCase().replace(' ', '-')}
+                                                    className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
+                                                    checked={selectedChoices[choice] === position.toLowerCase().replace(' ', '-')}
+                                                    onChange={() => handleChoiceChange(choice, position.toLowerCase().replace(' ', '-'))}
+                                                    disabled={isOptionDisabled(choice, position.toLowerCase().replace(' ', '-'))}
+                                                />
+                                                <span
+                                                    className={`ml-2 text-sm ${isOptionLocked(choice, position.toLowerCase().replace(' ', '-')) ? 'text-gray-400' : 'text-gray-900'}`}>
+                      {position}
+                    </span>
+                                            </label>
+                                        ))}
+                                    </div>
                                 </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="president-1st"
-                                        name="first-choice"
-                                        type="radio"
-                                        value="club-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="secretary-1st"
-                                        name="first-choice"
-                                        type="radio"
-                                        value="community-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="vpresident-1st"
-                                        name="first-choice"
-                                        type="radio"
-                                        value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="sargent-1st"
-                                        name="first-choice"
-                                        type="radio"
-                                        value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="editor-1st"
-                                        name="first-choice"
-                                        type="radio"
-                                        value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="treasurer-1st"
-                                        name="first-choice"
-                                        type="radio"
-                                        value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-7 gap-6 mt-4">
-                                <div className="text-sm font-medium leading-6 text-gray-900">
-                                    2<sup>nd</sup> Choice
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="president-2nd"
-                                        name="second-choice"
-                                        type="radio"
-                                        value="club-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="secretary-2nd"
-                                        name="second-choice"
-                                        type="radio"
-                                        value="community-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="vpresident-2nd"
-                                        name="second-choice"
-                                        type="radio"
-                                        value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="sargent-2nd"
-                                        name="second-choice"
-                                        type="radio"
-                                        value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="editor-2nd"
-                                        name="second-choice"
-                                        type="radio"
-                                        value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="treasurer-2nd"
-                                        name="second-choice"
-                                        type="radio"
-                                        value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-7 gap-6 mt-4">
-                                <div className="text-sm font-medium leading-6 text-gray-900">
-                                    3<sup>rd</sup> Choice
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="president-3rd"
-                                        name="third-choice"
-                                        type="radio"
-                                        value="club-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="secretary-3rd"
-                                        name="third-choice"
-                                        type="radio"
-                                        value="community-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="vpresident-3rd"
-                                        name="third-choice"
-                                        type="radio"
-                                        value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="sargent-3rd"
-                                        name="third-choice"
-                                        type="radio"
-                                        value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="editor-3rd"
-                                        name="third-choice"
-                                        type="radio"
-                                        value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <input
-                                        id="treasurer-3rd"
-                                        name="third-choice"
-                                        type="radio"
-                                        value="international-services"
-                                        className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                    />
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </fieldset>
                 </div>
 
 
-                <div>
-                    <div className="flex w-0 flex-1 items-center">
-                        <div className="ml-4 flex-shrink-0">
-                            <Link to="#" download="sample-image.jpg"
-                                  className="font-medium text-indigo-600 hover:text-indigo-500 text-sm md:text-base">
-                                Download
-                            </Link>
-                        </div>
-                        <PaperClipIcon className="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true"/>
-                        <div className="ml-4 flex min-w-0 flex-1 gap-2">
-            <span className="flex-shrink-0 text-gray-800 text-sm md:text-base">
-                <strong>Application Booklet</strong>( 4.5mb )
-            </span>
-                        </div>
+                <div className="flex flex-col md:flex-row items-center">
+                    <Link
+                        to="#"
+                        download="sample-image.jpg"
+                        className="font-medium text-indigo-600 hover:text-indigo-500 text-sm md:text-base mb-2 md:mb-0 md:mr-4">
+                        Download
+                    </Link>
+                    <PaperClipIcon className="h-5 w-5 text-gray-400" aria-hidden="true"/>
+                    <div className="flex flex-col md:flex-row items-center flex-1 gap-2">
+                        <span className="text-gray-800 text-sm md:text-base">
+                          <strong>Application Booklet</strong> (4.5mb)
+                        </span>
                     </div>
                 </div>
-
 
                 <div className="mt-6 flex items-center justify-center gap-x-6">
                     <button type="button" className="text-sm font-semibold leading-6 text-gray-900">

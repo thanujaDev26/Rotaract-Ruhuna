@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/RACRUH.iml" filepath="$PROJECT_DIR$/.idea/RACRUH.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../racruh-backend/.idea/racruh-backend.iml" filepath="$PROJECT_DIR$/../racruh-backend/.idea/racruh-backend.iml" />
     </modules>
   </component>
 </project>
