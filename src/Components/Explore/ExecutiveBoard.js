@@ -238,9 +238,10 @@ export default function ExecutiveBoard(props) {
                                         {idx + 1}<sup>{['st', 'nd', 'rd'][idx]}</sup> Choice
                                     </div>
                                     <div
-                                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                                        className="grid grid-cols-2 sm:grid-cols-3 lg:flex flex-wrap gap-4 justify-center lg:justify-between">
                                         {positions.map((position, index) => (
-                                            <label key={position} className="flex items-center justify-center">
+                                            <label key={position}
+                                                   className="flex items-center justify-start lg:justify-center w-full sm:w-1/3 lg:w-auto">
                                                 <input
                                                     type="radio"
                                                     name={`${choice}-choice`}
@@ -252,10 +253,11 @@ export default function ExecutiveBoard(props) {
                                                 />
                                                 <span
                                                     className={`ml-2 text-sm ${isOptionLocked(choice, position.toLowerCase().replace(' ', '-')) ? 'text-gray-400' : 'text-gray-900'}`}>
-                      {position}
-                    </span>
+                  {position}
+                </span>
                                             </label>
                                         ))}
+                                        {positions.length === 6 && <div className="w-full sm:w-1/3 lg:w-auto"></div>}
                                     </div>
                                 </div>
                             ))}
