@@ -12,3 +12,21 @@
 .container {
     margin-bottom: -2rem;
 }
+.section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.blogs {
+    scroll-snap-type: y mandatory;
+}
+
+.blogs > div {
+    scroll-snap-align: start;
+}

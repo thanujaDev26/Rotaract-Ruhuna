@@ -8,13 +8,13 @@ export default function Address() {
                 <div className="w-full lg:w-1/2 p-5">
                     <div className="text-center">
                         <h3 className="text-2xl font-bold text-gray-900">Contact Information</h3>
-                        <p className="mt-4 text-gray-600 text-sm sm:text-base">Reach out to us through any of the following ways:</p>
+                        <p className="mt-4 text-gray-600 text-sm sm:text-base">Reach out to us through any of the following ways</p>
                     </div>
                     <div className="mt-6 space-y-6 sm:mt-10 sm:space-y-10">
                         <div className="flex flex-col items-center">
                             <FaMapMarkerAlt className="text-red-600 text-3xl" />
                             <h4 className="mt-4 text-lg font-semibold text-gray-900">Our Address</h4>
-                            <p className="mt-2 text-sm text-center text-gray-600">1234 Street Name, City, State, 12345</p>
+                            <p className="mt-2 text-sm text-center text-gray-600">A2, Matara, Sri Lanka</p>
                         </div>
                         <div className="flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-10">
                             <div className="flex flex-col items-center">
@@ -47,14 +47,14 @@ export default function Address() {
                         </div>
                     </div>
                 </div>
-                <div className="w-full lg:w-1/2 p-5">
+                <div className="w-full lg:w-1/2 p-5 hidden lg:block">
                     <div className="h-full">
                         <iframe
                             title="Google Map"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.969773360366!2d79.86073231428799!3d6.927078095016385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae259207948d55b%3A0xe7a5f4f1a5bcb62!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1614694381624!5m2!1sen!2sus"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.353944455851!2d80.57729191477456!3d5.938250995715048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae1718f8fa89941%3A0xc52f57e17477637b!2sUniversity%20of%20Ruhuna!5e0!3m2!1sen!2sus!4v1620975368325!5m2!1sen!2sus"
                             width="100%"
                             height="450"
-                            style={{ border: 0 }}
+                            style={{border: 0}}
                             allowFullScreen=""
                             loading="lazy"
                         ></iframe>

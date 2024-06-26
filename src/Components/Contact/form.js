@@ -81,7 +81,7 @@ export default function Form(props) {
                 aria-hidden="true"
             >
                 <img
-                    src={require('../../Images/pexels-myersmc16-919278 (1).jpg')}
+                    src={require('../../Images/Form.png')}
                     alt="Cover"
                     className="w-full h-full object-cover"
                 />
