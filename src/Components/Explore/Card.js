@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+
 const Card = (props) => {
     const [isHovered, setIsHovered] = useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 640);
@@ -9,7 +10,6 @@ const Card = (props) => {
         const handleResize = () => {
             setIsSmallScreen(window.innerWidth < 640);
         };
-
         window.addEventListener('resize', handleResize);
 
         return () => {

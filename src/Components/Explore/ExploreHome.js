@@ -17,7 +17,6 @@ const organizingCommitteeHoverImage = 'https://source.unsplash.com/random/800x60
 
 const Dashboard = () => {
     const navigate = useNavigate();
-
     return (
         <div>
             <div className="min-h-screen bg-white p-6 relative">

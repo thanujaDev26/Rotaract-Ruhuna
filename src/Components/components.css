@@ -9,4 +9,6 @@
 .group:hover .group-hover\:opacity-100 {
     opacity: 1;
 }
-
+.container {
+    margin-bottom: -2rem;
+}

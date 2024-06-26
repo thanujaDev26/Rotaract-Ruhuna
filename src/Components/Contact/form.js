@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Switch } from '@headlessui/react';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(' ');
 }
 
 export default function Form(props) {
-
-
     const [agreed, setAgreed] = useState(false);
     const [scrollY, setScrollY] = useState(0);
 
@@ -19,62 +17,66 @@ export default function Form(props) {
     }, []);
 
     let [userInput, setUserInput] = useState({
-        name : '', email : '',phone : '', message : ''
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
     });
 
+    let getUserName = (event) => {
+        setUserInput((prev) => ({
+            ...prev,
+            name: event.target.value,
+        }));
+    };
 
-    let getUserName = (event) =>{
-        setUserInput((prev)=>{
-            return{
-                ...prev,
-                name: event.target.value,
-            }
-        })
-    }
-    let getUserEmail = (event) =>{
-        setUserInput((prev)=>{
-            return{
-                ...prev,
-                email: event.target.value,
-            }
-        })
-    }
+    let getUserEmail = (event) => {
+        setUserInput((prev) => ({
+            ...prev,
+            email: event.target.value,
+        }));
+    };
+
     let getUserPhone = (event) => {
-        setUserInput((prev) => {
-            return {
-                ...prev,
-                phone: event.target.value,
-            }
-        })
-    }
-    let getUserMessage = (event) =>{
-        setUserInput((prev)=>{
-            return{
-                ...prev,
-                message: event.target.value,
-            }
-        })
-    }
+        setUserInput((prev) => ({
+            ...prev,
+            phone: event.target.value,
+        }));
+    };
+
+    let getUserMessage = (event) => {
+        setUserInput((prev) => ({
+            ...prev,
+            message: event.target.value,
+        }));
+    };
+
     let onSubmitHandler = (event) => {
         event.preventDefault();
-        let { name, email, phone, message  } = userInput;
+        let { name, email, phone, message } = userInput;
 
         let user = {
-            name : name, email: email, phone : phone, message : message
-        }
-        //console.log(props.user(user))
-        props.user(user)
+            name: name,
+            email: email,
+            phone: phone,
+            message: message
+        };
+
+        props.user(user);
         setUserInput({
-            name : '', email : '',phone : '', message : ''
-        })
-    }
+            name: '',
+            email: '',
+            phone: '',
+            message: ''
+        });
+    };
 
     return (
         <div className="relative bg-white px-6 py-24 sm:py-32 lg:px-8">
             <div
                 className={classNames(
                     'fixed inset-0 transition-opacity duration-700 ease-in-out',
-                    scrollY > 100 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
+                    scrollY > 200 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
                 )}
                 aria-hidden="true"
             >
@@ -180,7 +182,6 @@ export default function Form(props) {
                             <Link to="#" className="font-semibold text-indigo-600">
                                 privacy&nbsp;policy
                             </Link>
-                            .
                         </label>
                     </div>
                 </div>
