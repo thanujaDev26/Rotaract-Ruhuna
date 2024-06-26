@@ -3,17 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import '../components.css';
 import Card from './Card';
 
-// Demo images from the web
-const executiveBoardImage = 'https://source.unsplash.com/random/800x600?executive';
-const directorBoardImage = 'https://source.unsplash.com/random/800x600?director';
-const memberRegistrationImage = 'https://source.unsplash.com/random/800x600?member';
-const organizingCommitteeImage = 'https://source.unsplash.com/random/800x600?committee';
 
-// Secondary images for hover effect
-const executiveBoardHoverImage = 'https://source.unsplash.com/random/800x600?business';
-const directorBoardHoverImage = 'https://source.unsplash.com/random/800x600?leadership';
-const memberRegistrationHoverImage = 'https://source.unsplash.com/random/800x600?community';
-const organizingCommitteeHoverImage = 'https://source.unsplash.com/random/800x600?teamwork';
+import executiveBoardImage from '../../Images/InternationalService.png'
+import directorBoardImage from '../../Images/EnvironmentalService.png';
+import memberRegistrationImage from '../../Images/PublicRelations.png';
+import organizingCommitteeImage from '../../Images/CommunityService.png';
+
+import executiveBoardHoverImage from '../../Images/SportsService.png';
+import directorBoardHoverImage from '../../Images/CommunityService.png';
+import memberRegistrationHoverImage from '../../Images/ProfessionalDevelopment.png';
+import organizingCommitteeHoverImage from '../../Images/InternationalService.png';
 
 const Dashboard = () => {
     const navigate = useNavigate();
