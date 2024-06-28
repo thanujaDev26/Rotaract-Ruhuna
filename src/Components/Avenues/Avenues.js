@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'; // Import Link from React Router
 import 'intersection-observer';
 import '../components.css';
 
-// Importing images
+
 import InternationalServiceImage from '../../Images/InternationalService.png';
 import EnvironmentalServiceImage from '../../Images/EnvironmentalService.png';
 import CommunityServiceImage from '../../Images/CommunityService.png';
@@ -31,13 +31,11 @@ export default function Avenues(props) {
           threshold: 0.5,
         }
     );
-
     sections.forEach((section) => {
       if (section) {
         observer.observe(section);
       }
     });
-
     return () => {
       sections.forEach((section) => {
         if (section) {
@@ -48,7 +46,7 @@ export default function Avenues(props) {
   }, []);
 
   const services = [
-    { imageUrl: InternationalServiceImage, avenue: 'International Service Avenue' },
+    { imageUrl: InternationalServiceImage, avenue: 'International Service Avenue' , to:'../avenues/international-service'},
     { imageUrl: EnvironmentalServiceImage, avenue: 'Environmental Service Avenue' },
     { imageUrl: CommunityServiceImage, avenue: 'Community Service Avenue' },
     { imageUrl: ClubServiceImage, avenue: 'Club Service Avenue' },
@@ -77,7 +75,7 @@ export default function Avenues(props) {
                       </p>
                       <div className="mt-10">
                         <Link
-                            to={'/blog'}
+                            to={service.to}
                             className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
                         >
                           Projects

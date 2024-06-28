@@ -14,6 +14,7 @@ import Error from "./Components/Navigation/Error";
 import {useState} from "react";
 import Demo from "./Components/Demo";
 import axios from "axios";
+import InternationalService from "./Components/Projects/InternationalService";
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
               <Route path='/explore/executive-board' element={<ExecutiveBoard/>}/>
               <Route path='/contact-us/navigate' element={<Demo/>}/>
               <Route path="*" element={<Error/>}/>
+              <Route path='/avenues/international-service' element={<InternationalService/>}/>
           </Routes>
       </div>
           <div>

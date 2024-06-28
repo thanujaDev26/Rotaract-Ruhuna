@@ -1,10 +1,9 @@
 export default function Partners() {
     return (
         <div>
-            <div className="mx-auto max-w-2xl lg:max-w-4xl mt-10 mb-6" style={{padding:'2rem'}}>
-                <img className="mx-auto h-13" src={require('../../Images/RACRUH Logo Cranberry.png')} alt="" />
-            </div>
-
+            {/*<div className="mx-auto max-w-2xl lg:max-w-4xl mt-10 mb-6" style={{padding:'2rem'}}>*/}
+            {/*    <img className="mx-auto h-13" src={require('../../Images/RACRUH Logo Cranberry.png')} alt="" />*/}
+            {/*</div>*/}
             <div className="bg-white py-24 sm:py-32" style={{border:'1px solid black', margin:'2rem',borderRadius:'3rem'}}>
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
