@@ -1,8 +1,6 @@
 import Partners from "./Partners";
-import Intro from "./Intro";
 import {Link,useLocation} from "react-router-dom";
 import {useEffect} from "react";
-import Demo from "./demo";
 import About from "./About";
 import TimeLine from "./TimeLine";
 

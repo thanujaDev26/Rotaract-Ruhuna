@@ -140,3 +140,34 @@
 .vertical-timeline-element-icon svg {
     color: #333; /* Dark color for icons */
 }
+
+.timeline-element-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timeline-element-content:nth-child(even) .timeline-image {
+    order: -1;
+}
+
+.timeline-text {
+    flex: 1;
+    padding-right: 1rem;
+}
+
+.timeline-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+

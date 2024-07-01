@@ -38,7 +38,7 @@ export default function DirectorBoard(props) {
 
 
     return (
-        <div style={{border : '1px solid black', padding : '2rem', margin : '1rem', borderRadius : '1rem'}}>
+        <div style={{padding : '2rem', margin : '1rem', borderRadius : '1rem'}}>
             <form>
                 <div className="space-y-12">
                     <div className="border-b border-gray-900/10 pb-12">
