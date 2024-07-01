@@ -1,63 +1,69 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import 'react-vertical-timeline-component/style.min.css';
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import { FaStar, FaRegCalendarAlt } from 'react-icons/fa';
 import '../components.css';
+
+import InternationalServiceImage from '../../Images/InternationalService.png';
+import EnvironmentalServiceImage from '../../Images/EnvironmentalService.png';
+import CommunityServiceImage from '../../Images/CommunityService.png';
+import ClubServiceImage from '../../Images/ClubService.png';
 
 export default function TimeLine() {
     const timelineData = [
         {
             year: '2021',
-            events: [
+            branches: [
                 {
-                    date: 'July 13, 2021',
                     title: 'Establishment of the Rotaract Club',
+                    date: 'July 13, 2021',
                     description: 'The Rotaract Club of the University of Ruhuna was established.',
                 },
                 {
-                    date: 'September 14, 2021',
                     title: 'Charter of the Rotaract Club',
+                    date: 'September 14, 2021',
                     description: 'The club was officially chartered.',
                 },
             ],
+            image : InternationalServiceImage,
         },
         {
             year: '2021 - 2022 Term (Leadership of PP Rtr. Yeshan Sandanayake)',
-            events: [
+            branches: [
                 {
-                    date: 'October 17, 2021',
                     title: 'Crayons',
+                    date: 'October 17, 2021',
                     description: 'Celebrated Children\'s Day with a project that allowed children to express their feelings and thoughts through colors and drawings on the Zoom platform.',
                 },
                 {
-                    date: 'December 26, 2021',
                     title: 'Jolly Jamboree',
+                    date: 'December 26, 2021',
                     description: 'A Christmas get-together held at Buttercup Restaurant in Maharagama, fostering community spirit with activities and traditional Christmas customs.',
                 },
             ],
+            image: EnvironmentalServiceImage
         },
         {
             year: '2022 - 2023 Term (Leadership of IPP Rtr. Ishan Madusanka)',
-            events: [
+            branches: [
                 {
-                    date: 'October 1, 2022',
                     title: 'Anamnesis',
+                    date: 'October 1, 2022',
                     description: 'Celebrated the first anniversary of the Rotaract Club of the University of Ruhuna with a physical gathering and cake-cutting event.',
                 },
                 {
-                    date: '',
                     title: 'Kirulu',
                     description: 'Provided blazers to the initiatory prefect board of Munasinghe Primary School in Monaragala.',
                 },
                 {
-                    date: '',
                     title: 'Clause for Cause',
                     description: 'Distributed toys, stationery items, and sweet delights to children at Oba Mama children\'s home and the Shrine of Our Lady, Matara.',
                 },
                 {
-                    date: '',
                     title: 'CTopia',
                     description: 'Conducted a mangrove re-plantation program in collaboration with the Society of Oceanography and Marine Geology of FMST.',
                 },
                 {
-                    date: '',
                     title: 'EcoKnow',
                     description: 'Promoted environmental awareness through articles, posts, and videos on prevalent environmental issues in Sri Lanka.',
                 },
@@ -84,10 +90,11 @@ export default function TimeLine() {
                     description: 'Hosted by Miss. Michelle Dilhara, aimed at self-discovery and empowerment for members.',
                 },
             ],
+            image: CommunityServiceImage
         },
         {
             year: '2023 - 2024 Term (Leadership of Rtr. Nuhansi Gunawardana)',
-            events: [
+            branches: [
                 {
                     title: 'Soul Sync',
                     description: 'An international project with Rotaract Club of Dhaka North, Bangladesh, focusing on mental health awareness with professional advice sessions by Dr. Sadia Afrin Shampa and Dr. (Engineer) Ranil Sugathadasa.',
@@ -106,48 +113,85 @@ export default function TimeLine() {
                 'Brand Me',
                 'SeaTurl 2.0',
             ],
+            image: ClubServiceImage
         },
     ];
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const mainContent = document.getElementById('main-content');
+            const timelineSection = document.getElementById('timeline-section');
+            if (window.scrollY > window.innerHeight / 2) {
+                mainContent.classList.add('hide');
+                timelineSection.classList.add('show');
+            } else {
+                mainContent.classList.remove('hide');
+                timelineSection.classList.remove('show');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <div className="timeline-container">
-            <div className="timeline-content">
-                {timelineData.map((yearData, idx) => (
-                    <div key={idx} className="timeline-year">
-                        <h2>{yearData.year}</h2>
-                        <div className="timeline-events">
-                            {yearData.events.map((event, eIdx) => (
-                                <div key={eIdx} className="timeline-event">
-                                    {event.date && <span className="timeline-date">{event.date}</span>}
-                                    <h3 className="timeline-title">{event.title}</h3>
-                                    <p className="timeline-description">{event.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                        {yearData.significantProjects && (
-                            <div className="timeline-significant-projects">
-                                <h3>Significant Projects:</h3>
-                                <ul>
-                                    {yearData.significantProjects.map((project, pIdx) => (
-                                        <li key={pIdx}>
-                                            <strong>{project.title}:</strong> {project.description}
-                                        </li>
-                                    ))}
-                                </ul>
+        <div>
+            <div id="main-content">
+                {/* Your main content here */}
+            </div>
+            <div id="timeline-section" className="timeline-container">
+                <VerticalTimeline>
+                    {timelineData.map((yearData, idx) => (
+                        <VerticalTimelineElement
+                            key={idx}
+                            className="vertical-timeline-element--work"
+                            contentStyle={{ background: '#f9f9f9', color: '#333' }}
+                            contentArrowStyle={{ borderRight: '7px solid  #f9f9f9' }}
+                            iconStyle={{ background: 'red', color: '#fff' }}
+                            icon={<FaRegCalendarAlt />}
+                            position={window.innerWidth < 768 ? (idx % 2 === 0 ? 'right' : 'left') : idx % 2 === 0 ? 'left' : 'right'}
+                        >
+                            <h3 className="vertical-timeline-element-title">{yearData.year}</h3>
+                            <div className="timeline-branches">
+                                {yearData.branches.map((branch, bIdx) => (
+                                    <div key={bIdx} className="timeline-branch">
+                                        {branch.date && <span className="timeline-date">{branch.date}</span>}
+                                        <h4 className="timeline-title">{branch.title}</h4>
+                                        <p className="timeline-description">{branch.description}</p>
+                                    </div>
+                                ))}
+                                {yearData.significantProjects && (
+                                    <div className="timeline-significant-projects">
+                                        <h4>Significant Projects:</h4>
+                                        <ul>
+                                            {yearData.significantProjects.map((project, pIdx) => (
+                                                <li key={pIdx}>
+                                                    <strong>{project.title}:</strong> {project.description}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+                                {yearData.ongoingProjects && (
+                                    <div className="timeline-ongoing-projects">
+                                        <h4>Ongoing Projects:</h4>
+                                        <ul>
+                                            {yearData.ongoingProjects.map((project, pIdx) => (
+                                                <li key={pIdx}>{project}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
                             </div>
-                        )}
-                        {yearData.ongoingProjects && (
-                            <div className="timeline-ongoing-projects">
-                                <h3>Ongoing Projects:</h3>
-                                <ul>
-                                    {yearData.ongoingProjects.map((project, pIdx) => (
-                                        <li key={pIdx}>{project}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
+                        </VerticalTimelineElement>
+                    ))}
+                    <div className="timeline-end-icon">
+                        <VerticalTimelineElement
+                            iconStyle={{ background: 'red', color: '#fff' }}
+                            icon={<FaStar />}
+                        />
                     </div>
-                ))}
+                </VerticalTimeline>
             </div>
         </div>
     );

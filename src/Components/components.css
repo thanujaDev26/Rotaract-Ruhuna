@@ -30,130 +30,113 @@
 .blogs > div {
     scroll-snap-align: start;
 }
-.timeline-container {
-    background: #f9f9f9;
-    padding: 20px;
+
+
+
+/* components.css */
+
+
+/* Vertical timeline styling */
+.timeline-container .vertical-timeline-element--work {
     border-radius: 8px;
-    overflow-y: auto;
-    height: 100vh;
+    box-shadow: none;
+    overflow: visible;
+    background: none;
+}
+
+/* Remove the vertical line */
+.timeline-container .vertical-timeline-element--work::before,
+.timeline-container .timeline-branches::before {
+    content: none;
+}
+
+.timeline-container .vertical-timeline-element-content {
+    border-radius: 8px;
+    box-shadow: none;
+    margin-bottom: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+    padding: 0;
+}
+
+.timeline-container .vertical-timeline-element-content:hover {
+    transform: scale(1.05);
+}
+
+.timeline-container .timeline-branches {
+    margin-top: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.timeline-container .timeline-branch {
+    margin-bottom: 10px;
+}
+
+.timeline-container .timeline-date {
+    font-weight: bold;
+    color: #666;
+    margin-right: 10px;
+}
+
+.timeline-container .timeline-title {
+    margin: 0 0 5px;
+    color: #333;
+}
+
+.timeline-container .timeline-description {
+    margin: 0;
+    color: #555;
+}
+
+.timeline-container .timeline-significant-projects,
+.timeline-container .timeline-ongoing-projects {
+    margin-top: 20px;
+}
+
+.timeline-container .timeline-significant-projects ul,
+.timeline-container .timeline-ongoing-projects ul {
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.timeline-container .timeline-significant-projects ul li,
+.timeline-container .timeline-ongoing-projects ul li {
+    margin-bottom: 5px;
+}
+
+/*.timeline-container .timeline-image {*/
+/*    width: 100%;*/
+/*    height: auto;*/
+/*    margin-top: 10px;*/
+/*    border-radius: 8px;*/
+/*}*/
+
+.timeline-container .timeline-end-icon {
     display: flex;
     justify-content: center;
 }
 
-.timeline-content {
-    width: 100%;
-    max-width: 800px;
-    position: relative;
-    margin: 0 auto;
+.vertical-timeline-element-content-arrow {
+    display: none;
 }
 
-.timeline-year {
-    margin-bottom: 2rem;
-    position: relative;
-}
-
-.timeline-year h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 1rem;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
-
-.timeline-events {
-    margin-left: 50px;
-    position: relative;
-}
-
-.timeline-event {
-    padding: 10px 0;
-    border-left: 2px solid #ccc;
-    position: relative;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    transform: translateY(50px);
-    opacity: 0;
-}
-
-.timeline-event.appear {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.timeline-date {
-    font-size: 0.875rem;
-    color: #777;
-    margin-bottom: 0.25rem;
-}
-
-.timeline-title {
-    font-size: 1.125rem;
-    font-weight: bold;
-    color: #333;
-}
-
-.timeline-description {
-    font-size: 1rem;
-    color: #555;
-}
-
-.timeline-significant-projects,
-.timeline-ongoing-projects {
-    margin-top: 1rem;
-}
-
-.timeline-significant-projects h3,
-.timeline-ongoing-projects h3 {
-    font-size: 1.125rem;
-    font-weight: bold;
-    color: #333;
-}
-
-.timeline-significant-projects ul,
-.timeline-ongoing-projects ul {
-    padding-left: 20px;
-    list-style-type: disc;
-    color: #555;
-}
-
-.timeline-year:before {
-    content: '';
+.vertical-timeline-element-content .vertical-timeline-element-date {
     position: absolute;
+    width: 100%;
     left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #ccc;
-    z-index: 1;
+    text-align: center;
+    top: -20px;
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
 }
 
-@media (min-width: 768px) {
-    .timeline-year {
-        margin-bottom: 4rem;
-    }
+.vertical-timeline-element-icon {
+    box-shadow: none;
+    background-color: transparent;
+}
 
-    .timeline-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .timeline-year:nth-child(even) .timeline-events {
-        margin-left: 0;
-        margin-right: 50px;
-    }
-
-    .timeline-year:nth-child(even) .timeline-event {
-        border-left: none;
-        border-right: 2px solid #ccc;
-    }
-
-    .timeline-year:nth-child(even):before {
-        left: auto;
-        right: 0;
-    }
-
-    .timeline-year:nth-child(even) .timeline-year h2 {
-        text-align: right;
-    }
+.vertical-timeline-element-icon svg {
+    color: #333; /* Dark color for icons */
 }

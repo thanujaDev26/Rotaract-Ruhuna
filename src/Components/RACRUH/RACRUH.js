@@ -3,7 +3,7 @@ import Intro from "./Intro";
 import {Link,useLocation} from "react-router-dom";
 import {useEffect} from "react";
 import Demo from "./demo";
-import History from "./History";
+import About from "./About";
 import TimeLine from "./TimeLine";
 
 const links = [
@@ -19,7 +19,7 @@ const stats = [
     { name: 'Volunteers', value: '1500+' },
 ]
 
-export default function About() {
+export default function RACRUH() {
 
     let location = useLocation();
 
@@ -33,7 +33,7 @@ export default function About() {
     }, [location]);
     return (
         <div>
-            <History/>
+            <About/>
             <TimeLine/>
 
             {/*<div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32" style={{margin : '1rem', borderRadius : '1rem'}}>*/}

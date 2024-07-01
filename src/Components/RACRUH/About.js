@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default function History() {
+export default function About() {
     const scrollRef = useRef(null);
     const scrollStep = 0.5;
     const scrollInterval = 30;
@@ -79,7 +79,7 @@ export default function History() {
                     </div>
                     <div className="lg:pl-8 lg:pt-4"  style={{alignItems:'center'}}>
                         <div ref={scrollRef} className="lg:max-w-lg scrollable-content" style={{minWidth:'100%',minHeight:'100%'}} >
-                            <div style={{ position: 'sticky', top: 1, backgroundColor: 'white', zIndex: 10, borderBottom: '1px solid #ddd',marginBottom: '1rem' }}>
+                            <div style={{ position: 'sticky', top: 0, backgroundColor: 'white', zIndex: 10, borderBottom: '1px solid #ddd',marginBottom: '1rem' }}>
                                 <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">About us</p>
                             </div>
                             <p className="mt-6 text-lg leading-8 text-gray-600">
