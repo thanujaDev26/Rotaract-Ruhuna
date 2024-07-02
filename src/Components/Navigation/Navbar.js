@@ -31,24 +31,24 @@ export default function Navbar(props) {
                             </button>
                         </div>
                         <div className="hidden lg:flex lg:gap-x-12 justify-center lg:justify-start">
-                            <NavLink to="/" className="text-sm font-semibold leading-6 text-gray-900">
+                            <NavLink to="/" className="text-base 2xl:text-xl font-semibold leading-6 text-gray-900 hover:text-pink focus:text-pink">
                                 Home
                             </NavLink>
-                            <NavLink to="/about-us" className="text-sm font-semibold leading-6 text-gray-900">
+                            <NavLink to="/about-us" className="text-base 2xl:text-xl  font-semibold leading-6 text-gray-900 hover:text-pink focus:text-pink">
                                 RACRUH
                             </NavLink>
-                            <NavLink to="/avenues" className="text-sm font-semibold leading-6 text-gray-900">
+                            <NavLink to="/avenues" className="text-base 2xl:text-xl font-semibold leading-6 text-gray-900 hover:text-pink focus:text-pink">
                                 Avenues
                             </NavLink>
-                            <NavLink to="/blog" className="text-sm font-semibold leading-6 text-gray-900">
+                            <NavLink to="/blog" className="text-base 2xl:text-xl font-semibold leading-6 text-gray-900 hover:text-pink focus:text-pink">
                                 Blog
                             </NavLink>
-                            <NavLink to="/contact-us" className="text-sm font-semibold leading-6 text-gray-900">
+                            <NavLink to="/contact-us" className="text-base 2xl:text-xl font-semibold leading-6 text-gray-900 hover:text-pink focus:text-pink">
                                 Contact Us
                             </NavLink>
                         </div>
                         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                            <NavLink to="/explore" className="text-sm font-semibold leading-6 text-gray-900">
+                            <NavLink to="/explore" className="text-base 2xl:text-xl font-semibold leading-6 text-gray-900 hover:text-pink focus:text-pink">
                                 Explore <span aria-hidden="true">&rarr;</span>
                             </NavLink>
                         </div>
