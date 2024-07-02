@@ -35,20 +35,25 @@
     scroll-snap-align: start;
 }
 
-/* components.css */
+
 
 
 /* Vertical timeline styling */
-/* Add background image to the timeline container */
+
 .timeline-container {
-    background-image: url('../Images/Test1.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 20px;
+    margin: 3rem 0;
 }
 
-/* Vertical timeline styling */
+/*This code tells the background should be added only for pc views(avoid background in tablets and mobiles)*/
+@media (min-width: 1170px) {
+    .timeline-container {
+        background-image: url('../Images/Test3.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
 .timeline-container .vertical-timeline-element--work {
     border-radius: 8px;
     background: none;
@@ -59,7 +64,7 @@
     box-shadow: none;
     padding: 10px;
     transition: transform 0.3s ease;
-    background: rgba(255, 255, 255, 0.9); /* Add a white background with some transparency */
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .timeline-container .vertical-timeline-element-content:hover {
@@ -109,6 +114,7 @@
 .timeline-container .timeline-end-icon {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .vertical-timeline-element-content-arrow {
@@ -158,4 +164,15 @@
     max-width: 100px;
     height: auto;
     border-radius: 8px;
+}
+
+
+@media (max-width: 767px) {
+    .timeline-container .vertical-timeline-element--work {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .timeline-end-icon {
+        margin-left: 2rem;
+    }
 }

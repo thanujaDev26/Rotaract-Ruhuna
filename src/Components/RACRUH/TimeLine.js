@@ -25,7 +25,7 @@ export default function TimeLine() {
                     description: 'The club was officially chartered.',
                 },
             ],
-            image: InternationalServiceImage,
+            image : InternationalServiceImage,
         },
         {
             year: '2021 - 2022 Term (Leadership of PP Rtr. Yeshan Sandanayake)',
@@ -136,21 +136,20 @@ export default function TimeLine() {
 
     return (
         <div>
-            <div id="main-content">
+            <div id="main-content" >
                 <div id="timeline-section" className="timeline-container">
-                    <VerticalTimeline>
-                        {timelineData.map((yearData, idx) => (
-                            <VerticalTimelineElement
-                                key={idx}
-                                className="vertical-timeline-element--work"
-                                contentStyle={{ background: '#f9f9f9', color: '#333' }}
-                                contentArrowStyle={{ borderRight: '2px solid  #9F000F' }}
-                                iconStyle={{ background: '#C11F45', color: '#ffffff' }}
-                                icon={<FaRegCalendarAlt />}
-                                position={window.innerWidth < 768 ? (idx % 2 === 0 ? 'right' : 'left') : idx % 2 === 0 ? 'left' : 'right'}
-                            >
-                                <div className="timeline-element-content">
-                                    <div className="timeline-text">
+                        <VerticalTimeline style={{display: 'block'}}>
+                            <div>
+                                {timelineData.map((yearData, idx) => (
+                                    <VerticalTimelineElement
+                                        key={idx}
+                                        className="vertical-timeline-element--work"
+                                        contentStyle={{background: '#f9f9f9', color: '#333'}}
+                                        contentArrowStyle={{borderRight: '2px solid  #9F000F'}}
+                                        iconStyle={{background: '#C11F45', color: '#ffffff'}}
+                                        icon={<FaRegCalendarAlt/>}
+                                        position={window.innerWidth < 768 ? (idx % 2 === 0 ? 'right' : 'left') : idx % 2 === 0 ? 'left' : 'right'}
+                                    >
                                         <h3 className="vertical-timeline-element-title text-xl">{yearData.year}</h3>
                                         <div className="timeline-branches">
                                             {yearData.branches.map((branch, bIdx) => (
@@ -183,15 +182,16 @@ export default function TimeLine() {
                                                 </div>
                                             )}
                                         </div>
-                                    </div>
+                                    </VerticalTimelineElement>
+                                ))}
+                                <div className="timeline-end-icon">
+                                    <VerticalTimelineElement
+                                        iconStyle={{ background: '#C11F45', color: '#ffffff' }}
+                                        icon={<FaStar/>}
+                                    />
                                 </div>
-                            </VerticalTimelineElement>
-                        ))}
-                        <VerticalTimelineElement
-                            iconStyle={{ background: '#C11F45', color: '#ffffff' }}
-                            icon={<FaStar />}
-                        />
-                    </VerticalTimeline>
+                            </div>
+                        </VerticalTimeline>
                 </div>
             </div>
         </div>
