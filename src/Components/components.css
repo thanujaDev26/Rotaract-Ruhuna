@@ -1,4 +1,4 @@
-.cover-image{
+.cover-image {
     max-height: 100px;
 }
 
@@ -10,3 +10,17 @@
     opacity: 1;
 }
 
+/*========component-blogs=========*/
+@media only screen and (min-width: 500px) {
+    .blog1-outer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .blog1-outer {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/*========component-blogs=========*/
