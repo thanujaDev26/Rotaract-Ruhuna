@@ -1,6 +1,9 @@
 import React from 'react';
-import {FaFacebook, FaTwitter, FaInstagram, FaPhone, FaEnvelope, FaLinkedin} from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import '../../App.css';
+
+// Define your background image URL
+const backgroundImageUrl = '/path/to/your/background/image.jpg';
 
 export default function Footer() {
     const scrollToTop = () => {
@@ -8,7 +11,7 @@ export default function Footer() {
     };
 
     return (
-        <footer className="text-center w-full bg-white">
+        <footer className="text-center w-full bg-white" style={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="relative p-1">
                 <button onClick={scrollToTop}>
                     <i className="arrow up"></i>
@@ -43,8 +46,6 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-
-
         </footer>
     );
 }

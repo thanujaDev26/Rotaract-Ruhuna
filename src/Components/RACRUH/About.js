@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-
+import '../components.css'
 export default function About() {
     const scrollRef = useRef(null);
     const scrollStep = 0.5;
@@ -68,13 +68,15 @@ export default function About() {
                 }
                 `}
             </style>
+
             <div className="mx-auto max-w-8xl px-6 lg:px-8">
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-1 lg:max-w-none lg:grid-cols-2">
-                    <div className="hidden lg:block relative lg:ml-0 lg:overflow-hidden h-full w-full">
+                    <div className="lg:block relative lg:ml-0 lg:overflow-hidden h-full w-full">
                         <img
-                            src={require('../../Images/ProfessionalDevelopment.png')}
+                            src={require('../../Images/Team.JPG')}
                             alt="Product screenshot"
-                            className="relative left-0 w-full h-full object-cover rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
+                            className="relative left-0 w-full h-full object-cover rounded-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
+                            // rounded-xl shadow-xl
                         />
                     </div>
                     <div className="lg:pl-8 lg:pt-4"  style={{alignItems:'center'}}>

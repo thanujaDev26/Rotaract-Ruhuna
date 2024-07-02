@@ -1,3 +1,7 @@
+* {
+    user-select: none;
+}
+
 .cover-image{
     max-height: 100px;
 }
@@ -31,32 +35,31 @@
     scroll-snap-align: start;
 }
 
-
-
 /* components.css */
 
 
 /* Vertical timeline styling */
-.timeline-container .vertical-timeline-element--work {
-    border-radius: 8px;
-    box-shadow: none;
-    overflow: visible;
-    background: none;
+/* Add background image to the timeline container */
+.timeline-container {
+    background-image: url('../Images/Test1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px;
 }
 
-/* Remove the vertical line */
-.timeline-container .vertical-timeline-element--work::before,
-.timeline-container .timeline-branches::before {
-    content: none;
+/* Vertical timeline styling */
+.timeline-container .vertical-timeline-element--work {
+    border-radius: 8px;
+    background: none;
 }
 
 .timeline-container .vertical-timeline-element-content {
     border-radius: 8px;
     box-shadow: none;
-    margin-bottom: 20px;
-    position: relative;
+    padding: 10px;
     transition: transform 0.3s ease;
-    padding: 0;
+    background: rgba(255, 255, 255, 0.9); /* Add a white background with some transparency */
 }
 
 .timeline-container .vertical-timeline-element-content:hover {
@@ -65,33 +68,31 @@
 
 .timeline-container .timeline-branches {
     margin-top: 10px;
-    padding-left: 20px;
-    position: relative;
-}
-
-.timeline-container .timeline-branch {
-    margin-bottom: 10px;
 }
 
 .timeline-container .timeline-date {
     font-weight: bold;
     color: #666;
     margin-right: 10px;
+    display: inline-block;
 }
 
 .timeline-container .timeline-title {
     margin: 0 0 5px;
     color: #333;
+    font-size: 1.1em;
 }
 
 .timeline-container .timeline-description {
     margin: 0;
     color: #555;
+    font-size: 0.95em;
 }
 
 .timeline-container .timeline-significant-projects,
 .timeline-container .timeline-ongoing-projects {
-    margin-top: 20px;
+    margin-top: 10px;
+    font-size: 0.95em;
 }
 
 .timeline-container .timeline-significant-projects ul,
@@ -104,13 +105,6 @@
 .timeline-container .timeline-ongoing-projects ul li {
     margin-bottom: 5px;
 }
-
-/*.timeline-container .timeline-image {*/
-/*    width: 100%;*/
-/*    height: auto;*/
-/*    margin-top: 10px;*/
-/*    border-radius: 8px;*/
-/*}*/
 
 .timeline-container .timeline-end-icon {
     display: flex;
@@ -137,10 +131,6 @@
     background-color: transparent;
 }
 
-.vertical-timeline-element-icon svg {
-    color: #333; /* Dark color for icons */
-}
-
 .timeline-element-content {
     display: flex;
     flex-direction: row;
@@ -158,16 +148,14 @@
 }
 
 .timeline-image {
-    flex: 1;
+    flex: 0 0 100px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .timeline-image img {
-    max-width: 100%;
+    max-width: 100px;
     height: auto;
     border-radius: 8px;
 }
-
-
