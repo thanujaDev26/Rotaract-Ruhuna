@@ -47,7 +47,7 @@
 /*This code tells the background should be added only for pc views(avoid background in tablets and mobiles)*/
 @media (min-width: 1170px) {
     .timeline-container {
-        background-image: url('../Images/Test3.png');
+        background-image: url('../Images/Test4.png');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
