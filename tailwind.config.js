@@ -11,6 +11,7 @@ module.exports = {
             "text-b": '#1e272e',
             "gray-50": '#4b5563',
             "gray-900": '#111827',
+            "transparent": 'transparent',
         },
     },
     plugins: [
