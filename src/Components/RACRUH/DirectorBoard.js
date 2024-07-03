@@ -43,7 +43,7 @@ const directorBoardMembers = [
     },
     {
         id: 6,
-        name: 'Rtr. Tharushi ',
+        name: 'Rtr. Tharushi Jayaweera',
         designation: 'Club Service Avenue Co - Director',
         imageUrl: director6Url,
     },
@@ -101,37 +101,37 @@ const DirectorBoard = () => {
         clearInterval(scrollInterval.current);
     };
 
-    const scrollLeft = () => {
-        if (boardRef.current) {
-            let currentScrollLeft = boardRef.current.scrollLeft;
-            let newScrollLeft = currentScrollLeft - itemWidth;
+    // const scrollLeft = () => {
+    //     if (boardRef.current) {
+    //         let currentScrollLeft = boardRef.current.scrollLeft;
+    //         let newScrollLeft = currentScrollLeft - itemWidth;
+    //
+    //         if (newScrollLeft < 0) {
+    //             newScrollLeft = boardRef.current.scrollWidth - boardRef.current.clientWidth;
+    //         }
+    //
+    //         boardRef.current.scrollTo({
+    //             left: newScrollLeft,
+    //             behavior: 'smooth',
+    //         });
+    //     }
+    // };
+    //
+    // const scrollRight = () => {
+    //     if (boardRef.current) {
+    //         let currentScrollLeft = boardRef.current.scrollLeft;
+    //         let newScrollLeft = currentScrollLeft + itemWidth;
+    //
+    //         if (newScrollLeft >= boardRef.current.scrollWidth - boardRef.current.clientWidth) {
+    //             newScrollLeft = 0;
+    //         }
+    //         boardRef.current.scrollTo({
+    //             left: newScrollLeft,
+    //             behavior: 'smooth',
+    //         });
+    //     }
+    // };
 
-            if (newScrollLeft < 0) {
-                newScrollLeft = boardRef.current.scrollWidth - boardRef.current.clientWidth;
-            }
-
-            boardRef.current.scrollTo({
-                left: newScrollLeft,
-                behavior: 'smooth',
-            });
-        }
-    };
-
-    const scrollRight = () => {
-        if (boardRef.current) {
-            let currentScrollLeft = boardRef.current.scrollLeft;
-            let newScrollLeft = currentScrollLeft + itemWidth;
-
-            if (newScrollLeft >= boardRef.current.scrollWidth - boardRef.current.clientWidth) {
-                newScrollLeft = 0;
-            }
-
-            boardRef.current.scrollTo({
-                left: newScrollLeft,
-                behavior: 'smooth',
-            });
-        }
-    };
 
     return (
         <div className="bg-white" style={{padding:'0.1rem'}}>
@@ -145,7 +145,6 @@ const DirectorBoard = () => {
                         onMouseEnter={stopAutoScroll}
                         onMouseLeave={startAutoScroll}
                         style={{ overflowX: 'hidden', padding: '1rem' }}
-
                     >
                         {directorBoardMembers.map((member) => (
                             <div key={member.id} className="flex-shrink-0 w-44 sm:w-60 lg:w-72 relative">

@@ -119,15 +119,17 @@ export default function TimeLine() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const mainContent = document.getElementById('main-content');
-            const timelineSection = document.getElementById('timeline-section');
-            if (window.scrollY > window.innerHeight / 2) {
-                mainContent.classList.add('hide');
-                timelineSection.classList.add('show');
-            } else {
-                mainContent.classList.remove('hide');
-                timelineSection.classList.remove('show');
-            }
+            const timelineElements = document.querySelectorAll('.vertical-timeline-element');
+            timelineElements.forEach((el, index) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                    el.classList.remove('genie-in');
+                    el.classList.add('genie-out');
+                } else {
+                    el.classList.remove('genie-out');
+                    el.classList.add('genie-in');
+                }
+            });
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -136,62 +138,62 @@ export default function TimeLine() {
 
     return (
         <div>
-            <div id="main-content" >
+            <div id="main-content">
                 <div id="timeline-section" className="timeline-container">
-                        <VerticalTimeline style={{display: 'block'}}>
-                            <div>
-                                {timelineData.map((yearData, idx) => (
-                                    <VerticalTimelineElement
-                                        key={idx}
-                                        className="vertical-timeline-element--work"
-                                        contentStyle={{background: '#f9f9f9', color: '#333'}}
-                                        contentArrowStyle={{borderRight: '2px solid  #9F000F'}}
-                                        iconStyle={{background: '#C11F45', color: '#ffffff'}}
-                                        icon={<FaRegCalendarAlt/>}
-                                        position={window.innerWidth < 768 ? (idx % 2 === 0 ? 'right' : 'left') : idx % 2 === 0 ? 'left' : 'right'}
-                                    >
-                                        <h3 className="vertical-timeline-element-title text-xl">{yearData.year}</h3>
-                                        <div className="timeline-branches">
-                                            {yearData.branches.map((branch, bIdx) => (
-                                                <div key={bIdx} className="timeline-branch">
-                                                    {branch.date && <span className="timeline-date">{branch.date}</span>}
-                                                    <h4 className="timeline-title">{branch.title}</h4>
-                                                    <p className="timeline-description">{branch.description}</p>
-                                                </div>
-                                            ))}
-                                            {yearData.significantProjects && (
-                                                <div className="timeline-significant-projects">
-                                                    <h4>Significant Projects:</h4>
-                                                    <ul>
-                                                        {yearData.significantProjects.map((project, pIdx) => (
-                                                            <li key={pIdx}>
-                                                                <strong>{project.title}:</strong> {project.description}
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            )}
-                                            {yearData.ongoingProjects && (
-                                                <div className="timeline-ongoing-projects">
-                                                    <h4>Ongoing Projects:</h4>
-                                                    <ul>
-                                                        {yearData.ongoingProjects.map((project, pIdx) => (
-                                                            <li key={pIdx}>{project}</li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </VerticalTimelineElement>
-                                ))}
-                                <div className="timeline-end-icon">
-                                    <VerticalTimelineElement
-                                        iconStyle={{ background: '#C11F45', color: '#ffffff' }}
-                                        icon={<FaStar/>}
-                                    />
-                                </div>
+                    <VerticalTimeline style={{ display: 'block' }}>
+                        <div>
+                            {timelineData.map((yearData, idx) => (
+                                <VerticalTimelineElement
+                                    key={idx}
+                                    className="vertical-timeline-element--work"
+                                    contentStyle={{ background: '#f9f9f9', color: '#333' }}
+                                    contentArrowStyle={{ borderRight: '2px solid  #9F000F' }}
+                                    iconStyle={{ background: '#C11F45', color: '#ffffff' }}
+                                    icon={<FaRegCalendarAlt />}
+                                    position={window.innerWidth < 768 ? (idx % 2 === 0 ? 'right' : 'left') : idx % 2 === 0 ? 'left' : 'right'}
+                                >
+                                    <h3 className="vertical-timeline-element-title text-xl">{yearData.year}</h3>
+                                    <div className="timeline-branches">
+                                        {yearData.branches.map((branch, bIdx) => (
+                                            <div key={bIdx} className="timeline-branch">
+                                                {branch.date && <span className="timeline-date">{branch.date}</span>}
+                                                <h4 className="timeline-title">{branch.title}</h4>
+                                                <p className="timeline-description">{branch.description}</p>
+                                            </div>
+                                        ))}
+                                        {yearData.significantProjects && (
+                                            <div className="timeline-significant-projects">
+                                                <h4>Significant Projects:</h4>
+                                                <ul>
+                                                    {yearData.significantProjects.map((project, pIdx) => (
+                                                        <li key={pIdx}>
+                                                            <strong>{project.title}:</strong> {project.description}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+                                        {yearData.ongoingProjects && (
+                                            <div className="timeline-ongoing-projects">
+                                                <h4>Ongoing Projects:</h4>
+                                                <ul>
+                                                    {yearData.ongoingProjects.map((project, pIdx) => (
+                                                        <li key={pIdx}>{project}</li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+                                    </div>
+                                </VerticalTimelineElement>
+                            ))}
+                            <div className="timeline-end-icon">
+                                <VerticalTimelineElement
+                                    iconStyle={{ background: '#C11F45', color: '#ffffff' }}
+                                    icon={<FaStar />}
+                                />
                             </div>
-                        </VerticalTimeline>
+                        </div>
+                    </VerticalTimeline>
                 </div>
             </div>
         </div>
