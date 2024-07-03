@@ -156,9 +156,9 @@ const DirectorBoard = () => {
                                             className="object-cover object-center w-full h-full transition-transform duration-300 transform hover:scale-105"
                                         />
                                     </div>
-                                    <div className="p-4 bg-white flex-grow">
+                                    <div className="p-4 bg-white flex-grow text-center">
                                         <p className="text-lg font-semibold">{member.name}</p>
-                                        <p className="text-sm text-gray-600">{member.designation}</p>
+                                        <p className="text-sm font-bold text-gray-600">{member.designation}</p>
                                     </div>
                                 </div>
                             </div>
