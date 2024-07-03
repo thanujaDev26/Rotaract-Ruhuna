@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import React, {useRef, useEffect, useState} from 'react';
+import {Link, useNavigate} from 'react-router-dom'; // Import useNavigate for navigation
 import 'intersection-observer';
 import '../components.css';
 
@@ -55,7 +55,12 @@ export default function Avenues(props) {
             avenue: 'International Service Avenue',
             description: 'The International Service Avenue exemplifies global reach, going beyond boundaries to help the international community. Projects in this avenue focus on cultural exchange, facilitating mutual understanding, and engaging in international service projects. By connecting globally, this avenue contributes to positive change on a broader scale.'
         },
-        { id: 'EnvironmentalService', imageUrl: EnvironmentalServiceImage, avenue: 'Environmental Service Avenue', description: '' },
+        {
+            id: 'EnvironmentalService',
+            imageUrl: EnvironmentalServiceImage,
+            avenue: 'Environmental Service Avenue',
+            description: ''
+        },
         {
             id: 'CommunityService',
             imageUrl: CommunityServiceImage,
@@ -68,7 +73,7 @@ export default function Avenues(props) {
             avenue: 'Club Service Avenue',
             description: 'The Club Service Avenue focuses on the logistical tasks that create an outstanding club experience for both current and newly inducted members. This avenue ensures that our clubs have active, engaged members who can provide service to their communities and attract new members. Under this avenue, the Rotaract Club of the University of Ruhuna organizes activities within our own club, fostering fellowship and leadership development. The Sports and Recreation Service Avenue also operates under the Club Service Avenue, promoting physical well-being, fostering camaraderie, and encouraging an active lifestyle among its members through various sports events, fitness challenges, and recreational activities.'
         },
-        { id: 'SportsService', imageUrl: SportsServiceImage, avenue: 'Sports Service Avenue', description: '' },
+        {id: 'SportsService', imageUrl: SportsServiceImage, avenue: 'Sports Service Avenue', description: ''},
         {
             id: 'PublicRelations',
             imageUrl: PublicRelationsImage,
@@ -106,10 +111,13 @@ export default function Avenues(props) {
                         >
                             {index % 2 === 0 ? (
                                 <>
-                                    <div className="bg-slate-800 w-full md:w-1/2 h-96 flex items-center justify-center rounded-t-xl md:rounded-l-xl md:rounded-tr-none">
-                                        <img src={service.imageUrl} alt={service.avenue} className="h-full w-full object-cover rounded-t-xl md:rounded-l-xl md:rounded-tr-none" />
+                                    <div
+                                        className="bg-slate-800 w-full md:w-1/2 h-96 flex items-center justify-center rounded-t-xl md:rounded-l-xl md:rounded-tr-none">
+                                        <img src={service.imageUrl} alt={service.avenue}
+                                             className="h-full w-full object-cover rounded-t-xl md:rounded-l-xl md:rounded-tr-none"/>
                                     </div>
-                                    <div className="bg-white w-full md:w-1/2 h-96 flex flex-col justify-center rounded-b-xl md:rounded-r-xl md:rounded-bl-none p-5">
+                                    <div
+                                        className="bg-white w-full md:w-1/2 h-96 flex flex-col justify-center rounded-b-xl md:rounded-r-xl md:rounded-bl-none p-5">
                                         <h1 className="font-semibold text-4xl">{service.avenue}</h1>
                                         <p className="mt-5 text-gray-700">
                                             {service.description}
@@ -126,7 +134,8 @@ export default function Avenues(props) {
                                 </>
                             ) : (
                                 <>
-                                    <div className="bg-white w-full md:w-1/2 h-96 flex flex-col justify-center rounded-t-xl md:rounded-l-xl md:rounded-tr-none p-5">
+                                    <div
+                                        className="bg-white w-full md:w-1/2 h-96 flex flex-col justify-center rounded-t-xl md:rounded-l-xl md:rounded-tr-none p-5">
                                         <h1 className="font-semibold text-4xl">{service.avenue}</h1>
                                         <p className="mt-5 text-gray-700">
                                             {service.description}
@@ -140,8 +149,10 @@ export default function Avenues(props) {
                                             </button>
                                         </div>
                                     </div>
-                                    <div className="bg-slate-800 w-full md:w-1/2 h-96 flex items-center justify-center rounded-b-xl md:rounded-r-xl md:rounded-bl-none">
-                                        <img src={service.imageUrl} alt={service.avenue} className="h-full w-full object-cover rounded-b-xl md:rounded-r-xl md:rounded-bl-none" />
+                                    <div
+                                        className="bg-slate-800 w-full md:w-1/2 h-96 flex items-center justify-center rounded-b-xl md:rounded-r-xl md:rounded-bl-none">
+                                        <img src={service.imageUrl} alt={service.avenue}
+                                             className="h-full w-full object-cover rounded-b-xl md:rounded-r-xl md:rounded-bl-none"/>
                                     </div>
                                 </>
                             )}
@@ -151,32 +162,70 @@ export default function Avenues(props) {
             ) : (
                 services
                     .filter(service => service.id === activeContent)
-                    .map(service => (
-
-                        <div key={service.id} className="mx-5 sm:mx-10 md:mx-5 lg:mx-5 mb-10 flex flex-col md:flex-row section">
-                            <div className="bg-slate-800 w-full md:w-1/2 h-96 flex items-center justify-center rounded-t-xl md:rounded-l-xl md:rounded-tr-none">
-                                <img src={service.imageUrl} alt={service.avenue} className="h-full w-full object-cover rounded-t-xl md:rounded-l-xl md:rounded-tr-none" />
-                            </div>
-                            <div className="bg-white w-full md:w-1/2 h-96 flex flex-col justify-center rounded-b-xl md:rounded-r-xl md:rounded-bl-none p-5">
-                                <h1 className="font-semibold text-4xl">{service.avenue}</h1>
-                                <p className="mt-5 text-gray-700">
-                                    {service.description}
-                                </p>
-                                <div className="mt-10">
-                                    <button
-                                        onClick={() => navigate('/projects')} // Add navigation to projects
-                                        className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-                                    >
-                                        Projects
-                                    </button>
-                                    <button
-                                        onClick={handleBack}
-                                        className="ml-2 rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
-                                    >
-                                        Back
-                                    </button>
-                                </div>
-                            </div>
+                    .map((service, index) => (
+                        <div
+                            id={service.id}
+                            key={service.id}
+                            className="mx-5 sm:mx-10 md:mx-5 lg:mx-5 mb-10 flex flex-col md:flex-row section"
+                            ref={(el) => (sectionsRef.current[index] = el)}
+                        >
+                            {index % 2 === 0 ? (
+                                <>
+                                    <div
+                                        className="bg-slate-800 w-full md:w-1/2 h-96 flex items-center justify-center rounded-t-xl md:rounded-l-xl md:rounded-tr-none">
+                                        <img src={service.imageUrl} alt={service.avenue}
+                                             className="h-full w-full object-cover rounded-t-xl md:rounded-l-xl md:rounded-tr-none"/>
+                                    </div>
+                                    <div
+                                        className="bg-white w-full md:w-1/2 h-96 flex flex-col justify-center rounded-b-xl md:rounded-r-xl md:rounded-bl-none p-5">
+                                        <h1 className="font-semibold text-4xl">{service.avenue}</h1>
+                                        <p className="mt-5 text-gray-700">
+                                            {service.description}
+                                        </p>
+                                        <div className="mt-10">
+                                            <button
+                                                onClick={() => showContent(service.id)}
+                                                className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                                            >
+                                                Projects
+                                            </button>
+                                            <button onClick={handleBack}
+                                                    className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                                            >
+                                                Back
+                                            </button>
+                                        </div>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div
+                                        className="bg-white w-full md:w-1/2 h-96 flex flex-col justify-center rounded-t-xl md:rounded-l-xl md:rounded-tr-none p-5">
+                                        <h1 className="font-semibold text-4xl">{service.avenue}</h1>
+                                        <p className="mt-5 text-gray-700">
+                                            {service.description}
+                                        </p>
+                                        <div className="mt-10">
+                                            <button
+                                                onClick={() => showContent(service.id)}
+                                                className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                                            >
+                                                Projects
+                                            </button>
+                                            <button onClick={handleBack}
+                                                    className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                                            >
+                                                Back
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="bg-slate-800 w-full md:w-1/2 h-96 flex items-center justify-center rounded-b-xl md:rounded-r-xl md:rounded-bl-none">
+                                        <img src={service.imageUrl} alt={service.avenue}
+                                             className="h-full w-full object-cover rounded-b-xl md:rounded-r-xl md:rounded-bl-none"/>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     ))
             )}
