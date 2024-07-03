@@ -101,6 +101,8 @@ export default function ExecutiveBoard() {
         });
     }
 
+    let downloadURL = 'http://www.gbv.de/dms/zbw/865712123.pdf'
+
     return (
         <div style={{ padding: '2rem', margin: '1rem', borderRadius: '1rem' }} className="shadow-lg">
             <form onSubmit={onSubmitHandler}>
@@ -327,8 +329,8 @@ export default function ExecutiveBoard() {
 
                 <div className="flex flex-col md:flex-row items-center">
                     <Link
-                        to="#"
-                        download="sample-image.jpg"
+                        to={downloadURL}
+                        download="sample-pdf.pdf"
                         className="font-medium text-indigo-600 hover:text-indigo-500 text-sm md:text-base mb-2 md:mb-0 md:mr-4">
                         Download
                     </Link>

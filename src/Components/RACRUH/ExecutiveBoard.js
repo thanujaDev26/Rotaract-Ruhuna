@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import '../components.css'
 
 import gayanUrl from '../../Images/Executivers/Gayan.png';
 import insafUrl from '../../Images/Executivers/Inshaf.png';
@@ -54,47 +55,40 @@ const executiveBoardMembers = [
 ];
 
 const ExecutiveBoard = () => {
+
     const boardRef = useRef(null);
-
-    const scrollLeft = () => {
-        if (boardRef.current) {
-            const itemWidth = boardRef.current.firstElementChild.clientWidth; // Get width of each item
-            const scrollAmount = itemWidth + 20; // Adjust as needed (include margin)
-
-            // Calculate new scroll position
-            let newScrollLeft = boardRef.current.scrollLeft - scrollAmount;
-
-            // Wrap around if scrolling past the beginning
-            if (newScrollLeft < 0) {
-                newScrollLeft = boardRef.current.scrollWidth - boardRef.current.clientWidth;
-            }
-
-            boardRef.current.scrollTo({
-                left: newScrollLeft,
-                behavior: 'smooth',
-            });
-        }
-    };
-
-    const scrollRight = () => {
-        if (boardRef.current) {
-            const itemWidth = boardRef.current.firstElementChild.clientWidth; // Get width of each item
-            const scrollAmount = itemWidth + 20; // Adjust as needed (include margin)
-
-            // Calculate new scroll position
-            let newScrollLeft = boardRef.current.scrollLeft + scrollAmount;
-
-            // Wrap around if scrolling past the end
-            if (newScrollLeft >= boardRef.current.scrollWidth - boardRef.current.clientWidth) {
-                newScrollLeft = 0;
-            }
-
-            boardRef.current.scrollTo({
-                left: newScrollLeft,
-                behavior: 'smooth',
-            });
-        }
-    };
+    // const scrollLeft = () => {
+    //     if (boardRef.current) {
+    //         const itemWidth = boardRef.current.firstElementChild.clientWidth;
+    //         const scrollAmount = itemWidth + 20;
+    //
+    //         let newScrollLeft = boardRef.current.scrollLeft - scrollAmount;
+    //         if (newScrollLeft < 0) {
+    //             newScrollLeft = boardRef.current.scrollWidth - boardRef.current.clientWidth;
+    //         }
+    //
+    //         boardRef.current.scrollTo({
+    //             left: newScrollLeft,
+    //             behavior: 'smooth',
+    //         });
+    //     }
+    // };
+    //
+    // const scrollRight = () => {
+    //     if (boardRef.current) {
+    //         const itemWidth = boardRef.current.firstElementChild.clientWidth;
+    //         const scrollAmount = itemWidth + 20;
+    //         let newScrollLeft = boardRef.current.scrollLeft + scrollAmount;
+    //         if (newScrollLeft >= boardRef.current.scrollWidth - boardRef.current.clientWidth) {
+    //             newScrollLeft = 0;
+    //         }
+    //
+    //         boardRef.current.scrollTo({
+    //             left: newScrollLeft,
+    //             behavior: 'smooth',
+    //         });
+    //     }
+    // };
 
     return (
         <div className="bg-white">
@@ -102,7 +96,7 @@ const ExecutiveBoard = () => {
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-8 text-center">Executive Board Members</h2>
 
                 <div className="relative overflow-hidden">
-                    <div ref={boardRef} className="flex space-x-6 sm:space-x-8 lg:space-x-10 xl:space-x-12 overflow-x-auto">
+                    <div ref={boardRef} className="flex space-x-6 sm:space-x-8 lg:space-x-10 xl:space-x-12 overflow-x-auto hide-scrollbar">
                         {executiveBoardMembers.map((member) => (
                             <div key={member.id} className="flex-shrink-0 w-72 sm:w-80 lg:w-96 relative">
                                 <div className="rounded-lg overflow-hidden shadow-lg">
@@ -121,18 +115,20 @@ const ExecutiveBoard = () => {
                             </div>
                         ))}
                     </div>
-                    <button
-                        className="absolute top-1/2 transform -translate-y-1/2 bg-gray-200 text-gray-600 px-4 py-2 rounded-full shadow-md left-0 z-10"
-                        onClick={scrollLeft}
-                    >
-                        {'<'}
-                    </button>
-                    <button
-                        className="absolute top-1/2 transform -translate-y-1/2 bg-gray-200 text-gray-600 px-4 py-2 rounded-full shadow-md right-0 z-10"
-                        onClick={scrollRight}
-                    >
-                        {'>'}
-                    </button>
+
+                    {/*<button*/}
+                    {/*    className="absolute top-1/2 transform -translate-y-1/2 bg-gray-200 text-gray-600 px-4 py-2 rounded-full shadow-md left-0 z-10"*/}
+                    {/*    onClick={scrollLeft}*/}
+                    {/*>*/}
+                    {/*    {'<'}*/}
+                    {/*</button>*/}
+                    {/*<button*/}
+                    {/*    className="absolute top-1/2 transform -translate-y-1/2 bg-gray-200 text-gray-600 px-4 py-2 rounded-full shadow-md right-0 z-10"*/}
+                    {/*    onClick={scrollRight}*/}
+                    {/*>*/}
+                    {/*    {'>'}*/}
+                    {/*</button>*/}
+
                 </div>
             </div>
         </div>
@@ -140,3 +136,4 @@ const ExecutiveBoard = () => {
 };
 
 export default ExecutiveBoard;
+
