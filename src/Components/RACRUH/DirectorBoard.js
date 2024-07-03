@@ -13,56 +13,56 @@ import director9Url from '../../Images/Directors/shihari.png';
 const directorBoardMembers = [
     {
         id: 1,
-        name: 'Director 1',
-        designation: 'CEO',
+        name: 'Rtr. Chanya Peiris',
+        designation: 'Environmental Service Avenue Director',
         imageUrl: director1Url,
     },
     {
         id: 2,
-        name: 'Director 2',
-        designation: 'COO',
+        name: 'Rtr. Maneesha Dewmini',
+        designation: 'Community Service Avenue Co - Director',
         imageUrl: director2Url,
     },
     {
         id: 3,
-        name: 'Director 3',
-        designation: 'CFO',
+        name: 'Rtr. Sabira Navaz',
+        designation: 'Club Service Avenue Co - Director',
         imageUrl: director3Url,
     },
     {
         id: 4,
-        name: 'Director 4',
-        designation: 'CTO',
+        name: 'Rtr. Sathis Jayasundara',
+        designation: 'Professional Development Avenue Director',
         imageUrl: director4Url,
     },
     {
         id: 5,
-        name: 'Director 5',
-        designation: 'CMO',
+        name: 'Rtr. Tharindu Niroshan',
+        designation: 'Community Service Avenue Director',
         imageUrl: director5Url,
     },
     {
         id: 6,
-        name: 'Director 6',
-        designation: 'CIO',
+        name: 'Rtr. Tharushi ',
+        designation: 'Club Service Avenue Co - Director',
         imageUrl: director6Url,
     },
     {
         id: 7,
-        name: 'Director 7',
-        designation: 'CRO',
+        name: 'Rtr. Thiviru Asel',
+        designation: 'Sports Service Avenue Director',
         imageUrl: director7Url,
     },
     {
         id: 8,
-        name: 'Director 8',
-        designation: 'CHRO',
+        name: 'Rtr. Yashod Rathnayake',
+        designation: 'Public Relation Avenue Director',
         imageUrl: director8Url,
     },
     {
         id: 9,
-        name: 'Director 9',
-        designation: 'CCO',
+        name: 'Rtr. Shihari Oshana',
+        designation: 'International Service Avenue Director',
         imageUrl: director9Url,
     },
 ];
@@ -134,8 +134,8 @@ const DirectorBoard = () => {
     };
 
     return (
-        <div className="bg-white">
-            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="bg-white" style={{padding:'0.1rem'}}>
+            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8" >
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-8 text-center">Director Board Members</h2>
 
                 <div className="relative overflow-hidden">
@@ -144,11 +144,12 @@ const DirectorBoard = () => {
                         className="flex space-x-4 sm:space-x-6 lg:space-x-8 xl:space-x-10 overflow-x-auto"
                         onMouseEnter={stopAutoScroll}
                         onMouseLeave={startAutoScroll}
-                        style={{ overflowX: 'hidden' }}
+                        style={{ overflowX: 'hidden', padding: '1rem' }}
+
                     >
                         {directorBoardMembers.map((member) => (
                             <div key={member.id} className="flex-shrink-0 w-44 sm:w-60 lg:w-72 relative">
-                                <div className="rounded-lg overflow-hidden shadow-lg">
+                                <div className="rounded-lg overflow-hidden shadow-lg h-full flex flex-col">
                                     <div className="aspect-w-4 aspect-h-5">
                                         <img
                                             src={member.imageUrl}
@@ -156,26 +157,14 @@ const DirectorBoard = () => {
                                             className="object-cover object-center w-full h-full transition-transform duration-300 transform hover:scale-105"
                                         />
                                     </div>
-                                    <div className="p-4 bg-white">
+                                    <div className="p-4 bg-white flex-grow">
                                         <p className="text-lg font-semibold">{member.name}</p>
-                                        <p className="text-gray-600">{member.designation}</p>
+                                        <p className="text-sm text-gray-600">{member.designation}</p>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
-                    <button
-                        className="absolute top-1/2 transform -translate-y-1/2 bg-gray-200 text-gray-600 px-4 py-2 rounded-full shadow-md left-0 z-10"
-                        onClick={scrollLeft}
-                    >
-                        {'<'}
-                    </button>
-                    <button
-                        className="absolute top-1/2 transform -translate-y-1/2 bg-gray-200 text-gray-600 px-4 py-2 rounded-full shadow-md right-0 z-10"
-                        onClick={scrollRight}
-                    >
-                        {'>'}
-                    </button>
                 </div>
             </div>
         </div>
