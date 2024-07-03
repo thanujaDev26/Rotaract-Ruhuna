@@ -1,7 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
-
-
+import { FaFacebook, FaInstagram, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 
 export default function Address() {
 
@@ -10,9 +8,9 @@ export default function Address() {
     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
 
     return (
-        <div className="bg-white-100 py-10 px-6 sm:px-10 lg:px-20">
-            <div className="flex flex-col lg:flex-row">
-                <div className="w-full lg:w-1/2 p-5">
+        <div className="bg-white-100 sm:py-4 py-8 px-6 sm:px-10 lg:px-20">
+            <div className="flex lg:flex-row flex-col lg:overflow-x-hidden overflow-x-auto lg:space-x-6" >
+                <div className="w-full lg:w-1/2 p-5 flex-shrink-0 lg:max-w-none max-w-[600px]" >
                     <div className="text-center">
                         <h3 className="text-2xl font-bold text-gray-900">Contact Information</h3>
                         <p className="mt-4 text-gray-600 text-sm sm:text-base">Reach out to us through any of the following ways</p>
@@ -62,7 +60,7 @@ export default function Address() {
                         </div>
                     </div>
                 </div>
-                <div className="w-full lg:w-1/2 p-5 hidden lg:block">
+                <div className="w-full lg:w-1/2 p-5 flex-shrink-0 lg:max-w-none max-w-[600px] hidden lg:block">
                     <div className="h-full">
                         <iframe
                             title="Google Map"
