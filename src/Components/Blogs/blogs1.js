@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Data from "./data2.json";
 
 const images = [
     'https://img.freepik.com/free-photo/activists-hugging-walking-with-trash-bags-woods_23-2147826354.jpg?t=st=1720120084~exp=1720123684~hmac=bfea9c5a1bcfdef080c4186ea48fded8454150ed1228ba013dec599a7995063f&w=740',
@@ -22,27 +23,48 @@ const BlogsOne = () => {
     };
 
     return (
-        <div className="w-full md:flex md:items-center md:justify-center mb-10">
-            <div className="md:w-2/3 h-[450px] mx-auto mr-3 relative rounded-md shadow-lg">
+        <div className="w-full lg:flex lg:items-center lg:justify-center mb-10 gap-3">
+            <div className="lg:w-2/3 h-auto mx-auto relative rounded-md shadow-lg mb-8 lg:mb-0">
                 <Slider {...settings}>
                     {
                         images.map((img, index) => (
-                            <div key={index}
-                                 style={{backgroundImage: `url(${img})`}}
-                                 className="rounded-md"
+                            <div
+                                key={index}
+                                style={{backgroundImage: `url(${img})`}}
+                                className="rounded-md"
                             >
                                 <img src={img} alt="Slide 1"
-                                     className="w-full h-[440px] bg-cover bg-center rounded-t-md"/>
+                                     className="w-full h-[250px] sm:h-[300px] md:h-[440px] 2xl:h-[600px] bg-cover bg-center rounded-t-md"/>
                             </div>
                         ))
                     }
                 </Slider>
+                <div className="w-full h-full p-2 absolute inset-0 bg-opacity-50 text-white-1 bg-text-b rounded-md
+                                    opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
+                    <h1 className="text-3xl font-bold my-2">Blogs</h1>
+                    <p className="text-base leading-4 my-2">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                    <button className="bg-pink px-5 py-1 rounded-xl my-2">
+                        See more...
+                    </button>
+                </div>
             </div>
-            <div className="md:w-1/3 h-[450px] mx-auto flex md:flex-col justify-between items-center">
-                <div className="w-full h-1/2 bg-trans relative shadow-lg overflow-hidden transform
-                                            transition-transform duration-300 hover:scale-105 border-2 border-red rounded-lg"></div>
-                <div className="w-full h-1/2 bg-trans relative shadow-lg overflow-hidden transform
-                                            transition-transform duration-300 hover:scale-105 border-2 border-red rounded-lg"></div>
+            <div className="lg:w-1/3 relative grid grid-cols-1 gap-3 blog1-outer">
+                {Data.map((data, index) => (
+                    <div key={index} className="h-auto rounded-md bg-trans relative shadow-lg overflow-hidden transform
+                                            transition-transform duration-300 hover:scale-105">
+                        <div
+                            className="w-full h-52 lg:h-[217px] 2xl:h-[294px] bg-no-repeat bg-cover bg-center rounded-t-md"
+                            style={{backgroundImage: `url(${data.img})`}}>
+                        </div>
+                        <div className="w-full h-full text-center p-2 absolute inset-0 bg-opacity-75 bg-text-b text-white-1
+                        opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
+                            <h1 className="text-xl font-bold my-2">{data.name}</h1>
+                            <p className="text-base leading-4 my-2">{data.description}</p>
+                            <button className="bg-pink px-5 py-1 rounded-xl my-2">See more...</button>
+                        </div>
+                    </div>))}
             </div>
         </div>
     );
