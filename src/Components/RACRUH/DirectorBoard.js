@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import '../components.css';
 
 import director1Url from '../../Images/Directors/chanya.png';
 import director2Url from '../../Images/Directors/Maneesha com.service 2 conv.png';
@@ -85,14 +86,21 @@ const DirectorBoard = () => {
             if (boardRef.current) {
                 let currentScrollLeft = boardRef.current.scrollLeft;
                 let newScrollLeft = currentScrollLeft + itemWidth;
-                if (newScrollLeft >= boardRef.current.scrollWidth - boardRef.current.clientWidth) {
-                    newScrollLeft = 0;
-                }
 
                 boardRef.current.scrollTo({
                     left: newScrollLeft,
                     behavior: 'smooth',
                 });
+
+                // Reset scroll position if reached the end
+                if (newScrollLeft >= boardRef.current.scrollWidth - boardRef.current.clientWidth) {
+                    setTimeout(() => {
+                        boardRef.current.scrollTo({
+                            left: 0,
+                            behavior: 'auto', // Use 'auto' for instant reset
+                        });
+                    }, 1000); // Adjust the delay if needed
+                }
             }
         }, scrollDelay);
     };
@@ -101,41 +109,9 @@ const DirectorBoard = () => {
         clearInterval(scrollInterval.current);
     };
 
-    // const scrollLeft = () => {
-    //     if (boardRef.current) {
-    //         let currentScrollLeft = boardRef.current.scrollLeft;
-    //         let newScrollLeft = currentScrollLeft - itemWidth;
-    //
-    //         if (newScrollLeft < 0) {
-    //             newScrollLeft = boardRef.current.scrollWidth - boardRef.current.clientWidth;
-    //         }
-    //
-    //         boardRef.current.scrollTo({
-    //             left: newScrollLeft,
-    //             behavior: 'smooth',
-    //         });
-    //     }
-    // };
-    //
-    // const scrollRight = () => {
-    //     if (boardRef.current) {
-    //         let currentScrollLeft = boardRef.current.scrollLeft;
-    //         let newScrollLeft = currentScrollLeft + itemWidth;
-    //
-    //         if (newScrollLeft >= boardRef.current.scrollWidth - boardRef.current.clientWidth) {
-    //             newScrollLeft = 0;
-    //         }
-    //         boardRef.current.scrollTo({
-    //             left: newScrollLeft,
-    //             behavior: 'smooth',
-    //         });
-    //     }
-    // };
-
-
     return (
-        <div className="bg-white" style={{padding:'0.1rem'}}>
-            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8" >
+        <div className="bg-white" style={{ padding: '0.1rem' }}>
+            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-8 text-center">Director Board Members</h2>
 
                 <div className="relative overflow-hidden">
