@@ -36,7 +36,7 @@ export default function BlogsOne() {
                 <div key={index} className="h-auto rounded-md bg-trans relative shadow-lg overflow-hidden transform
                                             transition-transform duration-300 hover:scale-105">
                     <div className="w-full h-52 xl:h-[300px] 2xl:h-[400px] bg-no-repeat bg-cover bg-center rounded-t-md"
-                        style={{backgroundImage: `url(${data.img})`}}>
+                         style={{backgroundImage: `url(${data.img})`}}>
                     </div>
                     <div className="w-full h-full text-center p-2 absolute inset-0 bg-opacity-75 bg-text-b text-white-1
                         opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
