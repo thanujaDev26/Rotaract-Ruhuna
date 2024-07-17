@@ -16,7 +16,7 @@ export default function BlogsOne() {
     }, []);
 
     return (<div className="relative bg-white my-5">
-       {/* <div
+        <div
             className={classNames('fixed inset-0 transition-opacity duration-700 ease-in-out', scrollY > 200 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',)}
             aria-hidden="true"
         >
@@ -25,7 +25,7 @@ export default function BlogsOne() {
                 alt="Cover"
                 className="w-full h-full bg-center object-cover "
             />
-        </div>*/}
+        </div>
         <div className="relative mx-auto text-center sm:w-[450px] md:w-[550px] lg:w-[900px] card-set-header">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold tracking-tight text-gray-900">
                 Rotaract Club of University of Ruhuna Blog
