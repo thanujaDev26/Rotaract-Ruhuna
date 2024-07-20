@@ -1,5 +1,5 @@
 import React, {useRef, useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate , useLocation} from 'react-router-dom';
 import {motion} from "framer-motion";
 import 'intersection-observer';
 import '../components.css';
@@ -16,6 +16,7 @@ import ProfessionalDevelopmentImage from '../../Images/ProfessionalDevelopment.j
 export default function Avenues(props) {
     const sectionsRef = useRef([]);
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const sections = sectionsRef.current;
@@ -260,7 +261,6 @@ export default function Avenues(props) {
 
     const handleBack = () => {
         setActiveContent(null);
-        navigate(-1);
     };
 
     return (
