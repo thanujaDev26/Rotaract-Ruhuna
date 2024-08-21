@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Sections</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .section {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="sections">
+        <div class="section" id="section1">
+            <h2>Section 1</h2>
+            <p>Description for section 1</p>
+            <button class="project-button">Project</button>
+        </div>
+        <div class="section" id="section2">
+            <h2>Section 2</h2>
+            <p>Description for section 2</p>
+            <button class="project-button">Project</button>
+        </div>
+        <div class="section" id="section3">
+            <h2>Section 3</h2>
+            <p>Description for section 3</p>
+            <button class="project-button">Project</button>
+        </div>
+        <div class="section" id="section4">
+            <h2>Section 4</h2>
+            <p>Description for section 4</p>
+            <button class="project-button">Project</button>
+        </div>
+        <div class="section" id="section5">
+            <h2>Section 5</h2>
+            <p>Description for section 5</p>
+            <button class="project-button">Project</button>
+        </div>
+    </div>
+    <div id="projects" class="hidden">
+        <h2>Projects</h2>
+        <p>Details about the projects.</p>
+        <button id="back-button">Back</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll(".section");
+            const projectsSection = document.getElementById("projects");
+            const backButton = document.getElementById("back-button");
+
+            sections.forEach(section => {
+                section.querySelector(".project-button").addEventListener("click", () => {
+                    sections.forEach(s => s.classList.add("hidden"));
+                    projectsSection.classList.remove("hidden");
+                });
+            });
+
+            backButton.addEventListener("click", () => {
+                projectsSection.classList.add("hidden");
+                sections.forEach(s => s.classList.remove("hidden"));
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,4 +1,8 @@
-.cover-image {
+* {
+    user-select: none;
+}
+
+.cover-image{
     max-height: 100px;
 }
 
@@ -9,18 +13,186 @@
 .group:hover .group-hover\:opacity-100 {
     opacity: 1;
 }
+.container {
+    margin-bottom: 1rem;
+}
+.section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.blogs {
+    scroll-snap-type: y mandatory;
+}
+
+.blogs > div {
+    scroll-snap-align: start;
+}
+
+
+
+
+/* Vertical timeline styling */
+
+.timeline-container {
+    margin: 3rem 0;
+}
+
+/*This code tells the background should be added only for pc views(avoid background in tablets and mobiles)*/
+@media (min-width: 1170px) {
+    .timeline-container {
+        background-image: url('../Images/Test4.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+.timeline-container .vertical-timeline-element--work {
+    border-radius: 8px;
+    background: none;
+}
+
+.timeline-container .vertical-timeline-element-content {
+    border-radius: 8px;
+    box-shadow: none;
+    padding: 10px;
+    transition: transform 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.timeline-container .vertical-timeline-element-content:hover {
+    transform: scale(1.05);
+}
+
+.timeline-container .timeline-branches {
+    margin-top: 10px;
+}
+
+.timeline-container .timeline-date {
+    font-weight: bold;
+    color: #666;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.timeline-container .timeline-title {
+    margin: 0 0 5px;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.timeline-container .timeline-description {
+    margin: 0;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.timeline-container .timeline-significant-projects,
+.timeline-container .timeline-ongoing-projects {
+    margin-top: 10px;
+    font-size: 0.95em;
+}
+
+.timeline-container .timeline-significant-projects ul,
+.timeline-container .timeline-ongoing-projects ul {
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.timeline-container .timeline-significant-projects ul li,
+.timeline-container .timeline-ongoing-projects ul li {
+    margin-bottom: 5px;
+}
+
+.timeline-container .timeline-end-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vertical-timeline-element-content-arrow {
+    display: none;
+}
 
 /*========component-blogs=========*/
 @media only screen and (min-width: 500px) {
-    .blog1-outer {
+    .blog2-outer, .blog1-outer {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
     .blog1-outer {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .blog2-outer {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
 /*========component-blogs=========*/
+.vertical-timeline-element-content .vertical-timeline-element-date {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    top: -20px;
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
+}
+
+.vertical-timeline-element-icon {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.timeline-element-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timeline-element-content:nth-child(even) .timeline-image {
+    order: -1;
+}
+
+.timeline-text {
+    flex: 1;
+    padding-right: 1rem;
+}
+
+.timeline-image {
+    flex: 0 0 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline-image img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+@media (max-width: 767px) {
+    .timeline-container .vertical-timeline-element--work {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .timeline-end-icon {
+        margin-left: 2rem;
+    }
+}
