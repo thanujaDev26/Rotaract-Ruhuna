@@ -76,7 +76,7 @@ export default function Form(props) {
             <div
                 className={classNames(
                     'fixed inset-0 transition-opacity duration-700 ease-in-out',
-                    scrollY > 200 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
+                    scrollY > 700 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
                 )}
                 aria-hidden="true"
             >

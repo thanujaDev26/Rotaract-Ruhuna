@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import Form from "./form";
 
 export default function Address() {
     return (
@@ -44,7 +45,7 @@ export default function Address() {
                         </div>
                     </div>
                 </div>
-                <div className="w-full lg:w-1/2 p-5 hidden lg:block">
+                <div className="w-full lg:w-1/2 p-5  lg:block">
                     <div className="h-full">
                         <iframe
                             title="Google Map"
@@ -58,6 +59,7 @@ export default function Address() {
                     </div>
                 </div>
             </div>
+            <Form/>
         </div>
     );
 }
