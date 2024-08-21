@@ -5,13 +5,13 @@ import Card from './Card';
 
 
 import executiveBoardImage from '../../Images/InternationalService.png'
-import directorBoardImage from '../../Images/EnvironmentalService.png';
+import directorBoardImage from '../../Images/EnvironmentalService.JPG';
 import memberRegistrationImage from '../../Images/PublicRelations.png';
-import organizingCommitteeImage from '../../Images/CommunityService.png';
+import organizingCommitteeImage from '../../Images/CommunityService.jpg';
 
-import executiveBoardHoverImage from '../../Images/SportsService.png';
-import directorBoardHoverImage from '../../Images/CommunityService.png';
-import memberRegistrationHoverImage from '../../Images/ProfessionalDevelopment.png';
+import executiveBoardHoverImage from '../../Images/SportsService.jpg';
+import directorBoardHoverImage from '../../Images/CommunityService.jpg';
+import memberRegistrationHoverImage from '../../Images/ProfessionalDevelopment.jpg';
 import organizingCommitteeHoverImage from '../../Images/InternationalService.png';
 
 const Dashboard = () => {
