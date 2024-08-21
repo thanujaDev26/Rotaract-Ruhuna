@@ -5,9 +5,9 @@ import { FaStar, FaRegCalendarAlt } from 'react-icons/fa';
 import '../components.css';
 
 import InternationalServiceImage from '../../Images/InternationalService.png';
-import EnvironmentalServiceImage from '../../Images/EnvironmentalService.png';
-import CommunityServiceImage from '../../Images/CommunityService.png';
-import ClubServiceImage from '../../Images/ClubService.png';
+import EnvironmentalServiceImage from '../../Images/EnvironmentalService.JPG';
+import CommunityServiceImage from '../../Images/CommunityService.jpg';
+import ClubServiceImage from '../../Images/ClubService.jpg';
 
 export default function TimeLine() {
     const timelineData = [
