@@ -6,13 +6,11 @@ module.exports = {
     theme: {
         extend:{
             colors: {
-                "pink": '#C62F52',
-                "white-1": '#ecf0f1',
-                "red": '#EA2027',
-                "text-b": '#1e272e',
-                "gray-50": '#4b5563',
-                "gray-900": '#111827',
-                "transparent": 'transparent',
+                "rac-pink": '#C62F52',
+                "rac-white": '#ecf0f1',
+                "rac-text-b": '#1e272e',
+                "rac-gray-50": '#4b5563',
+                "rac-gray-900": '#111827',
             },
         }
     },
