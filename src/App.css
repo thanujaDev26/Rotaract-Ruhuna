@@ -1,3 +1,7 @@
+* {
+    user-select: none;
+}
+
 .navbar{
     margin-bottom: 5rem;
 }
@@ -13,3 +17,12 @@
     -webkit-transform: rotate(-135deg);
 }
 
+
+.text-black:hover {
+    color: #555; /* Hover color */
+}
+
+/* Adjust margin and padding as needed */
+/*.icons-container{*/
+/*    border: 1px solid black;*/
+/*}*/
