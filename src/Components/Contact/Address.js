@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import Form from "./form";
 
 export default function Address() {
     return (
@@ -30,16 +31,13 @@ export default function Address() {
                         </div>
                         <div className="flex flex-col items-center mt-6">
                             <div className="flex space-x-6">
-                                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.facebook.com/RotaractRuhuna/" target="_blank" rel="noopener noreferrer">
                                     <FaFacebook className="text-blue-600 text-2xl" />
                                 </a>
-                                <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-                                    <FaTwitter className="text-blue-400 text-2xl" />
-                                </a>
-                                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.instagram.com/rotaract_ruhuna/" target="_blank" rel="noopener noreferrer">
                                     <FaInstagram className="text-pink-500 text-2xl" />
                                 </a>
-                                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.linkedin.com/company/rotaract-club-of-university-of-ruhuna/?originalSubdomain=lk" target="_blank" rel="noopener noreferrer">
                                     <FaLinkedin className="text-blue-700 text-2xl" />
                                 </a>
                             </div>
@@ -47,7 +45,7 @@ export default function Address() {
                         </div>
                     </div>
                 </div>
-                <div className="w-full lg:w-1/2 p-5 hidden lg:block">
+                <div className="w-full lg:w-1/2 p-5  lg:block">
                     <div className="h-full">
                         <iframe
                             title="Google Map"
@@ -61,6 +59,7 @@ export default function Address() {
                     </div>
                 </div>
             </div>
+            <Form/>
         </div>
     );
 }

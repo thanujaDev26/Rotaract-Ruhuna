@@ -17,6 +17,9 @@
     -webkit-transform: rotate(-135deg);
 }
 
+.text-black {
+    color: #333;
+}
 
 .text-black:hover {
     color: #555; /* Hover color */
