@@ -1,26 +1,135 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import InternationalServiceImage from '../../Images/InternationalService.png';
 import EnvironmentalServiceImage from '../../Images/EnvironmentalService.JPG';
 import CommunityServiceImage from '../../Images/CommunityService.jpg';
 import ClubServiceImage from '../../Images/ClubService.jpg';
 import SportsServiceImage from '../../Images/SportsService.jpg';
-import PublicRelationsImage from '../../Images/PublicRelations.png';
+import President from '../../Images/nuhansi gunawardena president.png';
 import ProfessionalDevelopmentImage from '../../Images/ProfessionalDevelopment.jpg';
 import { motion } from "framer-motion";
+import { CountUp } from 'countup.js';
+import '../../App.css';
 
-const BounceCard = ({ className, children, style }) => {
+
+const BounceCard = ({ className, children, style, description }) => {
     return (
         <motion.div
             whileHover={{ scale: 0.95, rotate: "-1deg" }}
             className={`group relative min-h-[400px] cursor-pointer overflow-hidden rounded-2xl bg-slate-100 p-8 ${className}`}
             style={style}
         >
-            {children}
+            <div
+                className="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out group-hover:opacity-0"></div>
+
+            {/* Card Title - outside the description block */}
+            <div className="absolute top-4 left-4 right-4 z-10">
+                {children}
+            </div>
+
+            {/* Description block */}
+            <div
+                className={`absolute bottom-0 left-4 right-4 top-full rounded-2xl bg-gradient-to-br from-gray-700 to-gray-500 p-4 transition-all duration-[250ms] ease-in-out group-hover:top-40 group-hover:rotate-[2deg]`}
+            >
+                <span className="block text-sm text-justify font-semibold text-white">
+                    {description}
+                </span>
+            </div>
         </motion.div>
     );
 };
 
-const CardTitle = ({ children }) => {
+
+const Stats = () => {
+    useEffect(() => {
+        const numbers = document.querySelectorAll("[data-count-to]");
+
+        const handleCountUp = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const number = entry.target;
+                    const id = number.getAttribute("id");
+                    const value = number.getAttribute("data-count-to");
+                    const decimal = number.getAttribute("data-decimal");
+                    const options = {
+                        decimalPlaces: decimal ? parseInt(decimal) : 0,
+                        duration: 5 // Slows down the counting animation (5 seconds)
+                    };
+                    const countUp = new CountUp(id, value, options);
+
+                    if (!countUp.error) {
+                        countUp.start();
+                    } else {
+                        console.error(countUp.error);
+                        number.innerHTML = value;
+                    }
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(handleCountUp, {
+            threshold: 0.5 // Adjust this value to control when the animation starts (0.5 means halfway into the viewport)
+        });
+
+        numbers.forEach((number) => {
+            observer.observe(number);
+        });
+
+        return () => {
+            numbers.forEach((number) => {
+                observer.unobserve(number);
+            });
+        };
+    }, []);
+
+    return (
+        <div className="relative container mx-auto flex justify-center items-center h-[600px] bg-white">
+            <div className="absolute inset-0 z-0 bg-blur-image bg-cover h-[600px] bg-center"></div>
+            <div className="relative z-10 w-full max-w-6xl text-white text-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8">
+                    <div className="flex flex-col items-center">
+                        <h3
+                            className="text-5xl font-extrabold leading-tight"
+                            id="countto1"
+                            data-count-to="30"
+                        >
+                            30+
+                        </h3>
+                        <p className="text-base font-medium leading-7">
+                            Successful Projects
+                        </p>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <h3
+                            className="text-5xl font-extrabold leading-tight"
+                            id="countto2"
+                            data-count-to="450"
+                        >
+                            450+
+                        </h3>
+                        <p className="text-base font-medium leading-7">
+                            Active Members
+                        </p>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <h3
+                            className="text-5xl font-extrabold leading-tight"
+                            id="countto3"
+                            data-count-to="9"
+                        >
+                            9
+                        </h3>
+                        <p className="text-base font-medium leading-7">
+                            Faculties
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+
+const CardTitle = ({children}) => {
     return (
         <h3 className="mx-auto text-center text-4xl text-white font-semibold">{children}</h3>
     );
@@ -34,7 +143,7 @@ const cardData = [
         gradientTo: 'black'
     },
     {
-        image:EnvironmentalServiceImage,
+        image: EnvironmentalServiceImage,
         title: 'Environmental Service Avenue',
         description: 'FEATURE DEMO HERE',
         gradientFrom: 'amber-400',
@@ -73,13 +182,13 @@ const cardData = [
 export default function Home(props) {
     return (
         <div className={Home}>
-            <div className="bg-white dark:bg-gray-900">
-                <div className="grid max-w-screen-2xl py-8 mx-40 lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+            <div className="bg-white dark:bg-gray-900 ">
+                <div className="grid max-w-screen-2xl py-8 mx-auto  xl:gap-0 lg:py-16 lg:grid-cols-12 lg:px-4">
                     <div className="mr-auto place-self-center lg:col-span-6">
-                        <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+                        <h1 className="max-w-2xl mb-4 px-2 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
                             Payments tool for software companies
                         </h1>
-                        <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                        <p className="max-w-2xl mb-6 px-2 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
                             From checkout to global sales tax compliance, companies around the world use Flowbite to
                             simplify their payment stack.
                         </p>
@@ -88,8 +197,8 @@ export default function Home(props) {
 
                         </div>
                     </div>
-                    <div className="hidden lg:mt-0 lg:col-span-6 lg:flex ">
-                        <div className={"w-full"}>
+                    <div className="hidden lg:mt-0 lg:col-span-6 lg:flex   ">
+                        <div className={"w-full scale-75 2xl:scale-100 p-0 m-0 overflow-visible"}>
                             <svg className={"w-full"} height="500">
                                 <defs>
                                     <clipPath id="image">
@@ -139,7 +248,7 @@ export default function Home(props) {
                         {/*              clipRule="evenodd"></path>*/}
                         {/*    </svg>*/}
                         {/*</a>*/}
-                        <a href="#"
+                        <a href="/about-us"
                            className="inline-flex items-center justify-center px-5 py-3 mt-3 text-base font-medium text-center text-black border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-black hover:dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                             About us
                             <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
@@ -163,29 +272,70 @@ export default function Home(props) {
                     </div>
                 </div>
             </div>
-            <div className={"px-20"}>
+            <Stats/>
+
+            <div className={"lg:px-20 lg:py-44 px-2"}>
+                {/*<h2 className="mb-4  text-4xl tracking-tight font-semibold text-black dark:text-black">AVENUES</h2>*/}
                 <div className="mb-4 grid grid-cols-12 gap-4">
                     {cardData.map((card, index) => (
                         <BounceCard
                             key={index}
                             className={`group col-span-12 md:col-span-4 w-full h-full bg-cover bg-center`}
                             style={{backgroundImage: `url(${card.image})`}}
+                            description={card.description}
                         >
-                            <div
-                                className="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out group-hover:opacity-0"></div>
-
                             <CardTitle>{card.title}</CardTitle>
-                            <div
-                                className={`absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl bg-gradient-to-br from-violet-400 to-indigo-400 p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]`}
-                            >
-            <span className="block text-center font-semibold text-white">
-              {card.description}
-            </span>
-                            </div>
                         </BounceCard>
                     ))}
+
                 </div>
             </div>
+            <div className={"flex flex-row gap-12 justify-center "}>
+                <div className="flex p-4 max-w-3xl h-[400px]  mb-10  bg-white shadow-xl rounded-lg">
+                    <div className="flex-shrink-0">
+                        {/* Message Icon */}
+                        <div className="bg-green-100 text-green-500 rounded-full p-2">
+                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fillRule="evenodd"
+                                      d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm4 1a1 1 0 100 2h8a1 1 0 100-2H6z"
+                                      clipRule="evenodd"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div className="ml-4">
+                        {/* Title and Message */}
+                        <div className="font-bold text-gray-900">MESSAGES</div>
+                        <div className="text-gray-500">President</div>
+                        <div className="text-gray-700 mt-1">It is a long established fact that a reader will be
+                            distracted
+                            by the readable content of a page when looking at its layout. The point of using Lorem Ipsum
+                            is
+                            that it has a more-or-less normal distribution of letters, as opposed to using 'Content
+                            here,
+                            content here', making it look like readable English. Many desktop publishing packages and
+                            web
+                            page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
+                            will uncover many web sites still in their infancy. Various versions have evolved over the
+                            years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                        </div>
+                    </div>
+                    <div className="ml-auto text-gray-500">now</div>
+                </div>
+
+
+                <div className="w-full max-w-xs bg-white  rounded-lg shadow ">
+                    <div className="flex flex-col items-center pb-10">
+                        <img className="w-auto h-96 mb-3 shadow-lg" src={President} alt="President"/>
+                        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-black">Rtr.Nuhansi Gunawardhana</h5>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">President</span>
+                    </div>
+                </div>
+
+
+            </div>
+
+
         </div>
     );
 }
