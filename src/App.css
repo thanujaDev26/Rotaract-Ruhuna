@@ -29,3 +29,44 @@
 /*.icons-container{*/
 /*    border: 1px solid black;*/
 /*}*/
+
+.scale-60 {
+    transform: scale(0.6);
+}
+
+.bg-blur {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+}
+
+.bg-blur-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('Images/ClubService.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.bg-blur-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black mask */
+    z-index: 1;
+}
+/* Ensure the card container has relative positioning */
+
+
+
