@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import Form from "./form";
 
 export default function Address() {
 
@@ -74,6 +75,7 @@ export default function Address() {
                     </div>
                 </div>
             </div>
+            <Form/>
         </div>
     );
 }

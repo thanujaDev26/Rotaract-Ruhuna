@@ -5,6 +5,7 @@ import About from "./About";
 import TimeLine from "./TimeLine";
 import ExecutiveBoard from "./ExecutiveBoard";
 import DirectorBoard from "./DirectorBoard";
+import NewTimeLine from "./NewTimeLine";
 
 
 export default function RACRUH() {

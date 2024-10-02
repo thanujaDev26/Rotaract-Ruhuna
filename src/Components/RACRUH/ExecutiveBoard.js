@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import '../components.css'
+import '../components.css';
 
 import gayanUrl from '../../Images/Executivers/Gayan.png';
 import insafUrl from '../../Images/Executivers/Inshaf.png';
@@ -78,13 +78,13 @@ const ExecutiveBoard = () => {
 
     return (
         <div className="bg-white">
-            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+            <div className="py-12 sm:px-4" style={{padding: 'auto 1rem', margin: '0 1rem'}}>
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-8 text-center">Executive Board Members</h2>
 
                 <div className="relative overflow-hidden">
-                    <div ref={boardRef} className="flex space-x-6 sm:space-x-8 lg:space-x-10 xl:space-x-12 overflow-x-auto hide-scrollbar" onClick={(e) => handleClickScroll('right')}>
+                    <div ref={boardRef} className="flex space-x-4 sm:space-x-6 lg:space-x-8 overflow-x-auto hide-scrollbar" onClick={(e) => handleClickScroll('right')}>
                         {executiveBoardMembers.map((member) => (
-                            <div key={member.id} className="flex-shrink-0 w-72 sm:w-80 lg:w-96 relative">
+                            <div key={member.id} className="flex-shrink-0 w-56 sm:w-64 lg:w-72 relative">
                                 <div className="rounded-lg overflow-hidden shadow-lg">
                                     <div className="aspect-w-4 aspect-h-5">
                                         <img

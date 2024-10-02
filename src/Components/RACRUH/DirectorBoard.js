@@ -110,9 +110,10 @@ const DirectorBoard = () => {
     };
 
     return (
-        <div className="bg-white" style={{ padding: '0.1rem' }}>
-            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-8 text-center">Director Board Members</h2>
+        <div className="bg-white" style={{padding: '0 1rem', margin:'0 1rem'}}>
+            <div className="px-4 py-12 sm:px-6 lg:px-8">
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-8 text-center">Director Board
+                    Members</h2>
 
                 <div className="relative overflow-hidden">
                     <div
@@ -120,10 +121,11 @@ const DirectorBoard = () => {
                         className="flex space-x-4 sm:space-x-6 lg:space-x-8 xl:space-x-10 overflow-x-auto"
                         onMouseEnter={stopAutoScroll}
                         onMouseLeave={startAutoScroll}
-                        style={{ overflowX: 'hidden', padding: '1rem' }}
+                        style={{overflowX: 'hidden', padding: '1rem'}}
                     >
                         {directorBoardMembers.map((member) => (
-                            <div key={member.id} className="flex-shrink-0 w-44 sm:w-60 lg:w-72 relative">
+                            <div key={member.id}
+                                 className="flex-shrink-0 w-36 sm:w-48 lg:w-56 relative">
                                 <div className="rounded-lg overflow-hidden shadow-lg h-full flex flex-col">
                                     <div className="aspect-w-4 aspect-h-5">
                                         <img
@@ -143,6 +145,7 @@ const DirectorBoard = () => {
                 </div>
             </div>
         </div>
+
     );
 };
 

@@ -1,107 +1,73 @@
-const posts = [
-    {
-        id: 1,
-        title: 'Boost your conversion rate',
-        href: '#',
-        description:
-            'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        date: 'Mar 16, 2020',
-        datetime: '2020-03-16',
-        category: { title: 'Treasurer', href: '#' },
-        author: {
-            name: 'Kushan Sandul',
-            role: 'Co-Founder / CTO',
-            href: '#',
-            imageUrl:
-                'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-    },
-    {
-        id: 2,
-        title: 'Boost your conversion rate',
-        href: '#',
-        description:
-            'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        date: 'Mar 16, 2020',
-        datetime: '2020-03-16',
-        category: { title: 'President', href: '#' },
-        author: {
-            name: 'Janith Ranasinghe',
-            role: 'Co-Founder / CTO',
-            href: '#',
-            imageUrl:
-                'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-    },
-    {
-        id: 3,
-        title: 'Boost your conversion rate',
-        href: '#',
-        description:
-            'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        date: 'Mar 16, 2020',
-        datetime: '2020-03-16',
-        category: { title: 'Secretary', href: '#' },
-        author: {
-            name: 'Dulan Kalana',
-            role: 'Co-Founder / CTO',
-            href: '#',
-            imageUrl:
-                'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-    },
-    // More posts...
-]
+import React from 'react';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Data from "./data2.json";
 
-export default function BlogsOne() {
+const images = [
+    'https://img.freepik.com/free-photo/activists-hugging-walking-with-trash-bags-woods_23-2147826354.jpg?t=st=1720120084~exp=1720123684~hmac=bfea9c5a1bcfdef080c4186ea48fded8454150ed1228ba013dec599a7995063f&w=740',
+    'https://img.freepik.com/free-photo/helping-hands-volunteer-support-community-service-graphic_53876-64956.jpg?t=st=1720120110~exp=1720123710~hmac=cc15fb6d963a6e7f5411a008b5f9871d2419b4e9107e380c22cc3608c2e87bbd&w=740',
+    'https://img.freepik.com/free-photo/cross-flames-playing-with-sparklers-rooftop-group-young-beautiful-friends_146671-14637.jpg?t=st=1720120205~exp=1720123805~hmac=20af44c1dd5b4b427b69430efde6b4391fcb400745b05b652301a03a5c04e8ab&w=740',
+];
+
+const BlogsOne = () => {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+    };
+
     return (
-        <div className="bg-white py-24 sm:py-32">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="mx-auto max-w-2xl lg:mx-0">
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Blogs!</h2>
-                    <p className="mt-2 text-lg leading-8 text-gray-600">
-                        Learn how to grow your Leadership by joining with us
+        <div className="w-full lg:flex lg:items-center lg:justify-center mb-10 gap-3">
+            <div className="lg:w-2/3 h-auto mx-auto relative rounded-md shadow-lg mb-8 lg:mb-0">
+                <Slider {...settings}>
+                    {
+                        images.map((img, index) => (
+                            <div
+                                key={index}
+                                style={{backgroundImage: `url(${img})`}}
+                                className="rounded-md"
+                            >
+                                <img src={img} alt="Slide 1"
+                                     className="w-full h-[250px] sm:h-[300px] md:h-[440px] 2xl:h-[600px] bg-cover bg-center rounded-t-md"/>
+                            </div>
+                        ))
+                    }
+                </Slider>
+                <div className="w-full h-full p-2 absolute inset-0 bg-opacity-50 text-rac-white bg-rac-text-b rounded-md
+                                    opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
+                    <h1 className="text-3xl font-bold my-2">Blogs</h1>
+                    <p className="text-base leading-4 my-2">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </p>
-                </div>
-                <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                    {posts.map((post) => (
-                        <article key={post.id} className="flex max-w-xl flex-col items-start justify-between">
-                            <div className="flex items-center gap-x-4 text-xs">
-                                <time dateTime={post.datetime} className="text-gray-500">
-                                    {post.date}
-                                </time>
-                                <a
-                                    href={post.category.href}
-                                    className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
-                                >
-                                    {post.category.title}
-                                </a>
-                            </div>
-                            <div className="group relative">
-                                <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                                    <a href={post.href}>
-                                        <span className="absolute inset-0" />
-                                        {post.title}
-                                    </a>
-                                </h3>
-                                <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.description}</p>
-                            </div>
-                            <div className="relative mt-8 flex items-center gap-x-4">
-                                <img src={post.author.imageUrl} alt="" className="h-10 w-10 rounded-full bg-gray-50" />
-                                <div className="text-sm leading-6">
-                                    <p className="font-semibold text-gray-900">
-                                        <a href={post.author.href}>
-                                            <span className="absolute inset-0" />
-                                            {post.author.name}
-                                        </a>
-                                    </p>
-                                    <p className="text-gray-600">{post.author.role}</p>
-                                </div>
-                            </div>
-                        </article>
-                    ))}
+                    <button className="bg-rac-pink px-5 py-1 rounded-xl my-2">
+                        See more...
+                    </button>
                 </div>
             </div>
+            <div className="lg:w-1/3 relative grid grid-cols-1 gap-3 blog1-outer">
+                {Data.map((data, index) => (
+                    <div key={index} className="h-auto rounded-md bg-trans relative shadow-lg overflow-hidden transform
+                                            transition-transform duration-300 hover:scale-105">
+                        <div
+                            className="w-full h-52 lg:h-[217px] 2xl:h-[294px] bg-no-repeat bg-cover bg-center rounded-t-md"
+                            style={{backgroundImage: `url(${data.img})`}}>
+                        </div>
+                        <div className="w-full h-full text-center p-2 absolute inset-0 bg-opacity-75 bg-rac-text-b text-rac-white
+                        opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
+                            <h1 className="text-xl font-bold my-2">{data.name}</h1>
+                            <p className="text-base leading-4 my-2">{data.description}</p>
+                            <button className="bg-rac-pink px-5 py-1 rounded-xl my-2">See more...</button>
+                        </div>
+                    </div>))}
+            </div>
         </div>
-    )
-}
+    );
+};
+
+export default BlogsOne;
