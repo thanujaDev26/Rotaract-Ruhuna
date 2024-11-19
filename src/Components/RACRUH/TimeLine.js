@@ -1,16 +1,11 @@
 import React, { useEffect } from 'react';
 import 'react-vertical-timeline-component/style.min.css';
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import { FaStar, FaRegCalendarAlt } from 'react-icons/fa';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import './timeline.css';
 
 import InternationalServiceImage from '../../Images/InternationalService.png';
 import EnvironmentalServiceImage from '../../Images/EnvironmentalService.JPG';
 import CommunityServiceImage from '../../Images/CommunityService.jpg';
 import ClubServiceImage from '../../Images/ClubService.jpg';
-import {Link} from "react-router-dom";
 import {useState} from "react";
 
 export default function TimeLine() {
@@ -151,50 +146,74 @@ export default function TimeLine() {
 
     return (
         <div>
-            <div className="tim-container">
-                <div className="vertical-line" style={{border: '3px solid red'}}></div>
+            <div className="tim-container" style={{overflowX: 'hidden'}}>
+                <div className="vertical-line " style={{border: '3px solid black'}}></div>
                 {timelineData.map((item, index) => (
-                    <div key={index} className={`box ${index % 2 === 0 ? 'box-left' : 'box-right'}`}>
+                    <div key={index} className="box-container" style={{
+                        display: 'flex',
+                        flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
+                        alignItems: 'center'
+                    }}>
 
-                        <div className="info" style={{border: '1px solid black'}}>
+                        {/* Text Content */}
+                        <div className="box" style={{flex: 1,border: '1px solid black', margin: '1rem', backgroundColor: 'black'}}>
+                            <div className="info">
+                                <h2 className="text-2xl lg:text-2xl md:text-lg sm:text-xs" style={{
+                                    borderRadius: '25px',
+                                    textAlign: 'center',
+                                    backgroundColor: 'whitesmoke',
+                                    padding: '1vh',
+                                }}>
+                                    {item.year}
+                                </h2>
+                                {item.branches.map((branch, branchIndex) => (
+                                    <div key={branchIndex}>
+                                        <b><h3>{branchIndex + 1} - {branch.title}</h3></b>
+                                        <p>{branch.date ? `${branch.date}: ` : ''}{branch.description}</p>
+                                    </div>
+                                ))}
 
-                            <h2>{item.year}</h2>
-                            {item.branches.map((branch, branchIndex) => (
-                                <div key={branchIndex}>
-                                    <b><h3>{branchIndex + 1} -  {branch.title}</h3></b>
-                                    <p>{branch.date ? `${branch.date}: ` : ''}{branch.description}</p>
-                                </div>
-                            ))}
+                                <button
+                                    className="mb-4 rounded-lg bg-gradient-to-r from-blue-500 to-teal-500 px-6 py-3 text-sm font-medium text-white shadow-md transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 hover:shadow-lg"
+                                    onClick={() => toggleExpand(index)}>
+                                    {expandedItem === index ? 'Show less' : 'Learn more...'}
+                                </button>
 
 
-                            <button
-                                className="mb-4 rounded-md bg-gray-300 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
-                                onClick={() => toggleExpand(index)}>
-                                {expandedItem === index ? 'Show less' : 'Learn more...'}
-                            </button>
-
-
-                            {expandedItem === index && (
-                                <div className="additional-content">
-                                    {item.significantProjects && item.significantProjects.map((project, projectIndex) => (
-                                        <div key={projectIndex}>
-                                            <b><h4>Project {projectIndex + 1} - {project.title}</h4></b>
-                                            <p>{project.description}</p>
-                                        </div>
-                                    ))}
-                                    {item.ongoingProjects && item.ongoingProjects.length > 0 && (
-                                        <div>
-                                            <h4>Ongoing Projects</h4>
-                                            <ul>
-                                                {item.ongoingProjects.map((project, projectIndex) => (
-                                                    <li key={projectIndex}>{project}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
-                                </div>
-                            )}
+                                {expandedItem === index && (
+                                    <div className="additional-content">
+                                        {item.significantProjects && item.significantProjects.map((project, projectIndex) => (
+                                            <div key={projectIndex}>
+                                                <b><h4>Project {projectIndex + 1} - {project.title}</h4></b>
+                                                <p>{project.description}</p>
+                                            </div>
+                                        ))}
+                                        {item.ongoingProjects && item.ongoingProjects.length > 0 && (
+                                            <div>
+                                                <h4>Ongoing Projects</h4>
+                                                <ul>
+                                                    {item.ongoingProjects.map((project, projectIndex) => (
+                                                        <li key={projectIndex}>{project}</li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
                         </div>
+
+                        {/* Image */}
+                        <div className="box hidden lg:block" style={{flex: 1}}>
+                            <img src={item.images[0]} alt={`Image for ${item.year}`}
+                                 style={{
+                                     width: '100%',
+                                     height: 'auto',
+                                     objectFit: 'cover',
+                                     border: '1px solid black'
+                                 }}/>
+                        </div>
+
                     </div>
                 ))}
             </div>
