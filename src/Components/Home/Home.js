@@ -266,7 +266,7 @@ export default function Home(props) {
                         <img className="mt-4 w-full lg:mt-10 rounded-lg"
                              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png"
                              alt="office content 2"></img>
-                        <img className="mt-4 w-full  rounded-lg"
+                        <img className=" w-full  rounded-lg"
                              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png"
                              alt="office content 2"></img>
                     </div>
@@ -290,8 +290,8 @@ export default function Home(props) {
 
                 </div>
             </div>
-            <div className={"flex flex-row gap-12 justify-center "}>
-                <div className="flex p-4 max-w-3xl h-[400px]  mb-10  bg-white shadow-xl rounded-lg">
+            <div className={"flex lg:flex-row flex-col gap-12 justify-center "}>
+                <div className="flex p-4 max-w-3xl h-[400px] mx-auto mb-10  bg-white shadow-xl rounded-lg">
                     <div className="flex-shrink-0">
                         {/* Message Icon */}
                         <div className="bg-green-100 text-green-500 rounded-full p-2">
@@ -324,7 +324,7 @@ export default function Home(props) {
                 </div>
 
 
-                <div className="w-full max-w-xs bg-white  rounded-lg shadow ">
+                <div className="w-full max-w-xs mx-auto bg-white  rounded-lg shadow ">
                     <div className="flex flex-col items-center pb-10">
                         <img className="w-auto h-96 mb-3 shadow-lg" src={President} alt="President"/>
                         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-black">Rtr.Nuhansi Gunawardhana</h5>
