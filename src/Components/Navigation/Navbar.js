@@ -4,7 +4,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { NavLink } from 'react-router-dom';
 import '../components.css';
 
-export default function Navbar(props) {
+export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const handleNavLinkClick = () => {
@@ -12,114 +12,53 @@ export default function Navbar(props) {
     };
 
     return (
-        <div className="container">
-            <NavLink to="/">
-            <img className="h-12 flex items-start justify-between mx-5 mt-5" src={require('../../Images/RACRUH Logo Cranberry.png')} alt="" />
-            </NavLink>
-            <div className="bg-white navbar">
-                <header className="absolute inset-x-0 top-10">
-                    <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-                        <div className="flex lg:flex-1" />
-                        <div className="flex lg:hidden">
-                            <button
-                                type="button"
-                                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                                onClick={() => setMobileMenuOpen(true)}
-                            >
-                                <span className="sr-only">Open main menu</span>
-                                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-                            </button>
-                        </div>
-                        <div className="hidden lg:flex lg:gap-x-12 justify-center lg:justify-start">
-                            <NavLink to="/" className="text-base 2xl:text-xl font-semibold leading-6 text-gray-900 hover:text-pink focus:text-pink">
-                                Home
-                            </NavLink>
-                            <NavLink to="/about-us" className="text-base 2xl:text-xl  font-semibold leading-6 text-gray-900 hover:text-pink focus:text-pink">
-                                RACRUH
-                            </NavLink>
-                            <NavLink to="/avenues" className="text-base 2xl:text-xl font-semibold leading-6 text-gray-900 hover:text-pink focus:text-pink">
-                                Avenues
-                            </NavLink>
-                            <NavLink to="/blog" className="text-base 2xl:text-xl font-semibold leading-6 text-gray-900 hover:text-pink focus:text-pink">
-                                Blog
-                            </NavLink>
-                            <NavLink to="/contact-us" className="text-base 2xl:text-xl font-semibold leading-6 text-gray-900 hover:text-pink focus:text-pink">
-                                Contact Us
-                            </NavLink>
-                        </div>
-                        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                            <NavLink to="/explore" className="text-base 2xl:text-xl font-semibold leading-6 text-gray-900 hover:text-pink focus:text-pink">
-                                Explore <span aria-hidden="true">&rarr;</span>
-                            </NavLink>
-                        </div>
-                    </nav>
-                    <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
-                        <div className="fixed inset-0 z-50 top-0" />
-                        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white-1 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                            <div className="flex items-center justify-between">
-                                <button
-                                    type="button"
-                                    className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    <span className="sr-only">Close menu</span>
-                                    <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                                </button>
-                            </div>
-                            <div className="mt-6 flow-root">
-                                <div className="-my-6 divide-y divide-gray-500/10">
-                                    <div className="space-y-2 py-6">
-                                        <NavLink
-                                            to="/"
-                                            className="text-sm font-semibold leading-6 text-gray-900 block px-3 py-2 rounded-lg"
-                                            onClick={handleNavLinkClick}
-                                        >
-                                            Home
-                                        </NavLink>
-                                        <NavLink
-                                            to="/about-us"
-                                            className="text-sm font-semibold leading-6 text-gray-900 block px-3 py-2 rounded-lg"
-                                            onClick={handleNavLinkClick}
-                                        >
-                                            RACRUH
-                                        </NavLink>
-                                        <NavLink
-                                            to="/avenues"
-                                            className="text-sm font-semibold leading-6 text-gray-900 block px-3 py-2 rounded-lg"
-                                            onClick={handleNavLinkClick}
-                                        >
-                                            Avenues
-                                        </NavLink>
-                                        <NavLink
-                                            to="/blog"
-                                            className="text-sm font-semibold leading-6 text-gray-900 block px-3 py-2 rounded-lg"
-                                            onClick={handleNavLinkClick}
-                                        >
-                                            Blog
-                                        </NavLink>
-                                        <NavLink
-                                            to="/contact-us"
-                                            className="text-sm font-semibold leading-6 text-gray-900 block px-3 py-2 rounded-lg"
-                                            onClick={handleNavLinkClick}
-                                        >
-                                            Contact Us
-                                        </NavLink>
-                                    </div>
-                                    <div className="py-6">
-                                        <NavLink
-                                            to="/explore"
-                                            className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900"
-                                            onClick={handleNavLinkClick}
-                                        >
-                                            Explore
-                                        </NavLink>
-                                    </div>
-                                </div>
-                            </div>
-                        </DialogPanel>
-                    </Dialog>
-                </header>
-            </div>
+        <div className="bg-white shadow-md">
+            <nav className="flex items-center justify-between px-6 py-4 lg:px-12">
+                {/* Left Side - Logo */}
+                <NavLink to="/">
+                    <img className="h-12" src={require('../../Images/RACRUH Logo Cranberry.png')} alt="RACRUH Logo" />
+                </NavLink>
+
+                {/* Center - Navigation Links */}
+                <div className="hidden lg:flex lg:gap-x-12">
+                    <NavLink to="/" className="text-base font-semibold text-rac-gray-900 hover:text-red-500">Home</NavLink>
+                    <NavLink to="/about-us" className="text-base font-semibold text-rac-gray-900 hover:text-red-500">RACRUH</NavLink>
+                    <NavLink to="/avenues" className="text-base font-semibold text-rac-gray-900 hover:text-red-500">Avenues</NavLink>
+                    <NavLink to="/blog" className="text-base font-semibold text-rac-gray-900 hover:text-red-500">Blog</NavLink>
+                    <NavLink to="/contact-us" className="text-base font-semibold text-rac-gray-900 hover:text-red-500">Contact Us</NavLink>
+                </div>
+
+                {/* Right Side - Explore Button */}
+                <div className="hidden lg:flex">
+                    <NavLink to="/explore" className="text-base font-semibold text-rac-gray-900 hover:text-red-500">Explore →</NavLink>
+                </div>
+
+                {/* Mobile Menu Button */}
+                <div className="lg:hidden">
+                    <button type="button" className="p-2 text-gray-700" onClick={() => setMobileMenuOpen(true)}>
+                        <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                    </button>
+                </div>
+            </nav>
+
+            {/* Mobile Menu */}
+            <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+                <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white p-6 shadow-lg">
+                    <div className="flex items-center justify-between">
+                        <button type="button" className="p-2 text-gray-700" onClick={() => setMobileMenuOpen(false)}>
+                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                        </button>
+                    </div>
+                    <div className="mt-6 space-y-4">
+                        <NavLink to="/" className="block text-base font-semibold text-rac-gray-900" onClick={handleNavLinkClick}>Home</NavLink>
+                        <NavLink to="/about-us" className="block text-base font-semibold text-rac-gray-900" onClick={handleNavLinkClick}>RACRUH</NavLink>
+                        <NavLink to="/avenues" className="block text-base font-semibold text-rac-gray-900" onClick={handleNavLinkClick}>Avenues</NavLink>
+                        <NavLink to="/blog" className="block text-base font-semibold text-rac-gray-900" onClick={handleNavLinkClick}>Blog</NavLink>
+                        <NavLink to="/contact-us" className="block text-base font-semibold text-rac-gray-900" onClick={handleNavLinkClick}>Contact Us</NavLink>
+                        <NavLink to="/explore" className="block text-base font-semibold text-rac-gray-900" onClick={handleNavLinkClick}>Explore</NavLink>
+                    </div>
+                </DialogPanel>
+            </Dialog>
         </div>
     );
 }

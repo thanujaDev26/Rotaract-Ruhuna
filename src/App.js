@@ -3,7 +3,7 @@ import Navbar from "./Components/Navigation/Navbar";
 import {Route, Routes, useNavigate} from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Avenues from "./Components/Avenues/Avenues";
-import Blogs from "./Components/Blogs/Blogs";
+import Blogs from "./Components/Blogs/BlogNew";
 import Contact from "./Components/Contact/Contactus";
 import Footer from "./Components/Navigation/Footer";
 import DirectorBoard from "./Components/Explore/DirectorBoard";

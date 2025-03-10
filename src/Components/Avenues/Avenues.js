@@ -400,7 +400,7 @@ export default function Avenues(props) {
                         <div
                             id={service.id}
                             key={service.id}
-                            className={`mx-5 sm:mx-10 md:mx-5 lg:mx-28 mb-10 flex flex-col lg:flex-row  ${
+                            className={`mx-5 my-10 sm:mx-10 md:mx-5 lg:mx-28 mb-10 flex flex-col lg:flex-row  ${
                                 index % 2 !== 0 ? "lg:flex-row-reverse" : ""
                             } section`}
                             ref={(el) => (sectionsRef.current[index] = el)}
