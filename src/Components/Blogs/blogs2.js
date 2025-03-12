@@ -17,7 +17,7 @@ export default function BlogsOne() {
 
     return (<div className="relative bg-white my-5">
         <div
-            className={classNames('fixed inset-0 transition-opacity duration-700 ease-in-out', scrollY > 200 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',)}
+            className={classNames('fixed inset-0 transition-opacity duration-700 ease-in-out', scrollY > 450 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',)}
             aria-hidden="true"
         >
             <img
@@ -27,7 +27,7 @@ export default function BlogsOne() {
             />
         </div>
         <div className="relative mx-auto text-center sm:w-[450px] md:w-[550px] lg:w-[900px] card-set-header">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold tracking-tight text-gray-900">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold tracking-tight text-rac-gray-900">
                 Rotaract Club of University of Ruhuna Blog
             </h2>
         </div>
@@ -38,11 +38,11 @@ export default function BlogsOne() {
                     <div className="w-full h-52 xl:h-[300px] 2xl:h-[400px] bg-no-repeat bg-cover bg-center rounded-t-md"
                          style={{backgroundImage: `url(${data.img})`}}>
                     </div>
-                    <div className="w-full h-full text-center p-2 absolute inset-0 bg-opacity-75 bg-text-b text-white-1
+                    <div className="w-full h-full text-center p-2 absolute inset-0 bg-opacity-75 bg-rac-text-b text-rac-white
                         opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
                         <h1 className="text-xl font-bold my-2">{data.name}</h1>
                         <p className="text-base leading-4 my-2">{data.description}</p>
-                        <button className="bg-pink px-5 py-1 rounded-xl my-2">See more...</button>
+                        <button className="bg-rac-pink px-5 py-1 rounded-xl my-2">See more...</button>
                     </div>
                 </div>))}
         </div>

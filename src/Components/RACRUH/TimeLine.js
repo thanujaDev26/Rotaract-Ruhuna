@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import 'react-vertical-timeline-component/style.min.css';
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import { FaStar, FaRegCalendarAlt } from 'react-icons/fa';
-import '../components.css';
+import './timeline.css';
 
 import InternationalServiceImage from '../../Images/InternationalService.png';
 import EnvironmentalServiceImage from '../../Images/EnvironmentalService.JPG';
 import CommunityServiceImage from '../../Images/CommunityService.jpg';
 import ClubServiceImage from '../../Images/ClubService.jpg';
+import {useState} from "react";
 
 export default function TimeLine() {
+
+    const [expandedItem, setExpandedItem] = useState(null);
+
     const timelineData = [
         {
             year: '2021',
@@ -25,7 +27,7 @@ export default function TimeLine() {
                     description: 'The club was officially chartered.',
                 },
             ],
-            image : InternationalServiceImage,
+            images : [InternationalServiceImage,EnvironmentalServiceImage]
         },
         {
             year: '2021 - 2022 Term (Leadership of PP Rtr. Yeshan Sandanayake)',
@@ -41,7 +43,7 @@ export default function TimeLine() {
                     description: 'A Christmas get-together held at Buttercup Restaurant in Maharagama, fostering community spirit with activities and traditional Christmas customs.',
                 },
             ],
-            image: EnvironmentalServiceImage
+            images: [EnvironmentalServiceImage, CommunityServiceImage]
         },
         {
             year: '2022 - 2023 Term (Leadership of IPP Rtr. Ishan Madusanka)',
@@ -90,7 +92,7 @@ export default function TimeLine() {
                     description: 'Hosted by Miss. Michelle Dilhara, aimed at self-discovery and empowerment for members.',
                 },
             ],
-            image: CommunityServiceImage
+            images: [CommunityServiceImage, ClubServiceImage]
         },
         {
             year: '2023 - 2024 Term (Leadership of Rtr. Nuhansi Gunawardana)',
@@ -113,86 +115,107 @@ export default function TimeLine() {
                 'Brand Me',
                 'SeaTurl 2.0',
             ],
-            image: ClubServiceImage
+            images: [ClubServiceImage,InternationalServiceImage]
         },
     ];
 
     useEffect(() => {
         const handleScroll = () => {
-            const mainContent = document.getElementById('main-content');
-            const timelineSection = document.getElementById('timeline-section');
-            if (window.scrollY > window.innerHeight / 2) {
-                mainContent.classList.add('hide');
-                timelineSection.classList.add('show');
-            } else {
-                mainContent.classList.remove('hide');
-                timelineSection.classList.remove('show');
-            }
+            const timelineElements = document.querySelectorAll('.vertical-timeline-element');
+            timelineElements.forEach((el, index) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                    el.classList.remove('genie-in');
+                    el.classList.add('genie-out');
+                } else {
+                    el.classList.remove('genie-out');
+                    el.classList.add('genie-in');
+                }
+            });
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+
+    const toggleExpand = (index) => {
+        setExpandedItem(expandedItem === index ? null : index);
+    };
+
+
     return (
         <div>
-            <div id="main-content" >
-                <div id="timeline-section" className="timeline-container">
-                        <VerticalTimeline style={{display: 'block'}}>
-                            <div>
-                                {timelineData.map((yearData, idx) => (
-                                    <VerticalTimelineElement
-                                        key={idx}
-                                        className="vertical-timeline-element--work"
-                                        contentStyle={{background: '#f9f9f9', color: '#333'}}
-                                        contentArrowStyle={{borderRight: '2px solid  #9F000F'}}
-                                        iconStyle={{background: '#C11F45', color: '#ffffff'}}
-                                        icon={<FaRegCalendarAlt/>}
-                                        position={window.innerWidth < 768 ? (idx % 2 === 0 ? 'right' : 'left') : idx % 2 === 0 ? 'left' : 'right'}
-                                    >
-                                        <h3 className="vertical-timeline-element-title text-xl">{yearData.year}</h3>
-                                        <div className="timeline-branches">
-                                            {yearData.branches.map((branch, bIdx) => (
-                                                <div key={bIdx} className="timeline-branch">
-                                                    {branch.date && <span className="timeline-date">{branch.date}</span>}
-                                                    <h4 className="timeline-title">{branch.title}</h4>
-                                                    <p className="timeline-description">{branch.description}</p>
-                                                </div>
-                                            ))}
-                                            {yearData.significantProjects && (
-                                                <div className="timeline-significant-projects">
-                                                    <h4>Significant Projects:</h4>
-                                                    <ul>
-                                                        {yearData.significantProjects.map((project, pIdx) => (
-                                                            <li key={pIdx}>
-                                                                <strong>{project.title}:</strong> {project.description}
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            )}
-                                            {yearData.ongoingProjects && (
-                                                <div className="timeline-ongoing-projects">
-                                                    <h4>Ongoing Projects:</h4>
-                                                    <ul>
-                                                        {yearData.ongoingProjects.map((project, pIdx) => (
-                                                            <li key={pIdx}>{project}</li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </VerticalTimelineElement>
+            <div className="tim-container" style={{overflowX: 'hidden'}}>
+                <div className="vertical-line " style={{border: '3px solid black'}}></div>
+                {timelineData.map((item, index) => (
+                    <div key={index} className="box-container" style={{
+                        display: 'flex',
+                        flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
+                        alignItems: 'center'
+                    }}>
+
+                        {/* Text Content */}
+                        <div className="box" style={{flex: 1,border: '1px solid black', margin: '1rem', backgroundColor: 'black'}}>
+                            <div className="info">
+                                <h2 className="text-2xl lg:text-2xl md:text-lg sm:text-xs" style={{
+                                    borderRadius: '25px',
+                                    textAlign: 'center',
+                                    backgroundColor: 'whitesmoke',
+                                    padding: '1vh',
+                                }}>
+                                    {item.year}
+                                </h2>
+                                {item.branches.map((branch, branchIndex) => (
+                                    <div key={branchIndex}>
+                                        <b><h3>{branchIndex + 1} - {branch.title}</h3></b>
+                                        <p>{branch.date ? `${branch.date}: ` : ''}{branch.description}</p>
+                                    </div>
                                 ))}
-                                <div className="timeline-end-icon">
-                                    <VerticalTimelineElement
-                                        iconStyle={{ background: '#C11F45', color: '#ffffff' }}
-                                        icon={<FaStar/>}
-                                    />
-                                </div>
+
+                                <button
+                                    className="mb-4 rounded-lg bg-gradient-to-r from-blue-500 to-teal-500 px-6 py-3 text-sm font-medium text-white shadow-md transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 hover:shadow-lg"
+                                    onClick={() => toggleExpand(index)}>
+                                    {expandedItem === index ? 'Show less' : 'Learn more...'}
+                                </button>
+
+
+                                {expandedItem === index && (
+                                    <div className="additional-content">
+                                        {item.significantProjects && item.significantProjects.map((project, projectIndex) => (
+                                            <div key={projectIndex}>
+                                                <b><h4>Project {projectIndex + 1} - {project.title}</h4></b>
+                                                <p>{project.description}</p>
+                                            </div>
+                                        ))}
+                                        {item.ongoingProjects && item.ongoingProjects.length > 0 && (
+                                            <div>
+                                                <h4>Ongoing Projects</h4>
+                                                <ul>
+                                                    {item.ongoingProjects.map((project, projectIndex) => (
+                                                        <li key={projectIndex}>{project}</li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
                             </div>
-                        </VerticalTimeline>
-                </div>
+                        </div>
+
+                        {/* Image */}
+                        <div className="box hidden lg:block" style={{flex: 1}}>
+                            <img src={item.images[0]} alt={`Image for ${item.year}`}
+                                 style={{
+                                     width: '100%',
+                                     height: 'auto',
+                                     objectFit: 'cover',
+                                     border: '1px solid black'
+                                 }}/>
+                        </div>
+
+                    </div>
+                ))}
             </div>
         </div>
     );

@@ -12,6 +12,7 @@ export default function Navbar() {
     };
 
     return (
+
         <div className="bg-white shadow-md">
             <nav className="flex items-center justify-between px-6 py-4 lg:px-12">
                 {/* Left Side - Logo */}
@@ -59,6 +60,7 @@ export default function Navbar() {
                     </div>
                 </DialogPanel>
             </Dialog>
+
         </div>
     );
 }

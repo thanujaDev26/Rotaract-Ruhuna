@@ -39,13 +39,13 @@ const BlogsOne = () => {
                         ))
                     }
                 </Slider>
-                <div className="w-full h-full p-2 absolute inset-0 bg-opacity-50 text-white-1 bg-text-b rounded-md
+                <div className="w-full h-full p-2 absolute inset-0 bg-opacity-50 text-rac-white bg-rac-text-b rounded-md
                                     opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold my-2">Blogs</h1>
                     <p className="text-base leading-4 my-2">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </p>
-                    <button className="bg-pink px-5 py-1 rounded-xl my-2">
+                    <button className="bg-rac-pink px-5 py-1 rounded-xl my-2">
                         See more...
                     </button>
                 </div>
@@ -58,11 +58,11 @@ const BlogsOne = () => {
                             className="w-full h-52 lg:h-[217px] 2xl:h-[294px] bg-no-repeat bg-cover bg-center rounded-t-md"
                             style={{backgroundImage: `url(${data.img})`}}>
                         </div>
-                        <div className="w-full h-full text-center p-2 absolute inset-0 bg-opacity-75 bg-text-b text-white-1
+                        <div className="w-full h-full text-center p-2 absolute inset-0 bg-opacity-75 bg-rac-text-b text-rac-white
                         opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
                             <h1 className="text-xl font-bold my-2">{data.name}</h1>
                             <p className="text-base leading-4 my-2">{data.description}</p>
-                            <button className="bg-pink px-5 py-1 rounded-xl my-2">See more...</button>
+                            <button className="bg-rac-pink px-5 py-1 rounded-xl my-2">See more...</button>
                         </div>
                     </div>))}
             </div>

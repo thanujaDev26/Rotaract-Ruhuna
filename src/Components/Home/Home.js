@@ -6,10 +6,17 @@ import ClubServiceImage from '../../Images/ClubService.jpg';
 import SportsServiceImage from '../../Images/SportsService.jpg';
 import President from '../../Images/nuhansi gunawardena president.png'; // Corrected image path
 import ProfessionalDevelopmentImage from '../../Images/ProfessionalDevelopment.jpg';
+
 import { motion, AnimatePresence } from "framer-motion";
 import { CountUp } from 'countup.js';
 import '../../App.css';
 import { Globe2, Users, Award, Sparkles, ArrowRight, Quote } from 'lucide-react';
+
+
+
+
+
+
 
 
 
@@ -244,6 +251,7 @@ const cardData = [
 export default function Home(props) {
     return (
         <div className={Home}>
+
             <div
                 className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br ">
                 {/* Animated background shapes */}
@@ -318,6 +326,7 @@ export default function Home(props) {
                                     src={President}
                                     alt="President"
                                     className="w-full rounded-2xl shadow-xl"
+
                                 />
                             </div>
                             <div className="md:w-2/3">
@@ -334,6 +343,8 @@ export default function Home(props) {
                             </div>
                         </motion.div>
                     </div>
+
+
                 </div>
             </div>
             {/* Features Section */}

@@ -62,7 +62,8 @@ export default function Form(props) {
             message: message
         };
 
-        props.user(user);
+        props.getUserBE(user);
+
         setUserInput({
             name: '',
             email: '',
