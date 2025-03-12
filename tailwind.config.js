@@ -25,6 +25,7 @@ module.exports = {
     },
     plugins: [
         require('@tailwindcss/forms'),
+
       function ({ addUtilities }) {
         const newUtilities = {
           '@media (min-width: 1024px) and (max-width: 1600px)': {
@@ -46,6 +47,7 @@ module.exports = {
 
         addUtilities(newUtilities, ['responsive']);
       },
+
     ],
 }
 

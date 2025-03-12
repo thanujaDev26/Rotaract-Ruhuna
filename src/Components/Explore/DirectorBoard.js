@@ -1,275 +1,375 @@
-import {useState} from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function DirectorBoard(props) {
-
-    const directorAvenues = [
+    const positions = [
         'Club Services',
         'International',
         'Environmental',
         'Sports',
         'Membership',
-        'Public Relational',
+        'Public Relations',
         'Professional'
     ];
 
+    const [user, setUser] = useState({
+        email: '', full_name: '', contact: '', club_ID: '', faculty: '', student_id: '',
+        projects: '', positions: '', skills: '',
+        choiceOne: '', choiceTwo: '', choiceThree: ''
+    });
     const [selectedChoices, setSelectedChoices] = useState({
         first: '',
         second: '',
         third: ''
     });
     const [lockedOptions, setLockedOptions] = useState([]);
-    const handleChoiceChange = (choice, avenue) => {
-        if (selectedChoices[choice] !== '') {
-            alert('Cannot select 2 options in the same choice');
-            return;
-        }
-        setSelectedChoices(prevChoices => ({
-            ...prevChoices,
-            [choice]: avenue
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setUser((prev) => ({
+            ...prev,
+            [name]: value
         }));
-        setLockedOptions(prevOptions => [...prevOptions, avenue]);
     };
+
+    const handleChoiceChange = (choice, avenue) => {
+        const newChoices = {
+            first: choice === "first" ? avenue : selectedChoices.first,
+            second: choice === "second" ? avenue : selectedChoices.second,
+            third: choice === "third" ? avenue : selectedChoices.third
+        };
+
+        setSelectedChoices(newChoices);
+        setLockedOptions(Object.values(newChoices)); // Lock all selected options
+    };
+
     const isOptionDisabled = (choice, avenue) => {
-        return selectedChoices[choice] !== '' || lockedOptions.includes(avenue);
-    };
-    const isOptionLocked = (choice, avenue) => {
         return lockedOptions.includes(avenue);
     };
 
+    const onSubmitHandler = (event) => {
+        event.preventDefault();
 
+        const NewUser = {
+            ...user,
+            choiceOne: selectedChoices.first,
+            choiceTwo: selectedChoices.second,
+            choiceThree: selectedChoices.third
+        };
+
+        console.log(NewUser);
+
+        setUser({
+            email: '', full_name: '', contact: '', club_ID: '', faculty: '', student_id: '',
+            projects: '', positions: '', skills: '', choiceOne: '',
+            choiceTwo: '', choiceThree: ''
+        });
+
+        setSelectedChoices({
+            first: '',
+            second: '',
+            third: ''
+        });
+        setLockedOptions([]);
+    };
+
+    const onClearHandler = (event) => {
+        event.preventDefault();
+
+        setUser({
+            email: '', full_name: '', contact: '', club_ID: '', faculty: '', student_id: '',
+            projects: '', positions: '', skills: '', choiceOne: '',
+            choiceTwo: '', choiceThree: ''
+        });
+
+        setSelectedChoices({
+            first: '',
+            second: '',
+            third: ''
+        });
+
+        setLockedOptions([]);
+    };
+
+    const navigate = useNavigate();
+
+    const onBackHandler = () => {
+        navigate(-1)
+    };
     return (
-        <div style={{padding : '2rem', margin : '1rem', borderRadius : '1rem'}}>
-            <form>
+        <div style={{padding: '2rem', margin: '1rem', borderRadius: '1rem'}}>
+            <button
+                onClick={onBackHandler}
+                className="mb-4 rounded-md bg-gray-300 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+            >
+                Back
+            </button>
+            <form onSubmit={onSubmitHandler}>
                 <div className="space-y-12">
                     <div className="border-b border-gray-900/10 pb-12">
                         <h2 className="text-3xl font-semibold leading-7 text-gray-900">Director Board 2024 - 25
                             Application</h2>
                         <p className="mt-3 text-sm leading-6 text-gray-600">
                             <strong>Calling all ambitious Rotaractors!</strong> This is your chance to take your
-                            Rotaract experience
-                            to the next level.We're thrilled to announce the launch of applications for the <strong>
-                            Director Board of the Rotaract Club of University of Ruhuna for the RI year 2024 - 25
-                        </strong>
+                            Rotaract experience to the next level. We're thrilled to announce the launch of applications
+                            for the <strong>Director
+                            Board of the Rotaract Club of University of Ruhuna for the RI year 2024 - 25</strong>
                         </p>
                     </div>
-                    <div className="sm:col-span-4 ">
-                        <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                            Email address
-                        </label>
-                        <div className="mt-2">
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                autoComplete="email"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="sm:col-span-3">
-                        <label htmlFor="first-name"
-                               className="block text-sm font-medium leading-6 text-gray-900">
-                            Full Name
-                        </label>
-                        <div className="mt-2">
-                            <input
-                                type="text"
-                                name="full-name"
-                                id="full-name"
-                                autoComplete="given-name"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="sm:col-span-3">
-                        <label htmlFor="contact-number"
-                               className="block text-sm font-medium leading-6 text-gray-900">
-                            Contact Number ( <strong>Whats App preferred</strong> )
-                        </label>
-                        <div className="mt-2">
-                            <input
-                                type="tel"
-                                name="contact-number"
-                                id="contact-number"
-                                autoComplete="tel"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="sm:col-span-3">
-                        <label htmlFor="club-id"
-                               className="block text-sm font-medium leading-6 text-gray-900">
-                            Club ID
-                        </label>
-                        <div className="mt-2">
-                            <input
-                                type="text"
-                                name="club-id"
-                                id="club-id"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="sm:col-span-3">
-                        <label htmlFor="country" className="block text-sm font-medium leading-6 text-gray-900">
-                            Faculty
-                        </label>
-                        <div className="mt-2">
-                            <select
-                                id="faculty"
-                                name="faculty"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                            >
-                                <option>Faculty of Agriculture</option>
-                                <option>Faculty of Engineering</option>
-                                <option>Faculty of Medicine</option>
-                                <option>Faculty of Management and Finance</option>
-                                <option>Faculty of Humanities and Social Sciences</option>
-                                <option>Faculty of Science</option>
-                                <option>Faculty of Allied Health Science</option>
-                                <option>Faculty of Technology</option>
-                                <option>Faculty of Fisheries and Marine Science Technology</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div className="sm:col-span-3">
-                        <label htmlFor="student-id"
-                               className="block text-sm font-medium leading-6 text-gray-900">
-                            Student ID
-                        </label>
-                        <div className="mt-2">
-                            <input
-                                type="text"
-                                name="student-id"
-                                id="student-id"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="sm:col-span-3">
-                        <label htmlFor="join-date"
-                               className="block text-sm font-medium leading-6 text-gray-900">
-                            Club joined date
-                        </label>
-                        <div className="mt-2">
-                            <input
-                                type="date"
-                                name="join-date"
-                                id="join-date"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            />
-                        </div>
-
-                    </div>
-
-                    <div className="col-span-full">
-                        <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
-                            <strong>Projects</strong> ( Please clearly mention the projects you have
-                            participated and
-                            the positions you held in the project OCs ) <strong>( Clear the example below )</strong>
-                        </label>
-                        <div className="mt-2">
-                                    <textarea
-                                        id="about"
-                                        name="about"
-                                        rows={3}
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        defaultValue={'Ps: if you\'re a member of Public Relations Team/ Editorial Team' +
-                                            'please mention the projects you have given contribution as a graphic' +
-                                            'designer/content writer/video editor in this section also.'}/>
-                        </div>
-
-                    </div>
-
-                    <div className="col-span-full">
-                        <label htmlFor="positions" className="block text-sm font-medium leading-6 text-gray-900">
-                            <strong>Positions you held ( In the Executive Committee/ Director Board/
-                                Leadership Body/ Back office functions)</strong>
-                            <br/>
-                            Ps. In this section clearly mention the positions you have held so far
-                            in the club and the back office teams you have been in. <strong>( Clear the example below
-                            )</strong>
-                        </label>
-                        <div className="mt-2">
-                            <textarea
-                                id="positions"
-                                name="positions"
-                                rows={3}
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1
-                                ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset
-                                focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                defaultValue={
-                                    'Platform Coordinator (2021-22)\n' +
-                                    'Community Service Director (2022-23)\n' +
-                                    'Dynamic Blu/MD/ Finance/ Platform team member'
-                                }
-                            />
-                        </div>
-                    </div>
-
-                    <div className="col-span-full">
-                        <label htmlFor="volunteer" className="block text-sm font-medium leading-6 text-gray-900">
-                            <strong>Projects volunteered</strong> ( If any )
-                        </label>
-                        <div className="mt-2">
-                                    <textarea
-                                        id="volunteer"
-                                        name="volunteer"
-                                        rows={3}
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        {/* First Column Inputs */}
+                        <div className="space-y-4">
+                            <div>
+                                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                                    Email address
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        id="email"
+                                        name="email"
+                                        value={user.email}
+                                        onChange={handleInputChange}
+                                        type="email"
+                                        autoComplete="email"
+                                        className="block w-full rounded-md border border-gray-300 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
                                     />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label htmlFor="full_name"
+                                       className="block text-sm font-medium leading-6 text-gray-900">
+                                    Full Name
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        type="text"
+                                        name="full_name"
+                                        value={user.full_name}
+                                        onChange={handleInputChange}
+                                        id="full_name"
+                                        autoComplete="given-name"
+                                        className="block w-full rounded-md border border-gray-300 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label htmlFor="contact" className="block text-sm font-medium leading-6 text-gray-900">
+                                    Contact Number ( <strong>WhatsApp preferred</strong> )
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        type="tel"
+                                        name="contact"
+                                        value={user.contact}
+                                        onChange={handleInputChange}
+                                        id="contact"
+                                        autoComplete="tel"
+                                        className="block w-full rounded-md border border-gray-300 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label htmlFor="club_ID" className="block text-sm font-medium leading-6 text-gray-900">
+                                    Club ID
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        type="text"
+                                        name="club_ID"
+                                        value={user.club_ID}
+                                        onChange={handleInputChange}
+                                        id="club_ID"
+                                        className="block w-full rounded-md border border-gray-300 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="lg:max-w-xl">
+                                <label htmlFor="faculty"
+                                       className="block text-sm font-medium leading-6 text-gray-900">Faculty</label>
+                                <select
+                                    value={user.faculty}
+                                    onChange={handleInputChange}
+                                    id="faculty"
+                                    name="faculty"
+                                    className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-red-600 focus:border-red-600 sm:text-sm"
+                                >
+                                    <option value="">Select Faculty</option>
+                                    <option value="Faculty of Agriculture">Faculty of Agriculture</option>
+                                    <option value="Faculty of Engineering">Faculty of Engineering</option>
+                                    <option value="Faculty of Medicine">Faculty of Medicine</option>
+                                    <option value="Faculty of Management and Finance">Faculty of Management and
+                                        Finance
+                                    </option>
+                                    <option value="Faculty of Humanities and Social Sciences">Faculty of Humanities and
+                                        Social Sciences
+                                    </option>
+                                    <option value="Faculty of Science">Faculty of Science</option>
+                                    <option value="Faculty of Allied Health Science">Faculty of Allied Health Science
+                                    </option>
+                                    <option value="Faculty of Technology">Faculty of Technology</option>
+                                    <option value="Faculty of Fisheries and Marine Science Technology">Faculty of
+                                        Fisheries and Marine Science Technology
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label htmlFor="student_id"
+                                       className="block text-sm font-medium leading-6 text-gray-900">
+                                    Student ID
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        type="text"
+                                        name="student_id"
+                                        value={user.student_id}
+                                        onChange={handleInputChange}
+                                        id="student_id"
+                                        className="block w-full rounded-md border border-gray-300 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="space-y-4">
+                            <div>
+                                <label htmlFor="projects" className="block text-sm font-medium leading-6 text-gray-900">
+                                    <strong>Projects</strong> ( Please clearly mention the projects you have
+                                    participated and the positions you held in the project OCs )
+                                </label>
+                                <div className="mt-2 lg:mt-6">
+                                    <textarea
+                                        id="projects"
+                                        name="projects"
+                                        value={user.projects}
+                                        onChange={handleInputChange}
+                                        rows={3}
+                                        className="block w-full rounded-md border border-gray-300 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                                        defaultValue={
+                                            'Ps: if you\'re a member of Public Relations Team/ Editorial Team' +
+                                            'please mention the tasks you have carried out to date'
+                                        }
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label htmlFor="positions"
+                                       className="block text-sm font-medium leading-6 text-gray-900">
+                                    <strong>Positions</strong> ( Please clearly mention the positions you held in club )
+                                </label>
+                                <div className="mt-2 lg:mt-6">
+                                    <textarea
+                                        id="positions"
+                                        name="positions"
+                                        value={user.positions}
+                                        onChange={handleInputChange}
+                                        rows={3}
+                                        className="block w-full rounded-md border border-gray-300 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label htmlFor="skills" className="block text-sm font-medium leading-6 text-gray-900">
+                                    Skills
+                                </label>
+                                <div className="mt-2">
+                                    <textarea
+                                        id="skills"
+                                        name="skills"
+                                        value={user.skills}
+                                        onChange={handleInputChange}
+                                        rows={3}
+                                        className="block w-full rounded-md border border-gray-300 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mt-8 border-t border-gray-900/10 pt-12">
+                        <h3 className="text-xl font-semibold leading-6 text-gray-900">Board Position Choices</h3>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+                            <div>
+                                <label className="block text-sm font-medium leading-6 text-gray-900">
+                                    First Choice
+                                </label>
+                                <select
+                                    value={selectedChoices.first}
+                                    onChange={(e) => handleChoiceChange("first", e.target.value)}
+                                    className="mt-2 block w-full rounded-md border border-gray-300 shadow-sm focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm"
+                                >
+                                    <option value="">Select First Choice</option>
+                                    {positions.map((position) => (
+                                        <option
+                                            key={position}
+                                            value={position}
+                                            disabled={isOptionDisabled("first", position)}
+                                        >
+                                            {position}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium leading-6 text-gray-900">
+                                    Second Choice
+                                </label>
+                                <select
+                                    value={selectedChoices.second}
+                                    onChange={(e) => handleChoiceChange("second", e.target.value)}
+                                    className="mt-2 block w-full rounded-md border border-gray-300 shadow-sm focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm"
+                                >
+                                    <option value="">Select Second Choice</option>
+                                    {positions.map((position) => (
+                                        <option
+                                            key={position}
+                                            value={position}
+                                            disabled={isOptionDisabled("second", position)}
+                                        >
+                                            {position}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium leading-6 text-gray-900">
+                                    Third Choice
+                                </label>
+                                <select
+                                    value={selectedChoices.third}
+                                    onChange={(e) => handleChoiceChange("third", e.target.value)}
+                                    className="mt-2 block w-full rounded-md border border-gray-300 shadow-sm focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm"
+                                >
+                                    <option value="">Select Third Choice</option>
+                                    {positions.map((position) => (
+                                        <option
+                                            key={position}
+                                            value={position}
+                                            disabled={isOptionDisabled("third", position)}
+                                        >
+                                            {position}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-
-                <div className="mt-4 px-4">
-                    <fieldset>
-                        <legend className="text-sm font-semibold leading-6 text-gray-900">
-                            Avenue director position you are applying to,
-                        </legend>
-                        <div className="mt-6">
-                            {['first', 'second', 'third'].map((choice, idx) => (
-                                <div key={choice} className="mb-6">
-                                    <div className="text-sm font-medium leading-6 text-gray-900 mb-2">
-                                        {idx + 1}<sup>{['st', 'nd', 'rd'][idx]}</sup> Choice
-                                    </div>
-                                    <div
-                                        className="grid grid-cols-2 sm:grid-cols-3 lg:flex flex-wrap gap-4 justify-center lg:justify-between">
-                                        {directorAvenues.map((avenue, index) => (
-                                            <label key={avenue}
-                                                   className="flex items-center justify-start lg:justify-center w-full sm:w-1/3 lg:w-auto">
-                                                <input
-                                                    type="radio"
-                                                    name={`${choice}-choice`}
-                                                    value={avenue.toLowerCase().replace(' ', '-')}
-                                                    className="h-4 w-4 border-gray-300 text-red-600 focus:ring-red-600"
-                                                    checked={selectedChoices[choice] === avenue.toLowerCase().replace(' ', '-')}
-                                                    onChange={() => handleChoiceChange(choice, avenue.toLowerCase().replace(' ', '-'))}
-                                                    disabled={isOptionDisabled(choice, avenue.toLowerCase().replace(' ', '-'))}
-                                                />
-                                                <span
-                                                    className={`ml-2 text-sm ${isOptionLocked(choice, avenue.toLowerCase().replace(' ', '-')) ? 'text-gray-400' : 'text-gray-900'}`}>
-                  {avenue}
-                </span>
-                                            </label>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </fieldset>
-                </div>
-
-
-                <div className="mt-6 flex items-center justify-center gap-x-6">
-                    <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
+                <div className="mt-8 flex items-center justify-center gap-x-6">
+                    <button
+                        onClick={onClearHandler}
+                        className="text-sm font-semibold leading-6 text-gray-900"
+                    >
                         Clear
                     </button>
                     <button
@@ -281,5 +381,5 @@ export default function DirectorBoard(props) {
                 </div>
             </form>
         </div>
-    )
+    );
 }

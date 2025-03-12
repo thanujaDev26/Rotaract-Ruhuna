@@ -7,8 +7,11 @@ import SportsServiceImage from '../../Images/SportsService.jpg';
 import President from '../../Images/nuhansi gunawardena president.png';
 import ProfessionalDevelopmentImage from '../../Images/ProfessionalDevelopment.jpg';
 import { motion } from "framer-motion";
-import { CountUp } from 'countup.js';
-import '../../App.css';
+
+import '../components.css'
+
+
+
 
 
 const BounceCard = ({ className, children, style, description }) => {
@@ -182,8 +185,10 @@ const cardData = [
 export default function Home(props) {
     return (
         <div className={Home}>
+
             <div className="bg-white dark:bg-gray-900 ">
                 <div className="grid max-w-screen-2xl py-8 mx-auto  xl:gap-0 lg:py-16 lg:grid-cols-12 lg:px-4">
+
                     <div className="mr-auto place-self-center lg:col-span-6">
                         <h1 className="max-w-2xl mb-4 px-2 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
                             Payments tool for software companies
@@ -193,13 +198,13 @@ export default function Home(props) {
                             simplify their payment stack.
                         </p>
                         <div>
-
-
                         </div>
                     </div>
+
                     <div className="hidden lg:mt-0 lg:col-span-6 lg:flex   ">
                         <div className={"w-full scale-75 2xl:scale-100 p-0 m-0 overflow-visible"}>
                             <svg className={"w-full"} height="500">
+
                                 <defs>
                                     <clipPath id="image">
                                         <rect x="10" y="70" width="43%" height="22%" rx="70" ry="50"
@@ -217,14 +222,16 @@ export default function Home(props) {
                                     </clipPath>
                                 </defs>
                                 <image
-                                    className={"object-cover w-full"}
+                                    className={"object-contain w-full h-auto"}
                                     height="500"
-                                    href={ClubServiceImage} // Use the correct image import
+                                    href={ClubServiceImage}
                                     clipPath="url(#image)"
                                 />
                             </svg>
                         </div>
                     </div>
+
+
                 </div>
             </div>
             <div className="bg-white ">
