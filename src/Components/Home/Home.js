@@ -1,18 +1,102 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import InternationalServiceImage from '../../Images/InternationalService.png';
 import EnvironmentalServiceImage from '../../Images/EnvironmentalService.JPG';
 import CommunityServiceImage from '../../Images/CommunityService.jpg';
 import ClubServiceImage from '../../Images/ClubService.jpg';
 import SportsServiceImage from '../../Images/SportsService.jpg';
-import President from '../../Images/nuhansi gunawardena president.png';
+import President from '../../Images/nuhansi gunawardena president.png'; // Corrected image path
 import ProfessionalDevelopmentImage from '../../Images/ProfessionalDevelopment.jpg';
-import { motion } from "framer-motion";
 
-import '../components.css'
+import { motion, AnimatePresence } from "framer-motion";
+import { CountUp } from 'countup.js';
+import '../../App.css';
+import { Globe2, Users, Award, Sparkles, ArrowRight, Quote } from 'lucide-react';
 
 
 
 
+
+
+
+
+
+
+const heroImages = [
+    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2940&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2940&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1559024094-4a1e4495c3c1?q=80&w=2940&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2940&auto=format&fit=crop"
+];
+
+const AnimatedShape = ({ className }) => (
+    <motion.div
+        className={`absolute rounded-full mix-blend-multiply filter blur-xl opacity-70 ${className}`}
+        animate={{
+            scale: [1, 2, 2, 1, 1],
+            rotate: [0, 0, 270, 270, 0],
+            borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+        }}
+        transition={{
+            duration: 12,
+            ease: "easeInOut",
+            repeat: Infinity,
+        }}
+    />
+);
+
+const ImageCarousel = ({ images }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [images.length]);
+
+    return (
+        <div className="relative w-full h-[500px] rounded-2xl overflow-hidden">
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={currentIndex}
+                    className="absolute inset-0"
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                >
+                    <motion.div
+                        className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1 }}
+                    />
+                    <motion.img
+                        src={images[currentIndex]}
+                        alt="Featured"
+                        className="w-full h-full object-cover"
+                        initial={{ scale: 1.1 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 1.5, ease: "easeOut" }}
+                    />
+                </motion.div>
+            </AnimatePresence>
+
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                {images.map((_, index) => (
+                    <motion.button
+                        key={index}
+                        className={`w-2 h-2 rounded-full ${
+                            index === currentIndex ? 'bg-white' : 'bg-white/50'
+                        }`}
+                        whileHover={{ scale: 1.2 }}
+                        onClick={() => setCurrentIndex(index)}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+};
 
 const BounceCard = ({ className, children, style, description }) => {
     return (
@@ -21,18 +105,11 @@ const BounceCard = ({ className, children, style, description }) => {
             className={`group relative min-h-[400px] cursor-pointer overflow-hidden rounded-2xl bg-slate-100 p-8 ${className}`}
             style={style}
         >
-            <div
-                className="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out group-hover:opacity-0"></div>
-
-            {/* Card Title - outside the description block */}
+            <div className="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out group-hover:opacity-0"></div>
             <div className="absolute top-4 left-4 right-4 z-10">
                 {children}
             </div>
-
-            {/* Description block */}
-            <div
-                className={`absolute bottom-0 left-4 right-4 top-full rounded-2xl bg-gradient-to-br from-gray-700 to-gray-500 p-4 transition-all duration-[250ms] ease-in-out group-hover:top-40 group-hover:rotate-[2deg]`}
-            >
+            <div className="absolute bottom-0 left-4 right-4 top-full rounded-2xl bg-gradient-to-br from-gray-700 to-gray-500 p-4 transition-all duration-[250ms] ease-in-out group-hover:top-40 group-hover:rotate-[2deg]">
                 <span className="block text-sm text-justify font-semibold text-white">
                     {description}
                 </span>
@@ -55,7 +132,7 @@ const Stats = () => {
                     const decimal = number.getAttribute("data-decimal");
                     const options = {
                         decimalPlaces: decimal ? parseInt(decimal) : 0,
-                        duration: 5 // Slows down the counting animation (5 seconds)
+                        duration: 5
                     };
                     const countUp = new CountUp(id, value, options);
 
@@ -70,7 +147,7 @@ const Stats = () => {
         };
 
         const observer = new IntersectionObserver(handleCountUp, {
-            threshold: 0.5 // Adjust this value to control when the animation starts (0.5 means halfway into the viewport)
+            threshold: 0.5
         });
 
         numbers.forEach((number) => {
@@ -85,45 +162,26 @@ const Stats = () => {
     }, []);
 
     return (
-        <div className="relative container mx-auto flex justify-center items-center h-[600px] bg-white">
-            <div className="absolute inset-0 z-0 bg-blur-image bg-cover h-[600px] bg-center"></div>
-            <div className="relative z-10 w-full max-w-6xl text-white text-center">
+        <div className="relative container mx-auto flex justify-center items-center my-20 bg-white">
+            <div className="relative z-10 w-full max-w-6xl  text-center">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8">
                     <div className="flex flex-col items-center">
-                        <h3
-                            className="text-5xl font-extrabold leading-tight"
-                            id="countto1"
-                            data-count-to="30"
-                        >
+                        <h3 className="text-5xl text-red-500 font-extrabold leading-tight" id="countto1" data-count-to="30">
                             30+
                         </h3>
-                        <p className="text-base font-medium leading-7">
-                            Successful Projects
-                        </p>
+                        <p className="text-base text-gray-500 font-medium leading-7">Successful Projects</p>
                     </div>
                     <div className="flex flex-col items-center">
-                        <h3
-                            className="text-5xl font-extrabold leading-tight"
-                            id="countto2"
-                            data-count-to="450"
-                        >
+                        <h3 className="text-5xl text-red-500 font-extrabold leading-tight" id="countto2" data-count-to="450">
                             450+
                         </h3>
-                        <p className="text-base font-medium leading-7">
-                            Active Members
-                        </p>
+                        <p className="text-base text-gray-500 font-medium leading-7">Active Members</p>
                     </div>
-                    <div className="flex flex-col items-center">
-                        <h3
-                            className="text-5xl font-extrabold leading-tight"
-                            id="countto3"
-                            data-count-to="9"
-                        >
+                    <div className="flex flex-col  items-center">
+                        <h3 className="text-5xl font-extrabold text-red-500 leading-tight" id="countto3" data-count-to="9">
                             9
                         </h3>
-                        <p className="text-base font-medium leading-7">
-                            Faculties
-                        </p>
+                        <p className="text-base text-gray-500 font-medium leading-7">Faculties</p>
                     </div>
                 </div>
             </div>
@@ -131,12 +189,21 @@ const Stats = () => {
     );
 };
 
-
-const CardTitle = ({children}) => {
+const CardTitle = ({ children }) => {
     return (
         <h3 className="mx-auto text-center text-4xl text-white font-semibold">{children}</h3>
     );
 };
+const FeatureCard = ({ icon: Icon, title, description }) => (
+    <motion.div
+        whileHover={{ y: -5 }}
+        className="bg-white p-6 rounded-xl shadow-lg border border-gray-100"
+    >
+        <Icon className="h-8 w-8 text-red-600 mb-4" />
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+        <p className="text-gray-600">{description}</p>
+    </motion.div>
+);
 const cardData = [
     {
         image: InternationalServiceImage,
@@ -152,7 +219,6 @@ const cardData = [
         gradientFrom: 'amber-400',
         gradientTo: 'orange-400'
     },
-    // Add more data as needed
     {
         image: CommunityServiceImage,
         title: 'Community Service Avenue',
@@ -186,99 +252,138 @@ export default function Home(props) {
     return (
         <div className={Home}>
 
-            <div className="bg-white dark:bg-gray-900 ">
-                <div className="grid max-w-screen-2xl py-8 mx-auto  xl:gap-0 lg:py-16 lg:grid-cols-12 lg:px-4">
+            <div
+                className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br ">
+                {/* Animated background shapes */}
+                <AnimatedShape className="bg-red-300 w-72 h-72 -top-10 -left-10"/>
+                <AnimatedShape className="bg-blue-200 w-96 h-96 top-1/2 -right-20"/>
+                <AnimatedShape className="bg-yellow-200 w-64 h-64 bottom-0 left-1/3"/>
 
-                    <div className="mr-auto place-self-center lg:col-span-6">
-                        <h1 className="max-w-2xl mb-4 px-2 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-                            Payments tool for software companies
-                        </h1>
-                        <p className="max-w-2xl mb-6 px-2 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                            From checkout to global sales tax compliance, companies around the world use Flowbite to
-                            simplify their payment stack.
-                        </p>
-                        <div>
-                        </div>
+                <div className="container mx-auto px-4 relative z-10">
+                    <div className="grid md:grid-cols-2 gap-12 items-center">
+                        <motion.div
+                            initial={{opacity: 0, x: -50}}
+                            animate={{opacity: 1, x: 0}}
+                            transition={{duration: 0.8, delay: 0.2}}
+                        >
+                            <motion.div
+                                initial={{opacity: 0, y: 20}}
+                                animate={{opacity: 1, y: 0}}
+                                transition={{duration: 0.6, delay: 0.4}}
+                            >
+                                <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-gray-900">
+                                    Empowering Youth Through Service
+                                </h1>
+                                <p className="text-xl text-gray-600 mb-8 max-w-2xl">
+                                    Join us in making a difference through leadership, fellowship, and professional
+                                    development.
+                                </p>
+                                <div className="flex flex-wrap gap-4">
+                                    <motion.a
+                                        whileHover={{scale: 1.05}}
+                                        whileTap={{scale: 0.95}}
+                                        href="/explore/member-application"
+                                        className="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold inline-flex items-center gap-2 hover:bg-red-700 transition-all duration-300"
+                                    >
+                                        Join Now <ArrowRight className="h-5 w-5"/>
+                                    </motion.a>
+                                    <motion.a
+                                        whileHover={{scale: 1.05}}
+                                        whileTap={{scale: 0.95}}
+                                        href="/about-us"
+                                        className="bg-white text-gray-900 border border-gray-200 px-8 py-3 rounded-lg hover:text-white font-semibold hover:bg-gray-50 transition-all duration-300"
+                                    >
+                                        Learn More
+                                    </motion.a>
+                                </div>
+                            </motion.div>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{opacity: 0, scale: 0.8}}
+                            animate={{opacity: 1, scale: 1}}
+                            transition={{duration: 0.8, delay: 0.6}}
+                            className="hidden md:block"
+                        >
+                            <ImageCarousel images={heroImages}/>
+                        </motion.div>
                     </div>
+                </div>
+            </div>
 
-                    <div className="hidden lg:mt-0 lg:col-span-6 lg:flex   ">
-                        <div className={"w-full scale-75 2xl:scale-100 p-0 m-0 overflow-visible"}>
-                            <svg className={"w-full"} height="500">
+            {/* President's Message */}
+            <div className="py-24 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-6xl mx-auto">
+                        <motion.div
+                            initial={{opacity: 0, y: 20}}
+                            whileInView={{opacity: 1, y: 0}}
+                            viewport={{once: true}}
+                            className="flex flex-col md:flex-row items-center gap-12"
+                        >
+                            <div className="md:w-1/3">
+                                <img
+                                    src={President}
+                                    alt="President"
+                                    className="w-full rounded-2xl shadow-xl"
 
-                                <defs>
-                                    <clipPath id="image">
-                                        <rect x="10" y="70" width="43%" height="22%" rx="70" ry="50"
-                                              transform="rotate(-45, 170, 170)"/>
-                                        <rect x="-60" y="310" width="35%" height="22%" rx="70" ry="50"
-                                              transform="rotate(-45, 170, 170)"/>
-                                        <rect x="-120" y="190" width="75%" height="22%" rx="70" ry="50"
-                                              transform="rotate(-45, 170, 170)"/>
-                                        <rect x="220" y="310" width="45%" height="22%" rx="70" ry="50"
-                                              transform="rotate(-45, 170, 170)"/>
-                                        <rect x="50" y="430" width="80%" height="22%" rx="70" ry="50"
-                                              transform="rotate(-45, 170, 170)"/>
-                                        <rect x="200" y="550" width="45%" height="22%" rx="70" ry="50"
-                                              transform="rotate(-45, 170, 170)"/>
-                                    </clipPath>
-                                </defs>
-                                <image
-                                    className={"object-contain w-full h-auto"}
-                                    height="500"
-                                    href={ClubServiceImage}
-                                    clipPath="url(#image)"
                                 />
-                            </svg>
-                        </div>
+                            </div>
+                            <div className="md:w-2/3">
+                                <Quote className="h-12 w-12 text-red-600 mb-6"/>
+                                <p className="text-xl text-gray-600 mb-8 italic">
+                                    "As President of RACRUH, I am proud to lead an organization that empowers youth to
+                                    become agents of positive change. Our commitment to service, leadership, and
+                                    fellowship creates lasting impact in our communities."
+                                </p>
+                                <div>
+                                    <h3 className="text-xl font-semibold text-gray-900">Rtr. Nuhansi Gunawardana</h3>
+                                    <p className="text-gray-600">President, RACRUH 2023/24</p>
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
 
 
                 </div>
             </div>
-            <div className="bg-white ">
-                <div
-                    className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-                    <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-                        <h2 className="mb-4 text-4xl tracking-tight font-semibold text-black dark:text-black">RACRUH</h2>
-                        <p className="mb-4">We are strategists, designers and developers. Innovators and problem
-                            solvers. Small enough to be simple and quick, but big enough to deliver the scope you want
-                            at the pace you need. Small enough to be simple and quick, but big enough to deliver the
-                            scope you want at the pace you need.</p>
-                        <p>We are strategists, designers and developers. Innovators and problem solvers. Small enough to
-                            be simple and quick.</p>
-                        {/*<a href="#"*/}
-                        {/*   className="inline-flex items-center justify-center px-5 py-5 mr-3 text-base font-medium text-center text-black bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">*/}
-                        {/*    Get started*/}
-                        {/*    <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"*/}
-                        {/*         xmlns="http://www.w3.org/2000/svg">*/}
-                        {/*        <path fillRule="evenodd"*/}
-                        {/*              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"*/}
-                        {/*              clipRule="evenodd"></path>*/}
-                        {/*    </svg>*/}
-                        {/*</a>*/}
-                        <a href="/about-us"
-                           className="inline-flex items-center justify-center px-5 py-3 mt-3 text-base font-medium text-center text-black border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-black hover:dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                            About us
-                            <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path fillRule="evenodd"
-                                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                      clipRule="evenodd"></path>
-                            </svg>
-                        </a>
+            {/* Features Section */}
+            <div className="py-24 ">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-16">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Join RACRUH?</h2>
+                            <p className="text-gray-600 max-w-2xl mx-auto">
+                                Discover the opportunities that await you at the Rotaract Club of University of Ruhuna
+                            </p>
+                        </motion.div>
                     </div>
-                    <div className="grid grid-cols-3 gap-4 mt-8">
-                        <img className="w-full rounded-lg"
-                             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png"
-                             alt="office content 1"/>
-                        <img className="mt-4 w-full lg:mt-10 rounded-lg"
-                             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png"
-                             alt="office content 2"></img>
-                        <img className="mt-4 w-full  rounded-lg"
-                             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png"
-                             alt="office content 2"></img>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <FeatureCard
+                            icon={Globe2}
+                            title="Global Network"
+                            description="Connect with Rotaractors worldwide and expand your international perspective"
+                        />
+                        <FeatureCard
+                            icon={Users}
+                            title="Leadership Growth"
+                            description="Develop essential leadership skills through hands-on experience"
+                        />
+                        <FeatureCard
+                            icon={Sparkles}
+                            title="Make an Impact"
+                            description="Create positive change in your community through meaningful projects"
+                        />
                     </div>
                 </div>
             </div>
+
+            {/* Stats Section */}
             <Stats/>
 
             <div className={"lg:px-20 lg:py-44 px-2"}>
@@ -297,51 +402,18 @@ export default function Home(props) {
 
                 </div>
             </div>
-            <div className={"flex flex-row gap-12 justify-center "}>
-                <div className="flex p-4 max-w-3xl h-[400px]  mb-10  bg-white shadow-xl rounded-lg">
-                    <div className="flex-shrink-0">
-                        {/* Message Icon */}
-                        <div className="bg-green-100 text-green-500 rounded-full p-2">
-                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path fillRule="evenodd"
-                                      d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm4 1a1 1 0 100 2h8a1 1 0 100-2H6z"
-                                      clipRule="evenodd"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div className="ml-4">
-                        {/* Title and Message */}
-                        <div className="font-bold text-gray-900">MESSAGES</div>
-                        <div className="text-gray-500">President</div>
-                        <div className="text-gray-700 mt-1">It is a long established fact that a reader will be
-                            distracted
-                            by the readable content of a page when looking at its layout. The point of using Lorem Ipsum
-                            is
-                            that it has a more-or-less normal distribution of letters, as opposed to using 'Content
-                            here,
-                            content here', making it look like readable English. Many desktop publishing packages and
-                            web
-                            page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
-                            will uncover many web sites still in their infancy. Various versions have evolved over the
-                            years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </div>
-                    </div>
-                    <div className="ml-auto text-gray-500">now</div>
+            <div className="py-24 bg-red-500">
+                <div className="container mx-auto px-4 text-center">
+                    <h2 className="text-4xl font-bold text-white mb-8">Ready to Make a Difference?</h2>
+                    <motion.a
+                        whileHover={{scale: 1.05}}
+                        href="/explore/member-application"
+                        className="inline-flex items-center gap-2 bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-50 transition-colors"
+                    >
+                        Join RACRUH Today <ArrowRight className="h-5 w-5"/>
+                    </motion.a>
                 </div>
-
-
-                <div className="w-full max-w-xs bg-white  rounded-lg shadow ">
-                    <div className="flex flex-col items-center pb-10">
-                        <img className="w-auto h-96 mb-3 shadow-lg" src={President} alt="President"/>
-                        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-black">Rtr.Nuhansi Gunawardhana</h5>
-                        <span className="text-sm text-gray-500 dark:text-gray-400">President</span>
-                    </div>
-                </div>
-
-
             </div>
-
 
         </div>
     );

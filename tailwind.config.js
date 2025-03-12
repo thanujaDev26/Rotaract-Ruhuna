@@ -9,11 +9,16 @@ module.exports = {
                 'below-1530': {'max': '1530px'},
             },
             colors: {
-                "rac-pink": '#C62F52',
-                "rac-white": '#ecf0f1',
-                "rac-text-b": '#1e272e',
-                "rac-gray-50": '#4b5563',
-                "rac-gray-900": '#111827',
+
+                "pink": '#C62F52',
+                "white-1": '#ecf0f1',
+
+                "text-b": '#1e272e',
+                "gray-50": '#4b5563',
+                "gray-900": '#111827',
+                "transparent": 'transparent',
+
+
             },
           scale: {
               'custom-45': '0.45',
