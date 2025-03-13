@@ -2,7 +2,7 @@ import Partners from "./Partners";
 import { useLocation } from "react-router-dom";
 import {useEffect} from "react";
 import About from "./About";
-import TimeLine from "./TimeLine";
+import TimeLine from "./TimlineOne";
 import ExecutiveBoard from "./ExecutiveBoard";
 import DirectorBoard from "./DirectorBoard";
 import NewTimeLine from "./NewTimeLine";
