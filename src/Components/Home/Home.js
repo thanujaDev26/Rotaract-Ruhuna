@@ -247,7 +247,6 @@ const cardData = [
 export default function Home(props) {
     return (
         <div className={Home}>
-
             <div
                 className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br ">
                 {/* Animated background shapes */}
@@ -321,7 +320,6 @@ export default function Home(props) {
                                     src={President}
                                     alt="President"
                                     className="w-full rounded-2xl shadow-xl"
-
                                 />
                             </div>
                             <div className="md:w-2/3">
@@ -338,8 +336,6 @@ export default function Home(props) {
                             </div>
                         </motion.div>
                     </div>
-
-
                 </div>
             </div>
             {/* Features Section */}

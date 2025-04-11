@@ -15,6 +15,7 @@ import Demo from "./Components/Demo";
 import axios from "axios";
 import InternationalService from "./Components/Projects/InternationalService";
 import RACRUH from "./Components/RACRUH/RACRUH";
+import MemberRegsitration from "./Components/Explore/MemberRegsitration";
 
 function App() {
 
@@ -28,17 +29,16 @@ function App() {
     //     console.log(user);
     // }
     let getUserBE = (user) => {
-        axios.post('http://localhost:3000/contact-us', user)
+        axios.post('http://localhost:3001/contact-us', user)
             .then((response) => {
-                //console.log(response);
-                //navigate('/contact-us/navigate')
+                console.log(response);
             })
             .catch((error)=>{
-                //console.log(error);
+                console.log(error);
             })
     }
   return (
-      <>
+      <div>
       {/*<div>*/}
       {/*    <CoverImage/>*/}
       {/*</div>*/}
@@ -52,11 +52,12 @@ function App() {
               <Route path="/about-us" element={<RACRUH/>}/>
               <Route path="/avenues"  element={<Avenues/>}/>
               <Route path="/blog"  element={<Blogs/>}/>
-              <Route path="/contact-us"  element={<Contact user={getUserBE}/>}/>
+              <Route path="/contact-us"  element={<Contact getUserBE={getUserBE}/>}/>
               <Route path="/explore" element={<Dashboard/>}/>
               <Route path='/explore/director-board' element={<DirectorBoard/>}/>
               <Route path='/explore/executive-board' element={<ExecutiveBoard/>}/>
-              <Route path='/contact-us/navigate' element={<Demo/>}/>
+              <Route path='explore/member-application' element={<MemberRegsitration/>}/>
+              {/*<Route path='/contact-us/navigate' element={<Demo/>}/>*/}
               <Route path="*" element={<Error/>}/>
               <Route path='/avenues/international-service' element={<InternationalService/>}/>
           </Routes>
@@ -64,7 +65,7 @@ function App() {
           <div>
               <Footer/>
           </div>
-      </>
+      </div>
   );
 }
 

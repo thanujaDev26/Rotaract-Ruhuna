@@ -9,6 +9,7 @@ module.exports = {
                 'below-1530': {'max': '1530px'},
             },
             colors: {
+
                 "pink": '#C62F52',
                 "white-1": '#ecf0f1',
 
@@ -16,6 +17,8 @@ module.exports = {
                 "gray-50": '#4b5563',
                 "gray-900": '#111827',
                 "transparent": 'transparent',
+
+
             },
           scale: {
               'custom-45': '0.45',
@@ -27,6 +30,7 @@ module.exports = {
     },
     plugins: [
         require('@tailwindcss/forms'),
+
       function ({ addUtilities }) {
         const newUtilities = {
           '@media (min-width: 1024px) and (max-width: 1600px)': {
@@ -48,6 +52,7 @@ module.exports = {
 
         addUtilities(newUtilities, ['responsive']);
       },
+
     ],
 }
 
