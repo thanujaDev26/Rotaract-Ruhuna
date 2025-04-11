@@ -1,31 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import InternationalServiceImage from '../../Images/InternationalService.png';
-import EnvironmentalServiceImage from '../../Images/EnvironmentalService.JPG';
-import CommunityServiceImage from '../../Images/CommunityService.jpg';
-import ClubServiceImage from '../../Images/ClubService.jpg';
-import SportsServiceImage from '../../Images/SportsService.jpg';
+import InternationalServiceImage from '../../Images/Home/InternationalService.jpg';
+import EnvironmentalServiceImage from '../../Images/Home/EnvironmentalService.JPG';
+import CommunityServiceImage from '../../Images/Home/CommunityService.jpg';
+import ClubServiceImage from '../../Images/Home/ClubService.jpg';
+import SportsServiceImage from '../../Images/Home/SportsService.jpg';
 import President from '../../Images/nuhansi gunawardena president.png'; // Corrected image path
-import ProfessionalDevelopmentImage from '../../Images/ProfessionalDevelopment.jpg';
+import ProfessionalDevelopmentImage from '../../Images/Home/ProfessionalDevelopment.jpg';
+import firsthero from '../../Images/Home/Hero/01.jpg';
+import secondhero from '../../Images/Home/Hero/02.jpg';
+import thirdhero from '../../Images/Home/Hero/03.jpg';
+import fourthero from '../../Images/Home/Hero/04.jpg';
 
 import { motion, AnimatePresence } from "framer-motion";
 import { CountUp } from 'countup.js';
 import '../../App.css';
-import { Globe2, Users, Award, Sparkles, ArrowRight, Quote } from 'lucide-react';
-
-
-
-
-
-
-
-
+import { Globe2, Users, Award, Sparkles, ArrowRight, Quote ,BookOpenCheck,Network,HeartHandshake} from 'lucide-react';
 
 
 const heroImages = [
-    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2940&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2940&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1559024094-4a1e4495c3c1?q=80&w=2940&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2940&auto=format&fit=crop"
+    firsthero,
+   secondhero,
+    thirdhero,
+    fourthero
 ];
 
 const AnimatedShape = ({ className }) => (
@@ -109,7 +105,7 @@ const BounceCard = ({ className, children, style, description }) => {
             <div className="absolute top-4 left-4 right-4 z-10">
                 {children}
             </div>
-            <div className="absolute bottom-0 left-4 right-4 top-full rounded-2xl bg-gradient-to-br from-gray-700 to-gray-500 p-4 transition-all duration-[250ms] ease-in-out group-hover:top-40 group-hover:rotate-[2deg]">
+            <div className="absolute bottom-0 left-4 right-4 top-full rounded-2xl bg-gradient-to-br from-gray-700 to-gray-500 p-4 transition-all duration-[250ms] ease-in-out group-hover:top-32 group-hover:rotate-[2deg]">
                 <span className="block text-sm text-justify font-semibold text-white">
                     {description}
                 </span>
@@ -166,14 +162,14 @@ const Stats = () => {
             <div className="relative z-10 w-full max-w-6xl  text-center">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8">
                     <div className="flex flex-col items-center">
-                        <h3 className="text-5xl text-red-500 font-extrabold leading-tight" id="countto1" data-count-to="30">
-                            30+
+                        <h3 className="text-5xl text-red-500 font-extrabold leading-tight" id="countto1" data-count-to="26">
+                            26
                         </h3>
                         <p className="text-base text-gray-500 font-medium leading-7">Successful Projects</p>
                     </div>
                     <div className="flex flex-col items-center">
-                        <h3 className="text-5xl text-red-500 font-extrabold leading-tight" id="countto2" data-count-to="450">
-                            450+
+                        <h3 className="text-5xl text-red-500 font-extrabold leading-tight" id="countto2" data-count-to="250">
+                            250
                         </h3>
                         <p className="text-base text-gray-500 font-medium leading-7">Active Members</p>
                     </div>
@@ -208,42 +204,42 @@ const cardData = [
     {
         image: InternationalServiceImage,
         title: 'International Service Avenue',
-        description: 'The International Service Avenue exemplifies global reach, going beyond boundaries to help the international community. Projects in this avenue focus on cultural exchange, facilitating mutual understanding, and engaging in international service projects. By connecting globally, this avenue contributes to positive change on a broader scale.',
+        description: 'This avenue connects the Rotaract club to the global community, enhancing cross cultural understanding and collaboration. It promoted international friendships through partnerships, twin club initiatives and service projects that address global issues. This avenue strengthens connections with Rotaract clubs worldwide through cultural exchanges, language programs and networking events. It inspires members to broaden their perspectives and work together for meaningful change, uniting Rotaractors in a shared mission of service and friendship.',
         gradientFrom: 'violet-400',
         gradientTo: 'black'
     },
     {
         image: EnvironmentalServiceImage,
         title: 'Environmental Service Avenue',
-        description: 'FEATURE DEMO HERE',
+        description: 'This avenue is dedicated to promoting sustainability and environmental responsibility within the Rotaract club and community. It focuses on creating awareness, driving action and encouraging eco-friendly projects to protect and preserve the environment. By advocating to climate action and conservation efforts, it empowers Rotaractors to be responsible global citizens, ensuring a greener and healthier future for generations to come. ',
         gradientFrom: 'amber-400',
         gradientTo: 'orange-400'
     },
     {
         image: CommunityServiceImage,
         title: 'Community Service Avenue',
-        description: 'The Community Service Avenue identifies critical societal issues and customizes projects to meet people’s needs, creating a better and happier society regardless of demographic differences to improve the quality of life for the local community or university campuses, involving all or most club members. The Environmental Service Avenue also operates under the Community Service Avenue, providing the opportunity to engage with nature, aiming to establish sustainable initiatives and preserve sensitive ecosystems. This avenue fosters community growth and environmental awareness within the club and society.',
+        description: 'This avenue focuses on making a positive impact within local communities by addressing their needs improving the quality of life. It encourages Rotaractors to engage in projects that support education, health, poverty alleviation and social development. This avenue conducts charity-related projects, educational initiatives and awareness programs and fund raising projects. By actively, it empowers Rotaractors to create lasting change, build stronger communities, and inspire others to contribute towards social well-being.',
         gradientFrom: 'amber-400',
         gradientTo: 'orange-400'
     },
     {
         image: ClubServiceImage,
         title: 'Club Service Avenue',
-        description: 'The Club Service Avenue focuses on the logistical tasks that create an outstanding club experience for both current and newly inducted members. This avenue ensures that our clubs have active, engaged members who can provide service to their communities and attract new members. Under this avenue, the Rotaract Club of the University of Ruhuna organizes activities within our own club, fostering fellowship and leadership development. The Sports and Recreation Service Avenue also operates under the Club Service Avenue, promoting physical well-being, fostering camaraderie, and encouraging an active lifestyle among its members through various sports events, fitness challenges, and recreational activities.',
+        description: 'The club service avenue serves as the heart of the Rotaract Club, dedicated to enhancing fellowships, leadership and teamwork among members. It ensures that every member has equal opportunities to participate in Rotaract activities, develop their skills and build meaningful connections. This avenue plays a key role in strengthening club engagement through organizing, interactive meetings, team building events and collaborative projects with other Rotaract clubs. From member inductions to social gatherings, it creates a welcoming and lively club culture that keeps members motivated and involved. Beyond strengthening internal bonds, Club service avenue also actively recognizes and appreciated members’ contributions to club activities, ensuring they feel valued and acknowledged and also enhances the Rotaract experience, empowering members to grow as leaders while forming lasting friendships.',
         gradientFrom: 'amber-400',
         gradientTo: 'orange-400'
     },
     {
         image: SportsServiceImage,
         title: 'Sports Service Avenue',
-        description: 'FEATURE DEMO HERE',
+        description: 'This is the avenue that reminds the members that physical fitness, teamwork and sports are just as important as studies. It encourages members to take part in various sports and recreational actives, helping them stay active, build friendships, and enjoy a healthy balance between learning and fun.',
         gradientFrom: 'amber-400',
         gradientTo: 'orange-400'
     },
     {
         image: ProfessionalDevelopmentImage,
         title: 'Professional Development Avenue',
-        description: 'The Professional Development Avenue empowers undergraduate communities to discover and pursue their dream careers, transforming them into qualified professionals with essential skills and competencies. This focus extends beyond individual clubs to include other undergraduate communities in Sri Lanka and beyond.',
+        description: 'Empowers Rotaractors by enhancing their skills, knowledge and career growth through learning opportunities and mentorship. It focuses on equipping members with leadership, communication and technical skills essential for personal and professional success. This avenue organizes workshops, training sessions, networking events and mentorship programs, connecting members with industry experts and professionals. By encouraging continuous learning and career development, it prepares Rotaractors to excel in their fields. Through professional growth it strengthens both the members and the club, ensuring lasting impact beyond Rotaract.',
         gradientFrom: 'amber-400',
         gradientTo: 'orange-400'
     },
@@ -251,7 +247,6 @@ const cardData = [
 export default function Home(props) {
     return (
         <div className={Home}>
-
             <div
                 className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br ">
                 {/* Animated background shapes */}
@@ -272,11 +267,10 @@ export default function Home(props) {
                                 transition={{duration: 0.6, delay: 0.4}}
                             >
                                 <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-gray-900">
-                                    Empowering Youth Through Service
+                                    Lead Serve Inspire
                                 </h1>
                                 <p className="text-xl text-gray-600 mb-8 max-w-2xl">
-                                    Join us in making a difference through leadership, fellowship, and professional
-                                    development.
+                                    Join hands with Rac Ruhuna,Where every small act of kindness leads to a big impact
                                 </p>
                                 <div className="flex flex-wrap gap-4">
                                     <motion.a
@@ -326,7 +320,6 @@ export default function Home(props) {
                                     src={President}
                                     alt="President"
                                     className="w-full rounded-2xl shadow-xl"
-
                                 />
                             </div>
                             <div className="md:w-2/3">
@@ -338,13 +331,11 @@ export default function Home(props) {
                                 </p>
                                 <div>
                                     <h3 className="text-xl font-semibold text-gray-900">Rtr. Nuhansi Gunawardana</h3>
-                                    <p className="text-gray-600">President, RACRUH 2023/24</p>
+                                    <p className="text-gray-600">President, RACRUH 2024/25</p>
                                 </div>
                             </div>
                         </motion.div>
                     </div>
-
-
                 </div>
             </div>
             {/* Features Section */}
@@ -366,18 +357,33 @@ export default function Home(props) {
                     <div className="grid md:grid-cols-3 gap-8">
                         <FeatureCard
                             icon={Globe2}
-                            title="Global Network"
-                            description="Connect with Rotaractors worldwide and expand your international perspective"
+                            title="Be part of a global movement"
+                            description="Join a global network of Rotaract clubs under Rotary international, contributing to worldwide initiatives and enhancing international friendships"
                         />
                         <FeatureCard
                             icon={Users}
-                            title="Leadership Growth"
-                            description="Develop essential leadership skills through hands-on experience"
+                            title="Develop leadership skills"
+                            description="Gain valuable leadership experience through organizing events and taking on key roles within the club"
                         />
                         <FeatureCard
                             icon={Sparkles}
-                            title="Make an Impact"
-                            description="Create positive change in your community through meaningful projects"
+                            title="Make a positive impact "
+                            description="Get involved in meaningful community service projects that help people and make a real difference"
+                        />
+                        <FeatureCard
+                            icon={Network}
+                            title="Build a strong network"
+                            description="Engage with fellow members, professionals and influential community figures, enhancing valuable relationships that open doors to future opportunities and personal growth"
+                        />
+                        <FeatureCard
+                            icon={BookOpenCheck}
+                            title="Personal growth and learning"
+                            description="Learn new skills, attend training sessions, and challenge yourself to grow in confidence, responsibility and teamwork"
+                        />
+                        <FeatureCard
+                            icon={HeartHandshake}
+                            title="Balance fun and service"
+                            description="Participate in exciting projects and team-building events, while also making a positive impact on society"
                         />
                     </div>
                 </div>

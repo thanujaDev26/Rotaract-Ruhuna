@@ -3,10 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import '../components.css';
 import Card from './Card';
 
-import executiveBoardImage from '../../Images/InternationalService.png';
-import directorBoardImage from '../../Images/EnvironmentalService.JPG';
+
+import executiveBoardImage from '../../Images/Home/InternationalService.jpg'
+import directorBoardImage from '../../Images/Home/EnvironmentalService.JPG';
 import memberRegistrationImage from '../../Images/PublicRelations.png';
-import organizingCommitteeImage from '../../Images/CommunityService.jpg';
+import organizingCommitteeImage from '../../Images/Home/CommunityService.jpg';
+
+import executiveBoardHoverImage from '../../Images/Home/SportsService.jpg';
+import directorBoardHoverImage from '../../Images/Home/CommunityService.jpg';
+import memberRegistrationHoverImage from '../../Images/Home/ProfessionalDevelopment.jpg';
+import organizingCommitteeHoverImage from '../../Images/Home/InternationalService.jpg';
 
 const Dashboard = () => {
     const navigate = useNavigate();
