@@ -4,13 +4,13 @@ import 'intersection-observer';
 import '../components.css';
 
 // Importing images
-import InternationalServiceImage from '../../Images/InternationalService.png';
-import EnvironmentalServiceImage from '../../Images/EnvironmentalService.JPG';
-import CommunityServiceImage from '../../Images/CommunityService.jpg';
-import ClubServiceImage from '../../Images/ClubService.jpg';
-import SportsServiceImage from '../../Images/SportsService.jpg';
+import InternationalServiceImage from '../../Images/Home/InternationalService.jpg';
+import EnvironmentalServiceImage from '../../Images/Home/EnvironmentalService.JPG';
+import CommunityServiceImage from '../../Images/Home/CommunityService.jpg';
+import ClubServiceImage from '../../Images/Home/ClubService.jpg';
+import SportsServiceImage from '../../Images/Home/SportsService.jpg';
 import PublicRelationsImage from '../../Images/PublicRelations.png';
-import ProfessionalDevelopmentImage from '../../Images/ProfessionalDevelopment.jpg';
+import ProfessionalDevelopmentImage from '../../Images/Home/ProfessionalDevelopment.jpg';
 import cs_seaturtel1 from "../../Images/SeaTurl 2.0/1.JPG";
 import cs_seaturtel2 from "../../Images/SeaTurl 2.0/2.JPG";
 import cs_seaturtel3 from "../../Images/SeaTurl 2.0/3.JPG";
@@ -173,7 +173,7 @@ export default function Avenues(props) {
             id: 0,
             imageUrl: InternationalServiceImage,
             avenue: 'International Service Avenue',
-            description: 'The International Service Avenue exemplifies global reach, going beyond boundaries to help the international community. Projects in this avenue focus on cultural exchange, facilitating mutual understanding, and engaging in international service projects. By connecting globally, this avenue contributes to positive change on a broader scale.',
+            description: 'This avenue is dedicated to promoting sustainability and environmental responsibility within the Rotaract club and community. It focuses on creating awareness, driving action and encouraging eco-friendly projects to protect and preserve the environment. By advocating to climate action and conservation efforts, it empowers Rotaractors to be responsible global citizens, ensuring a greener and healthier future for generations to come.',
             projects: [
                 {
                     title: 'culSpace',
@@ -223,7 +223,7 @@ export default function Avenues(props) {
             id: 2,
             imageUrl: CommunityServiceImage,
             avenue: 'Community Service Avenue',
-            description: 'The Community Service Avenue identifies critical societal issues and customizes projects to meet people’s needs, creating a better and happier society regardless of demographic differences to improve the quality of life for the local community or university campuses, involving all or most club members. The Environmental Service Avenue also operates under the Community Service Avenue, providing the opportunity to engage with nature, aiming to establish sustainable initiatives and preserve sensitive ecosystems. This avenue fosters community growth and environmental awareness within the club and society.',
+            description: 'This avenue focuses on making a positive impact within local communities by addressing their needs improving the quality of life. It encourages Rotaractors to engage in projects that support education, health, poverty alleviation and social development. This avenue conducts charity-related projects, educational initiatives and awareness programs and fund raising projects. By actively, it empowers Rotaractors to create lasting change, build stronger communities, and inspire others to contribute towards social well-being. ',
             projects: [
                 {
                     title: 'Mom',
@@ -258,7 +258,7 @@ export default function Avenues(props) {
             id: 3,
             imageUrl: ClubServiceImage,
             avenue: 'Club Service Avenue',
-            description: 'The Club Service Avenue focuses on the logistical tasks that create an outstanding club experience for both current and newly inducted members. This avenue ensures that our clubs have active, engaged members who can provide service to their communities and attract new members. Under this avenue, the Rotaract Club of the University of Ruhuna organizes activities within our own club, fostering fellowship and leadership development. The Sports and Recreation Service Avenue also operates under the Club Service Avenue, promoting physical well-being, fostering camaraderie, and encouraging an active lifestyle among its members through various sports events, fitness challenges, and recreational activities.',
+            description: 'The club service avenue serves as the heart of the Rotaract Club, dedicated to enhancing fellowships, leadership and teamwork among members. It ensures that every member has equal opportunities to participate in Rotaract activities, develop their skills and build meaningful connections. This avenue plays a key role in strengthening club engagement through organizing, interactive meetings, team building events and collaborative projects with other Rotaract clubs. From member inductions to social gatherings, it creates a welcoming and lively club culture that keeps members motivated and involved. Beyond strengthening internal bonds, Club service avenue also actively recognizes and appreciated members’ contributions to club activities, ensuring they feel valued and acknowledged and also enhances the Rotaract experience, empowering members to grow as leaders while forming lasting friendships. ',
             projects: [
                 {
                     title: 'First Installation Ceremony',
@@ -323,7 +323,7 @@ export default function Avenues(props) {
             id: 5,
             imageUrl: PublicRelationsImage,
             avenue: 'Public Relations Avenue',
-            description: 'The Public Relations Avenue of the Rotaract Club of the University of Ruhuna is instrumental in shaping the club\'s image and building connections. This avenue raises awareness, promotes initiatives, and collaborates effectively within members of the RACRUHUNA. We leverage top-notch strategies across platforms like WhatsApp, Facebook, Instagram, YouTube, LinkedIn, and TikTok to engage the public and maintain a positive image for the club.',
+            description: 'This avenue plays a key role in enhancing the visibility and reputation of the Rotaract club. It focuses on promoting the club’s activities, achievements and values through effective communication strategies. This avenue manages social media presence, creates engaging content and ensures that the club’s efforts are well-presented. By building strong external relationships and managing the club’s image, public relations help to attract new members and increase the impact of Rotaract’ s initiatives',
             projects: [
                 {
                     title: 'Project 1',

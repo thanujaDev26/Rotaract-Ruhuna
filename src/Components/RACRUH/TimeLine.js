@@ -4,10 +4,10 @@ import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeli
 import { FaStar, FaRegCalendarAlt } from 'react-icons/fa';
 import '../components.css';
 
-import InternationalServiceImage from '../../Images/InternationalService.png';
-import EnvironmentalServiceImage from '../../Images/EnvironmentalService.JPG';
-import CommunityServiceImage from '../../Images/CommunityService.jpg';
-import ClubServiceImage from '../../Images/ClubService.jpg';
+import InternationalServiceImage from '../../Images/Home/InternationalService.jpg';
+import EnvironmentalServiceImage from '../../Images/Home/EnvironmentalService.JPG';
+import CommunityServiceImage from '../../Images/Home/CommunityService.jpg';
+import ClubServiceImage from '../../Images/Home/ClubService.jpg';
 
 export default function TimeLine() {
     const timelineData = [
